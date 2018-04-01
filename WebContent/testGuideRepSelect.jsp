@@ -1,5 +1,5 @@
 <%@page import="com.guideRep.model.GuideRepVO"%>
-<%@ page contentType="text/html; charset=Big5"%>
+<%@ page contentType="text/html; charset=Big5" pageEncoding="Big5"%>
 
 <%
   GuideRepVO guideRepVO = (GuideRepVO) request.getAttribute("guideRepVO"); //GuideSelect.java(Concroller), 存入req的guideVO物件

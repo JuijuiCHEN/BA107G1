@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
@@ -11,7 +12,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-public class GuideCommDAO implements GuideComm_interface {
+public class GuideCommDAO implements GuideCommDAO_interface {
 
 	private static DataSource ds = null;
 	static {
@@ -28,6 +29,9 @@ public class GuideCommDAO implements GuideComm_interface {
 	private static final String UPDATE = "UPDATE guide_comm set commnet_content=?, comm_status=? where comm_id = ?";
 	private static final String DELETE = "DELETE FROM guide_comm where comm_id = ?";
 	private static final String GET_ONE_STMT = "SELECT comm_id,guide_id,mem_id,commnet_content,guide_commnet_time,comm_status FROM guide_comm where comm_id = ?";
+
+	// 查詢一篇文章所有留言
+	private static final String GET_ALL_FROM_GUIDEID = "SELECT COMM_ID,GUIDE_ID,MEM_ID,COMMNET_CONTENT,GUIDE_COMMNET_TIME,COMM_STATUS FROM GUIDE_COMM WHERE GUIDE_ID= ?";
 
 	@Override
 	public void insert(GuideCommVO guideCommVO) {
@@ -197,8 +201,63 @@ public class GuideCommDAO implements GuideComm_interface {
 	}
 
 	@Override
-	public List<GuideCommVO> getAll() {
-		return null;
+	public List<GuideCommVO> getAllFromGuideId(String guideId) {
+
+		List<GuideCommVO> list = new ArrayList<GuideCommVO>();
+		GuideCommVO guideCommVO = null;
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GET_ALL_FROM_GUIDEID);
+			pstmt.setString(1, guideId);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				guideCommVO = new GuideCommVO();
+				guideCommVO.setCommId(rs.getString("COMM_ID"));
+				guideCommVO.setGuideId(rs.getString("GUIDE_ID"));
+				guideCommVO.setMemId(rs.getString("mem_id"));
+
+				guideCommVO.setCommContent(rs.getString("COMMNET_CONTENT"));
+				guideCommVO.setGuideCommTime(rs.getTimestamp("GUIDE_COMMNET_TIME"));
+				guideCommVO.setCommStatus(rs.getInt("COMM_STATUS"));
+				list.add(guideCommVO);
+			}
+			// Handle any driver errors
+		} catch (SQLException se) {
+			se.printStackTrace();
+			throw new RuntimeException("A database error occured. " + se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+
+		return list;
 	}
 
 }

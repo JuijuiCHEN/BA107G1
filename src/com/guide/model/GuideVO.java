@@ -17,6 +17,7 @@ public class GuideVO implements Serializable {
 	private Integer guideVoteSize;
 	private Integer guideStatus;
 	private String guideArea;
+	private String guideMap;
 	private List<GuideImgVO> guideImgList;
 
 	public GuideVO() {
@@ -102,6 +103,14 @@ public class GuideVO implements Serializable {
 		this.guideArea = guideArea;
 	}
 
+	public String getGuideMap() {
+		return guideMap;
+	}
+
+	public void setGuideMap(String guideMap) {
+		this.guideMap = guideMap;
+	}
+
 	public List<GuideImgVO> getGuideImgList() {
 		return guideImgList;
 	}
@@ -115,7 +124,8 @@ public class GuideVO implements Serializable {
 		return "GuideVO [guideId=" + guideId + ", memId=" + memId + ", guideContent=" + guideContent
 				+ ", guideCreateTime=" + guideCreateTime + ", guideTitle=" + guideTitle + ", guideReadSize="
 				+ guideReadSize + ", guideCommSize=" + guideCommSize + ", guideVoteSize=" + guideVoteSize
-				+ ", guideStatus=" + guideStatus + ", guideImgList=" + guideImgList + "]";
+				+ ", guideStatus=" + guideStatus + ", guideArea=" + guideArea + ", guideMap=" + guideMap
+				+ ", guideImgList=" + guideImgList + "]";
 	}
 
 }

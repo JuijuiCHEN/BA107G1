@@ -1,7 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.guide.model.GuideDAO"%>
 <%@page import="com.guide.model.GuideVO"%>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+<%@ page contentType="text/html; charset=Big5" pageEncoding="Big5"%>
 
 <%
 //       GuideDAO dao = new GuideDAO();

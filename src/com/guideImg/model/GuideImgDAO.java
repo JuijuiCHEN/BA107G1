@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -25,27 +27,25 @@ public class GuideImgDAO implements GuideImgDAO_interface {
 			+ "VALUES('GI'||LPAD(to_char(GUIDE_PK_SEQ.NEXTVAL), 6, '0'),?,?)";
 	private static final String DELETE = "DELETE FROM gd_img where g_img_id = ?";
 	private static final String GET_ONE_STMT = "SELECT * FROM gd_img where g_img_id = ?";
+	private static final String GET_ALL_IMG_FROM_ONE_ID = "SELECT * FROM gd_img WHERE GUIDE_ID = ?";
 	// private static final String GET_ALL_STMT = "SELECT * FROM gd_img where guide_id = ?";
 
 	@Override
 	public void insert(GuideImgVO guideImgVO) {
-
 		Connection con = null;
 		PreparedStatement pstmt = null;
-
 		try {
-
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(INSERT_STMT);
 
 			pstmt.setString(1, guideImgVO.getGuideId());
-			// pstmt.setBlob(2, guideImgVO.getGuideImgContent());
 			pstmt.setBytes(2, guideImgVO.getGuideImgContent());
+
 			pstmt.executeUpdate();
 
 			// Handle any SQL errors
 		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. " + se.getMessage());
+			throw new RuntimeException("資料庫錯誤" + se.getMessage());
 		} finally {
 			if (pstmt != null) {
 				try {
@@ -99,7 +99,6 @@ public class GuideImgDAO implements GuideImgDAO_interface {
 
 	@Override
 	public GuideImgVO findByPrimaryKey(String guideImgId) {
-
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		GuideImgVO guideImgVO = null;
@@ -198,5 +197,55 @@ public class GuideImgDAO implements GuideImgDAO_interface {
 	//
 	// return guideImgVO;
 	// }
+
+	@Override
+	public List<String> getAllImgFromId(String guideId) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<String> guideImgList = new ArrayList<String>();
+
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GET_ALL_IMG_FROM_ONE_ID);
+
+			pstmt.setString(1, guideId);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				if (null == rs.getString("GUIDE_IMG_CONTENT")) {
+					continue;
+				}
+				guideImgList.add(rs.getString("G_IMG_ID"));
+			}
+
+		} catch (SQLException se) {
+			throw new RuntimeException("資料庫錯誤" + se.getMessage());
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+
+		return guideImgList;
+	}
 
 }

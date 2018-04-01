@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=Big5"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@page import="com.guide.model.GuideVO"%>
 <%@page import="com.guideImg.model.GuideImgVO"%>
 <%@ page import="java.util.*"%>
@@ -41,7 +41,7 @@
 	</tr>
 	<tr>
 		<%for(int i = 0 ; i < imgList.size(); i++){%>
-			<img src="<%=request.getContextPath()%>/guideImg.do?action=findByPrimaryKey&guideImgId=<%= imgList.get(i).getGuideImgId()%>">
+			<img src="<%=request.getContextPath()%>/guideImg.do?action=getOne_For_Display&guideImgId=<%= imgList.get(i).getGuideImgId()%>">
 		<% }%>
 	</tr>
 

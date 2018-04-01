@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.guideComm.model.GuideCommDAO;
+import com.guideComm.model.GuideCommService;
 import com.guideComm.model.GuideCommVO;
 
 @WebServlet("/guideComm.do")
@@ -27,6 +28,8 @@ public class GuideCommServlet extends HttpServlet {
 
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
+
+		System.out.println("action = " + action);
 
 		if ("insert".equals(action)) {
 
@@ -87,6 +90,7 @@ public class GuideCommServlet extends HttpServlet {
 			}
 
 		} else if ("getOne_For_Display".equals(action)) {
+			System.out.println("getOne_For_Display");
 			List<String> errorMsgs = new LinkedList<String>();
 			req.setAttribute("errorMsgs", errorMsgs);
 
@@ -97,7 +101,7 @@ public class GuideCommServlet extends HttpServlet {
 					errorMsgs.add("請輸入指南編號");
 				}
 				if (!errorMsgs.isEmpty()) {
-					RequestDispatcher failureView = req.getRequestDispatcher("/test.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/select_page.jsp");
 					failureView.forward(req, res);
 					return;// 程式中斷
 				}
@@ -109,7 +113,7 @@ public class GuideCommServlet extends HttpServlet {
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					RequestDispatcher failureView = req.getRequestDispatcher("/test.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/select_page.jsp");
 					failureView.forward(req, res);
 					return;// 程式中斷
 				}
@@ -122,7 +126,7 @@ public class GuideCommServlet extends HttpServlet {
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					RequestDispatcher failureView = req.getRequestDispatcher("/test.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/select_page.jsp");
 					failureView.forward(req, res);
 					return;// 程式中斷
 				}
@@ -136,10 +140,71 @@ public class GuideCommServlet extends HttpServlet {
 
 			} catch (Exception e) {
 				errorMsgs.add("無法取得資料:" + e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/test.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/select_page.jsp");
 				failureView.forward(req, res);
 
 			}
+		} else if ("getAllFromGuideId".equals(action)) {
+			System.out.println("getAllFromGuideId");
+			List<String> errorMsgs = new LinkedList<String>();
+			// Store this set in the request scope, in case we need to
+			// send the ErrorPage view.
+			req.setAttribute("errorMsgs", errorMsgs);
+
+			try {
+				/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
+				String str = req.getParameter("guideId");
+
+				System.out.println("guideId = " + str);
+
+				if (str == null || (str.trim()).length() == 0) {
+					errorMsgs.add("請輸入指南編號");
+				}
+				// Send the use back to the form, if there were errors
+				if (!errorMsgs.isEmpty()) {
+					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/select_page.jsp");
+					failureView.forward(req, res);
+					return;// 程式中斷
+				}
+				String guideId = null;
+				try {
+					guideId = new String(str);
+				} catch (Exception e) {
+					errorMsgs.add("指南編號格式不正確");
+				}
+				// Send the use back to the form, if there were errors
+				if (!errorMsgs.isEmpty()) {
+					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/select_page.jsp");
+					failureView.forward(req, res);
+					return;// 程式中斷
+				}
+				/*************************** 2.開始查詢資料 *****************************************/
+				GuideCommService guideCommSvc = new GuideCommService();
+				List<GuideCommVO> list = guideCommSvc.getAllFromGuideId(guideId);
+
+				if (list.size() < 1) {
+					errorMsgs.add("沒有任何人留言");
+				}
+				// Send the use back to the form, if there were errors
+				if (!errorMsgs.isEmpty()) {
+					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/guide/listGuideComm.jsp");
+					failureView.forward(req, res);
+					return;// 程式中斷
+				}
+				/*************************** 3.查詢完成,準備轉交(Send the Success view) *************/
+				req.setAttribute("list", list); // 資料庫取出的guideVO物件,存入req
+				String url = "/front-end/guide/listGuideComm.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交
+				successView.forward(req, res);
+				/*************************** 其他可能的錯誤處理 *************************************/
+			} catch (Exception e) {
+				System.out.println("發生錯誤");
+				e.printStackTrace();
+				errorMsgs.add("無法取得資料:" + e.getMessage());
+				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/select_page.jsp");
+				failureView.forward(req, res);
+			}
+
 		}
 
 	}

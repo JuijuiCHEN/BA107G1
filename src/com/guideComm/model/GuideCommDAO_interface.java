@@ -2,7 +2,7 @@ package com.guideComm.model;
 
 import java.util.List;
 
-public interface GuideComm_interface {
+public interface GuideCommDAO_interface {
 
 	public void insert(GuideCommVO guideCommVO);
 
@@ -12,6 +12,7 @@ public interface GuideComm_interface {
 
 	public GuideCommVO findByPrimaryKey(String commId);
 
-	public List<GuideCommVO> getAll();
+	// 查詢一篇文章所有留言
+	public List<GuideCommVO> getAllFromGuideId(String guideId);
 
 }

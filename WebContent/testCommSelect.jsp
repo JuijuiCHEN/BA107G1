@@ -1,5 +1,5 @@
 <%@page import="com.guideComm.model.GuideCommVO"%>
-<%@ page contentType="text/html; charset=Big5"%>
+<%@ page contentType="text/html; charset=Big5" pageEncoding="Big5"%>
 
 
 <%
