@@ -1,6 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="com.guide.model.GuideIndexVO"%>
-<%@page import="com.guide.service.GuideService"%>
+<%@page import="com.guide.model.GuideService"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%
 	GuideService aGuideService = new GuideService();
