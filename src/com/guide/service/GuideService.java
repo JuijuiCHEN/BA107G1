@@ -36,7 +36,7 @@ public class GuideService {
 			result = "<div class=\"col-md-6\">" + "<div class=\"col-md-12 space-2\">"
 					+ "<div class=\"guidebook-menu__card guidebook-index-page__card\">"
 					+ "<div class=\"guidebook-nav-card responsive-large\"" + "style=\"background-image: url("
-					+ contextPath + "/guideImg.do?action=findByPrimaryKey&guideImgId=" + guideIndexVO.getGuideImgId()
+					+ contextPath + "/guideImg.do?action=getOne_For_Display&guideImgId=" + guideIndexVO.getGuideImgId()
 					+ ")\">" + "<div style=\"position: absolute\">" + "<div class=\"guidebook-nav-card__text-wrapper\">"
 					+ "<a class=\"link-reset\" href=\"/things-to-do/san-francisco\">"
 					+ "<h4 class=\"guidebook-nav-card__title\">" + guideIndexVO.getGuideArea() + "</h4>" + "</a>"
@@ -52,7 +52,7 @@ public class GuideService {
 			result = result + "<div class=\"col-md-12 col-sm-6 space-2\">"
 					+ "<div class=\"guidebook-menu__card guidebook-index-page__card\">"
 					+ "<div class=\"guidebook-nav-card responsive-small\"" + "style=\"background-image: url("
-					+ contextPath + "/guideImg.do?action=findByPrimaryKey&guideImgId=" + guideIndexVO.getGuideImgId()
+					+ contextPath + "/guideImg.do?action=getOne_For_Display&guideImgId=" + guideIndexVO.getGuideImgId()
 					+ ")\">" + "<div style=\"position: absolute\">" + "<div class=\"guidebook-nav-card__text-wrapper\">"
 					+ "<a class=\"link-reset\" href=\"/things-to-do/new-york\">"
 					+ "<h4 class=\"guidebook-nav-card__title\">" + guideIndexVO.getGuideArea() + "</h4>" + "</a>"
