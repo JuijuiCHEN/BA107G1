@@ -153,21 +153,19 @@ public class GuideImgServlet extends HttpServlet {
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
+			ServletOutputStream out = res.getOutputStream();
+			GuideImgService guideImgSvc = new GuideImgService();
 			try {
 				/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
 				String guideImgId = req.getParameter("guideImgId");
 
 				String guideId = req.getParameter("guideId");
 
-				ServletOutputStream out = res.getOutputStream();
-				byte[] guideImgContent = null;
 				System.out.println(guideImgId);
 				res.setContentType("image/gif");
 
 				/*************************** 2.開始查詢資料 *****************************************/
-				GuideImgService guideImgSvc = new GuideImgService();
 				if (guideImgSvc != null) {
-					guideImgContent = guideImgSvc.getOneGuideImg(guideImgId).getGuideImgContent();
 					GuideImgVO guideImgVO = guideImgSvc.getOneGuideImg(guideImgId);
 					/*************************** 把圖片輸出(out.write)到頁面 ****************************/
 					out.write(guideImgVO.getGuideImgContent());
@@ -176,9 +174,9 @@ public class GuideImgServlet extends HttpServlet {
 				/*************************** 其他可能的錯誤處理 *************************************/
 			} catch (Exception e) {
 				e.printStackTrace();
-				errorMsgs.add("無法取得資料:" + e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("ddd.jsp");
-				failureView.forward(req, res);
+				GuideImgVO guideImgVO = guideImgSvc.getOneGuideImg("GI000020");
+				/*************************** 把圖片輸出(out.write)到頁面 ****************************/
+				out.write(guideImgVO.getGuideImgContent());
 			}
 		}
 	}
