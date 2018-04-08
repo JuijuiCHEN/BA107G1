@@ -26,9 +26,7 @@
 		</ul>
 	</c:if>
 
-	<form method="post"
-		action="<%=request.getContextPath()%>/guideImg.do"
-		enctype="multipart/form-data">
+	<form method="post" action="<%=request.getContextPath()%>/guideImg.do" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>指南編號:</td>
@@ -38,7 +36,6 @@
 		</table>
 		<input accept="image/jpeg,image/gif,image/png" name="upload[]" type="file" multiple id="file-input"> 
 		 <div id="preview"></div>
-<!-- 		<input type="file" name="upfile"><br>  -->
 		<input type="hidden" name="action" value="insert"><br> 
 		<input type="submit" value="送出">
 	</form>

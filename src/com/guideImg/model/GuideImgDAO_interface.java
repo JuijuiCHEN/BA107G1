@@ -1,5 +1,6 @@
 package com.guideImg.model;
 
+import java.sql.Connection;
 import java.util.List;
 
 public interface GuideImgDAO_interface {
@@ -12,6 +13,8 @@ public interface GuideImgDAO_interface {
 	public GuideImgVO findByPrimaryKey(String guideImgId);
 
 	public List<String> getAllImgFromId(String guideId);
+
+	void insertList(String guideId, List<GuideImgVO> imgList, Connection con);
 
 	// public List<GuideImgVO> oneIdGetAll(String guideId);
 

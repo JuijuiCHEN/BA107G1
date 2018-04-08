@@ -1,10 +1,11 @@
 /*!
- * O2.1
- * Copyright 2014 Airbnb, Inc
+ * O2.1* Copyright 2014 Airbnb,
+Inc
  *
  * Contains sources adapted from Twitter Bootstrap v3.0.0, which are available
  * under the Apache License v2.0 (http://www.apache.org/licenses/LICENSE-2.0)
  */
+
 
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 
@@ -229,6 +230,7 @@ table {
     border-spacing: 0
 }
 
+
 /*! HTML5 Boilerplate v4.2.0 | MIT License | git.io/o6Vtiw */
 
 @media print {
@@ -328,15 +330,15 @@ body {
 }
 
 [lang="ja"] body {
-    font-family: "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", "MS Gothic", "ＭＳ ゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif !important
+    font-family: "??????? Pro", "Hiragino Kaku Gothic Pro", "????", Meiryo, Osaka, "??? ??????", "MS PGothic", "MS Gothic", "??? ????", "Helvetica Neue", Helvetica, Arial, sans-serif !important
 }
 
 [lang="ko"] body {
-    font-family: "나눔 고딕", "Nanum Gothic", "맑은 고딕", "Malgun Gothic", "Apple Gothic", "돋움", Dotum, "Helvetica Neue", Helvetica, Arial, sans-serif !important
+    font-family: "?? ??", "Nanum Gothic", "?? ??", "Malgun Gothic", "Apple Gothic", "??", Dotum, "Helvetica Neue", Helvetica, Arial, sans-serif !important
 }
 
 [lang^="zh"] body {
-    font-family: "Hiragino Sans GB", "华文细黑", "STHeiti", "微软雅黑", "Microsoft YaHei", SimHei, "Helvetica Neue", Helvetica, Arial, sans-serif !important
+    font-family: "Hiragino Sans GB", "??????", "STHeiti", "?L?????", "Microsoft YaHei", SimHei, "Helvetica Neue", Helvetica, Arial, sans-serif !important
 }
 
 [lang^="ru"] body,
@@ -690,7 +692,6 @@ a.text-muted:focus {
 
 .link-icon:hover .icon:only-child {
     opacity: 0.8;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"
 }
 
 .link-icon:hover .link-icon__text {
@@ -946,7 +947,7 @@ pre code {
 
 @media screen and (-ms-high-contrast: active),
 (-ms-high-contrast: none) {
-    :root .row.row-table {
+     :root .row.row-table {
         width: -webkit-calc(100% + 24px);
         width: -moz-calc(100% + 24px);
         width: calc(100% + 24px)
@@ -2458,7 +2459,6 @@ ol.panel-body>li>*:last-child {
     bottom: 0;
     left: 0;
     overflow-y: auto;
-    -webkit-transform: translate3d(0, 0, 0);
     background-color: #f5f5f5;
     background-color: rgba(0, 0, 0, 0.75)
 }
@@ -2664,7 +2664,6 @@ ol.panel-body>li>*:last-child {
     left: 0;
     z-index: auto;
     opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     max-width: none
 }
 
@@ -3487,7 +3486,6 @@ fieldset[disabled] .btn {
 
 .btn-link--icon:hover .icon:only-child {
     opacity: 0.8;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"
 }
 
 .btn-link--icon:hover .link-icon__text {
@@ -3632,21 +3630,21 @@ textarea:-ms--placeholder,
 [lang="ja"] textarea,
 [lang="ja"] .input-prefix,
 [lang="ja"] .input-suffix {
-    font-family: "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", "MS Gothic", "ＭＳ ゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif !important
+    font-family: "??????? Pro", "Hiragino Kaku Gothic Pro", "????", Meiryo, Osaka, "??? ??????", "MS PGothic", "MS Gothic", "??? ????", "Helvetica Neue", Helvetica, Arial, sans-serif !important
 }
 
 [lang="ko"] input,
 [lang="ko"] textarea,
 [lang="ko"] .input-prefix,
 [lang="ko"] .input-suffix {
-    font-family: "나눔 고딕", "Nanum Gothic", "맑은 고딕", "Malgun Gothic", "Apple Gothic", "돋움", Dotum, "Helvetica Neue", Helvetica, Arial, sans-serif !important
+    font-family: "?? ??", "Nanum Gothic", "?? ??", "Malgun Gothic", "Apple Gothic", "??", Dotum, "Helvetica Neue", Helvetica, Arial, sans-serif !important
 }
 
 [lang^="zh"] input,
 [lang^="zh"] textarea,
 [lang^="zh"] .input-prefix,
 [lang^="zh"] .input-suffix {
-    font-family: "Hiragino Sans GB", "华文细黑", "STHeiti", "微软雅黑", "Microsoft YaHei", SimHei, "Helvetica Neue", Helvetica, Arial, sans-serif !important
+    font-family: "Hiragino Sans GB", "??????", "STHeiti", "?L?????", "Microsoft YaHei", SimHei, "Helvetica Neue", Helvetica, Arial, sans-serif !important
 }
 
 [lang^="ru"] input,
@@ -3857,7 +3855,6 @@ textarea {
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
-    appearance: none;
     background: white\0 !important
 }
 
@@ -5664,7 +5661,6 @@ input[type="checkbox"]:checked:before {
 }
 
 .subnav[data-transition-at] {
-    -webkit-backface-visibility: hidden;
     opacity: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
@@ -7234,6 +7230,7 @@ td.show-lg {
     }
 }
 
+
 /*!
 * Covalent for O2
 * Copyright 2014 Airbnb, Inc
@@ -7452,11 +7449,4 @@ td.show-lg {
     font-family: Fortescue;
     src: url("https://a0.muscache.com/airbnb/static/airbnb-o2/fonts/Fortescue-SemiBold-Web-09b7b301ac8d6007b9b66c700a694872.woff2") format("woff2"), url("https://a0.muscache.com/airbnb/static/airbnb-o2/fonts/Fortescue-SemiBold-Web-69b2266e83410df6465ba8ffffc5b19e.woff") format("woff");
     font-weight: 600;
-    font-style: normal
-}
-
-#add {
-    background-color: #6c6c6c;
-    color: #fff;
-    text-align: center;
-}
+    font-style: norm

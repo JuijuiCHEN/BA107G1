@@ -65,6 +65,31 @@ public class GuideImgDAO implements GuideImgDAO_interface {
 
 	}
 
+	// 在同一個連線(參數傳進來的), 新增文章後、再繼續對相同文章新增多張圖
+	@Override
+	public void insertList(String guideId, List<GuideImgVO> imgList, Connection con) {
+		PreparedStatement pstmt = null;
+		try {
+			// 跑迴圈對於一張圖做一次新增, 直到沒有圖片
+			for (GuideImgVO guideImgVO : imgList) {
+				pstmt = con.prepareStatement(INSERT_STMT);
+				pstmt.setString(1, guideId);
+				pstmt.setBytes(2, guideImgVO.getGuideImgContent());
+				pstmt.executeUpdate();
+			}
+		} catch (SQLException se) {
+			throw new RuntimeException("資料庫錯誤" + se.getMessage());
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+		}
+	}
+
 	@Override
 	public void delete(String guideImgId) {
 		Connection con = null;

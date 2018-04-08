@@ -13,4 +13,8 @@ public class GuideCommService {
 	public List<GuideCommVO> getAllFromGuideId(String guideId) {
 		return guideCommDao.getAllFromGuideId(guideId);
 	}
+
+	public void deleteAll(String guideId) {
+		guideCommDao.deleteAll(guideId);
+	}
 }

@@ -60,19 +60,11 @@
 			</tr>
 			
 			</table>
-				
-				
-<!-- 1.新增文章時同時可以新增照片?????可以把指南編號的值帶過去嗎?? -->
-				<c:import url="/front-end/guideImg/addGuideImg.jsp">
-<%-- 				<c:param name="guideId" value="<%=guideVO.getGuideId()%>"/> --%>
-				</c:import>
-				
-			
-
-		
-		<br>
-		 <input type="hidden" name="action" value="insert">
+	
+	
+		<input type="hidden" name="action" value="insert">
 		<input type="submit" value="送出新增">
+		
 	</form>
 </body>
 

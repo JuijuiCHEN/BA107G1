@@ -12,52 +12,52 @@ h2 {
 
 <body>
 	<ul>
-		<li>
-			<FORM METHOD="post" ACTION="guide.do">
-				<h2>新增指南:</h2>
-				會員編號: <input type="text" name="memId" value="M000001"><br>
-				地區: <input type="text" name="guideArea"><br>
-				地址: <input type="text" name="guideMap"><br>
-				標題:<input type="text" name="guideTitle"><br>
-				內容: <input type="text" name="guideContent"><br> 
-				<input type="hidden" name="action" value="insert"><br>
-				<input type="submit" value="送出">
-				<h4>(資料格式驗證 by Controller ).</h4>
-			</FORM>
-		</li>
+<!-- 		<li> -->
+<!-- 			<FORM METHOD="post" ACTION="guide.do"> -->
+<!-- 				<h2>新增指南:</h2> -->
+<!-- 				會員編號: <input type="text" name="memId" value="M000001"><br> -->
+<!-- 				地區: <input type="text" name="guideArea"><br> -->
+<!-- 				地址: <input type="text" name="guideMap"><br> -->
+<!-- 				標題:<input type="text" name="guideTitle"><br> -->
+<!-- 				內容: <input type="text" name="guideContent"><br>  -->
+<!-- 				<input type="hidden" name="action" value="insert"><br> -->
+<!-- 				<input type="submit" value="送出"> -->
+<!-- 				<h4>(資料格式驗證 by Controller ).</h4> -->
+<!-- 			</FORM> -->
+<!-- 		</li> -->
 
-		<li>
-			<FORM METHOD="post" ACTION="guide.do">
-				<h2>刪除指南:</h2>
-				<br> 指南編號: <input type="text" name="guideId"><br>
-				<input type="hidden" name="action" value="delete"><br>
-				<input type="submit" value="送出">
-				<h4>(資料格式驗證 by Controller ).</h4>
-			</FORM>
-		</li>
-		<br>
-		<li>
-			<FORM METHOD="post" ACTION="guide.do">
-				<h2>修改指南:</h2>
-				<br> 指南編號: <input type="text" name="guideId" value="G000011"><br>
-				標題: <input type="text" name="guideTitle"><br> 內容: <input
-					type="text" name="guideContent"><br> 狀態: <input
-					type="text" name="guideStatus"><br> <input
-					type="hidden" name="action" value="update"><br> <input
-					type="submit" value="送出">
-				<h4>(資料格式驗證 by Controller ).</h4>
-			</FORM>
-		</li>
-		<br>
-		<li>
-			<FORM METHOD="post" ACTION="guide.do">
-				<h2>輸入指南編號 (如G000001):</h2>
-				<br> 指南編號:<input type="text" name="guideId" value="G000001">
-				<input type="hidden" name="action" value="getOne_For_Display">
-				<input type="submit" value="送出">
-				<h4>(資料格式驗證 by Controller ).</h4>
-			</FORM>
-		</li>
+<!-- 		<li> -->
+<!-- 			<FORM METHOD="post" ACTION="guide.do"> -->
+<!-- 				<h2>刪除指南:</h2> -->
+<!-- 				<br> 指南編號: <input type="text" name="guideId"><br> -->
+<!-- 				<input type="hidden" name="action" value="delete"><br> -->
+<!-- 				<input type="submit" value="送出"> -->
+<!-- 				<h4>(資料格式驗證 by Controller ).</h4> -->
+<!-- 			</FORM> -->
+<!-- 		</li> -->
+<!-- 		<br> -->
+<!-- 		<li> -->
+<!-- 			<FORM METHOD="post" ACTION="guide.do"> -->
+<!-- 				<h2>修改指南:</h2> -->
+<!-- 				<br> 指南編號: <input type="text" name="guideId" value="G000011"><br> -->
+<!-- 				標題: <input type="text" name="guideTitle"><br> 內容: <input -->
+<!-- 					type="text" name="guideContent"><br> 狀態: <input -->
+<!-- 					type="text" name="guideStatus"><br> <input -->
+<!-- 					type="hidden" name="action" value="update"><br> <input -->
+<!-- 					type="submit" value="送出"> -->
+<!-- 				<h4>(資料格式驗證 by Controller ).</h4> -->
+<!-- 			</FORM> -->
+<!-- 		</li> -->
+<!-- 		<br> -->
+<!-- 		<li> -->
+<!-- 			<FORM METHOD="post" ACTION="guide.do"> -->
+<!-- 				<h2>輸入指南編號 (如G000001):</h2> -->
+<!-- 				<br> 指南編號:<input type="text" name="guideId" value="G000001"> -->
+<!-- 				<input type="hidden" name="action" value="getOne_For_Display"> -->
+<!-- 				<input type="submit" value="送出"> -->
+<!-- 				<h4>(資料格式驗證 by Controller ).</h4> -->
+<!-- 			</FORM> -->
+<!-- 		</li> -->
 		<h1>指南留言</h1>
 		<br>
 		<li>
@@ -151,32 +151,32 @@ h2 {
 			</FORM>
 		</li>
 		<br>
-		<li>
-			<h2>新增指南圖片:</h2> <br>
-			<FORM METHOD="post" ACTION="guideImg.do"
-				enctype="multipart/form-data">
-				指南編號: <input type="text" name="guideId" value="G000001"><br>
-				<input type="file" name="upfile1"> <input type="file"
-					name="upfile2"> <input type="hidden" name="action"
-					value="insert"><br> <input type="submit" value="送出">
-			</FORM>
-		</li>
-		<br>
-		<li>
-			<FORM METHOD="post" ACTION="guideImg.do">
-				<h2>刪除指南圖片:</h2>
-				<br> 檢舉編號: <input type="text" name="guideImgId"
-					value="GI000011"><br> <input type="hidden"
-					name="action" value="delete"><br> <input type="submit"
-					value="送出">
-				<h4>(資料格式驗證 by Controller ).</h4>
-			</FORM>
-		</li>
-		<br>
-		<li>
-			<h2>查詢指南圖片:</h2> <img
-			src="<%=request.getContextPath()%>/guideImg.do?action=getOne_For_Display&guideImgId=GI000016">
-		</li>
+<!-- 		<li> -->
+<!-- 			<h2>新增指南圖片:</h2> <br> -->
+<!-- 			<FORM METHOD="post" ACTION="guideImg.do" -->
+<!-- 				enctype="multipart/form-data"> -->
+<!-- 				指南編號: <input type="text" name="guideId" value="G000001"><br> -->
+<!-- 				<input type="file" name="upfile1"> <input type="file" -->
+<!-- 					name="upfile2"> <input type="hidden" name="action" -->
+<!-- 					value="insert"><br> <input type="submit" value="送出"> -->
+<!-- 			</FORM> -->
+<!-- 		</li> -->
+<!-- 		<br> -->
+<!-- 		<li> -->
+<!-- 			<FORM METHOD="post" ACTION="guideImg.do"> -->
+<!-- 				<h2>刪除指南圖片:</h2> -->
+<!-- 				<br> 檢舉編號: <input type="text" name="guideImgId" -->
+<!-- 					value="GI000011"><br> <input type="hidden" -->
+<!-- 					name="action" value="delete"><br> <input type="submit" -->
+<!-- 					value="送出"> -->
+<!-- 				<h4>(資料格式驗證 by Controller ).</h4> -->
+<!-- 			</FORM> -->
+<!-- 		</li> -->
+<!-- 		<br> -->
+<!-- 		<li> -->
+<!-- 			<h2>查詢指南圖片:</h2> <img -->
+<%-- 			src="<%=request.getContextPath()%>/guideImg.do?action=getOne_For_Display&guideImgId=GI000016"> --%>
+<!-- 		</li> -->
 	</ul>
 	
 	

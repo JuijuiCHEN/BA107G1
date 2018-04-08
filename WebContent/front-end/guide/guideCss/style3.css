@@ -583,12 +583,12 @@
 }
 
 .guidebook-new-guest-page__map-container {
-    height: -webkit-calc(100% - 65px);
-    height: -moz-calc(100% - 65px);
-    height: calc(100% - 65px);
+    height: -webkit-calc(100%);
+    height: -moz-calc(100%);
+    height: calc(100%);
     left: 420px;
     right: 0;
-    top: 65px;
+    top: 0px;
     position: fixed
 }
 
@@ -1246,7 +1246,7 @@
 .guidebook-map {
     width: 100%;
     height: 100%;
-    margin-top: 16px
+    margin-top: 0px
 }
 
 .guidebook-map__marker {

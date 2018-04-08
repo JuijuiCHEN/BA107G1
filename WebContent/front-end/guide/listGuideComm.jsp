@@ -1,10 +1,11 @@
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="com.guideComm.model.*" %>
 
 
-<% List<GuideCommVO> list = (List<GuideCommVO>) request.getAttribute("list"); %>
+<% List<GuideCommVO> guideCommlist = (List<GuideCommVO>) request.getAttribute("guideCommlist"); %>
 <html>
 
 <head>
@@ -79,14 +80,15 @@
 			<th>¯d¨¥ª¬ºA</th>
 		</tr>
 		
-	<c:forEach var="guideCommVO" items="${list}">
+	<c:forEach var="guideCommVO" items="${guideCommlist}">
 		<tr>
 		<td>${guideCommVO.commId}</td>
 		<td>${guideCommVO.guideId}</td>
 		<td>${guideCommVO.memId}</td>
 		<td>${guideCommVO.commContent}</td>
+		<td><fmt:formatDate value="${guideCommVO.guideCommTime}" pattern="yyyy-MM-dd"/></td>
 		<td>${guideCommVO.guideCommTime}</td>
-		<td>${guideCommVO.commStatus}</td>
+		<td>${(guideCommVO.commStatus==2) ? "¥¿±`":"ÁôÂÃ"}</td>
 		</tr>
 	
 	</c:forEach>

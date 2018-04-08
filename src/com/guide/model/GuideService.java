@@ -1,8 +1,13 @@
 package com.guide.model;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.guideComm.model.GuideCommDAO;
+import com.guideComm.model.GuideCommDAO_interface;
+import com.guideComm.model.GuideCommVO;
 import com.guideImg.model.GuideImgDAO;
 import com.guideImg.model.GuideImgDAO_interface;
 import com.guideImg.model.GuideImgVO;
@@ -11,26 +16,27 @@ public class GuideService {
 
 	private GuideDAO_interface guideDao;
 	private GuideImgDAO_interface guideImgDAO;
+	private GuideCommDAO_interface guideCommDAO;
 
 	public GuideService() {
 		guideDao = new GuideDAO();
 		guideImgDAO = new GuideImgDAO();
+		guideCommDAO = new GuideCommDAO();
+
 	}
 
-	// 新增指南不包含圖
-	public GuideVO addGuide(String memId, String guideTitle, String guideContent, String guideArea, String guideMap) {
-
+	// 新增指南包含圖
+	public void addGuide(String memId, String guideTitle, String guideContent, String guideArea, String guideMap,
+			String guideLatLng, List<GuideImgVO> imgList) {
 		GuideVO guideVO = new GuideVO();
-
 		guideVO.setMemId(memId);
 		guideVO.setGuideTitle(guideTitle);
 		guideVO.setGuideContent(guideContent);
 		guideVO.setGuideArea(guideArea);
 		guideVO.setGuideMap(guideMap);
+		guideVO.setGuideLatLng(guideLatLng);
+		guideDao.insert(guideVO, imgList); // 把資料給dao去新增文章, 以及圖片list帶過去
 
-		guideDao.insert(guideVO);
-
-		return guideVO;
 	}
 
 	// 查詢一篇文章包含圖
@@ -53,7 +59,12 @@ public class GuideService {
 			guideImgDAO.delete(ImgList.get(i));
 		}
 
-		/*************************** 3.以上都完成才能刪除文章 ***************************************/
+		/*************************** 3.刪除該文章所有留言 ***************************************/
+		GuideCommVO guideCommVO = new GuideCommVO();
+		guideCommVO.setGuideId(guideId);
+		guideCommDAO.deleteAll(guideId);
+
+		/*************************** 4.以上都完成才能刪除文章 ***************************************/
 		guideDao.delete(guideId);
 		System.out.println("Svc刪除成功");
 	}
@@ -88,10 +99,15 @@ public class GuideService {
 		return guideDao.getAllFromOneId(memId);
 	}
 
+	// 拿到一個地區所有文章列表
+	public List<GuideVO> getAllGuideFromArea(String guideArea) {
+		return guideDao.getAllGuideFromArea(guideArea);
+	}
+
 	public static final String[] TEMPLATEARR = { "big", "small1", "small2", "small1", "small2", "small1", "small2",
 			"big", "small1", "small2" };
 
-	// 首頁的方法
+	// 以下都是首頁的方法
 	public static List<String> getGuideIndexVO(String contextPath) {
 		GuideDAO guideDAO = new GuideDAO();
 		List<String> indexTemplate = new ArrayList<String>();
@@ -113,17 +129,23 @@ public class GuideService {
 
 	static String atuoHtml(GuideIndexVO guideIndexVO, String template, String contextPath, Boolean next) {
 		String result = "";
+		String areaUrl;
+		try {
+			areaUrl = URLEncoder.encode(guideIndexVO.getGuideArea(), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			areaUrl = "";
+		}
 		if (template.equals("big")) {
 			result = "<div class=\"col-md-6\">" + "<div class=\"col-md-12 space-2\">"
 					+ "<div class=\"guidebook-menu__card guidebook-index-page__card\">"
 					+ "<div class=\"guidebook-nav-card responsive-large\"" + "style=\"background-image: url("
 					+ contextPath + "/guideImg.do?action=getOne_For_Display&guideImgId=" + guideIndexVO.getGuideImgId()
 					+ ")\">" + "<div style=\"position: absolute\">" + "<div class=\"guidebook-nav-card__text-wrapper\">"
-					+ "<a class=\"link-reset\" href=\"/things-to-do/san-francisco\">"
-					+ "<h4 class=\"guidebook-nav-card__title\">" + guideIndexVO.getGuideArea() + "</h4>" + "</a>"
-					+ "<div class=\"guidebook-nav-card__host-recommendation\">" + "<span>"
-					+ guideIndexVO.getGuideReadSize() + "個人喜歡</span>" + "</div>" + "</div>" + "</div>"
-					+ "<a href=\"/things-to-do/san-francisco\""
+					+ "<a class=\"link-reset\" href=\"" + contextPath + "/guide.do?action=getOne_Area&guideArea="
+					+ areaUrl + "\">" + "<h4 class=\"guidebook-nav-card__title\">" + guideIndexVO.getGuideArea()
+					+ "</h4>" + "</a>" + "<div class=\"guidebook-nav-card__host-recommendation\">" + "<span>"
+					+ guideIndexVO.getGuideReadSize() + "個人喜歡</span>" + "</div>" + "</div>" + "</div>" + "<a href=\""
+					+ contextPath + "/guide.do?action=getOne_Area&guideArea=" + areaUrl + "\""
 					+ "class=\"guidebook-nav-card__button-overlay col-sm-12\"></a>" + "</div>" + "</div>" + "</div>"
 					+ "</div>";
 		} else if (template.equals("small1") || template.equals("small2")) {
@@ -135,11 +157,11 @@ public class GuideService {
 					+ "<div class=\"guidebook-nav-card responsive-small\"" + "style=\"background-image: url("
 					+ contextPath + "/guideImg.do?action=getOne_For_Display&guideImgId=" + guideIndexVO.getGuideImgId()
 					+ ")\">" + "<div style=\"position: absolute\">" + "<div class=\"guidebook-nav-card__text-wrapper\">"
-					+ "<a class=\"link-reset\" href=\"/things-to-do/new-york\">"
-					+ "<h4 class=\"guidebook-nav-card__title\">" + guideIndexVO.getGuideArea() + "</h4>" + "</a>"
-					+ "<div class=\"guidebook-nav-card__host-recommendation\">" + "<span>"
-					+ guideIndexVO.getGuideReadSize() + "個人喜歡</span>" + "</div>" + "</div>" + "</div>"
-					+ "<a href=\"/things-to-do/new-york\""
+					+ "<a class=\"link-reset\" href=\"" + contextPath + "/guide.do?action=getOne_Area&guideArea="
+					+ areaUrl + "\">" + "<h4 class=\"guidebook-nav-card__title\">" + guideIndexVO.getGuideArea()
+					+ "</h4>" + "</a>" + "<div class=\"guidebook-nav-card__host-recommendation\">" + "<span>"
+					+ guideIndexVO.getGuideReadSize() + "個人喜歡</span>" + "</div>" + "</div>" + "</div>" + "<a href=\""
+					+ contextPath + "/guide.do?action=getOne_Area&guideArea=" + areaUrl + "\""
 					+ "class=\"guidebook-nav-card__button-overlay col-sm-12\"></a>" + "</div>" + "</div>" + "</div>";
 			if (next != true || template.equals("small2")) {
 				result = result + "</div>";

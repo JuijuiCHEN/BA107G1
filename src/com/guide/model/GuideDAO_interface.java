@@ -2,9 +2,11 @@ package com.guide.model;
 
 import java.util.List;
 
+import com.guideImg.model.GuideImgVO;
+
 public interface GuideDAO_interface {
 
-	public void insert(GuideVO guideVO);
+	public void insert(GuideVO guideVO, List<GuideImgVO> imgList);
 
 	public void updateFront(GuideVO guideVO);
 
@@ -20,4 +22,5 @@ public interface GuideDAO_interface {
 
 	public GuideIndexVO getGuideIndexVO(String guideArea); // 使用傳入地區, 取得指南首頁所需資訊
 
+	public List<GuideVO> getAllGuideFromArea(String guideArea); // 使用傳入地區, 取得該地所有文章
 }

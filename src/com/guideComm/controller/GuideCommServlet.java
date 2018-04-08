@@ -26,7 +26,7 @@ public class GuideCommServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		req.setCharacterEncoding("UTF-8");
+		// req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
 
 		System.out.println("action = " + action);
@@ -180,9 +180,9 @@ public class GuideCommServlet extends HttpServlet {
 				}
 				/*************************** 2.開始查詢資料 *****************************************/
 				GuideCommService guideCommSvc = new GuideCommService();
-				List<GuideCommVO> list = guideCommSvc.getAllFromGuideId(guideId);
+				List<GuideCommVO> guideCommlist = guideCommSvc.getAllFromGuideId(guideId);
 
-				if (list.size() < 1) {
+				if (guideCommlist.size() < 1) {
 					errorMsgs.add("沒有任何人留言");
 				}
 				// Send the use back to the form, if there were errors
@@ -192,8 +192,8 @@ public class GuideCommServlet extends HttpServlet {
 					return;// 程式中斷
 				}
 				/*************************** 3.查詢完成,準備轉交(Send the Success view) *************/
-				req.setAttribute("list", list); // 資料庫取出的guideVO物件,存入req
-				String url = "/front-end/guide/listGuideComm.jsp";
+				req.setAttribute("guideCommlist", guideCommlist); // 資料庫取出的guideVO物件,存入req
+				String url = "/front-end/guide/liseAreaGuide.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交
 				successView.forward(req, res);
 				/*************************** 其他可能的錯誤處理 *************************************/

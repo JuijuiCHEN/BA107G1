@@ -32,6 +32,8 @@ public class GuideCommDAO implements GuideCommDAO_interface {
 
 	// 查詢一篇文章所有留言
 	private static final String GET_ALL_FROM_GUIDEID = "SELECT COMM_ID,GUIDE_ID,MEM_ID,COMMNET_CONTENT,GUIDE_COMMNET_TIME,COMM_STATUS FROM GUIDE_COMM WHERE GUIDE_ID= ?";
+	// 刪除一篇文章所有留言
+	private static final String DELETE_ALL_FROM_GUIDEID = "DELETE FROM guide_comm where GUIDE_ID = ?";
 
 	@Override
 	public void insert(GuideCommVO guideCommVO) {
@@ -258,6 +260,40 @@ public class GuideCommDAO implements GuideCommDAO_interface {
 		}
 
 		return list;
+	}
+
+	@Override
+	public void deleteAll(String guideId) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(DELETE_ALL_FROM_GUIDEID);
+
+			pstmt.setString(1, guideId);
+			pstmt.executeUpdate();
+
+		} catch (SQLException se) {
+			throw new RuntimeException("資料庫錯誤" + se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
 	}
 
 }

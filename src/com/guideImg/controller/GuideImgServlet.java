@@ -99,7 +99,7 @@ public class GuideImgServlet extends HttpServlet {
 					}
 				}
 				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("guideImgVO", guideImgVO); // 含有輸入格式錯誤的guideVO物件,也存入req
+					req.setAttribute("guideImgVO", guideImgVO); // 含有輸入格式錯誤的guideImgVO物件,也存入req
 					RequestDispatcher failureView = req.getRequestDispatcher("imgbbb.jsp");
 					failureView.forward(req, res);
 					return;
@@ -161,7 +161,8 @@ public class GuideImgServlet extends HttpServlet {
 
 				String guideId = req.getParameter("guideId");
 
-				System.out.println(guideImgId);
+				System.out.println("guideImgId = " + guideImgId);
+				System.out.println("guideId = " + guideId);
 				res.setContentType("image/gif");
 
 				/*************************** 2.開始查詢資料 *****************************************/

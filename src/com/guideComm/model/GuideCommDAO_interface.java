@@ -15,4 +15,6 @@ public interface GuideCommDAO_interface {
 	// 查詢一篇文章所有留言
 	public List<GuideCommVO> getAllFromGuideId(String guideId);
 
+	public void deleteAll(String guideId);
+
 }
