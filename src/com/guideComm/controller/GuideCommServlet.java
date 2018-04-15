@@ -26,7 +26,7 @@ public class GuideCommServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		// req.setCharacterEncoding("UTF-8");
+		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
 
 		System.out.println("action = " + action);
@@ -37,17 +37,22 @@ public class GuideCommServlet extends HttpServlet {
 				String guideId = req.getParameter("guideId");
 				String memId = req.getParameter("memId");
 				String commContent = req.getParameter("commContent");
-
 				GuideCommVO guideCommVO = new GuideCommVO();
 				guideCommVO.setGuideId(guideId);
 				guideCommVO.setMemId(memId);
 				guideCommVO.setCommContent(commContent);
 
-				GuideCommDAO guideCommDAO = new GuideCommDAO();
-				guideCommDAO.insert(guideCommVO);
+				/*************************** 2.開始新增資料 ***************************************/
+				GuideCommService commSvc = new GuideCommService();
+				commSvc.addComm(guideCommVO);
+				System.out.println("commContent(servlet)= " + commContent);
 				System.out.println("留言新增成功");
-				// 跳到成功頁面
 
+				/*************************** 3.新增完成,準備轉交(Send the Success view) ***********/
+				String url = "/guide.do?action=getOne&guideId=" + guideCommVO.getGuideId();
+				RequestDispatcher successView = req.getRequestDispatcher(url);
+				successView.forward(req, res);
+				/*************************** 其他可能的錯誤處理 **********************************/
 			} catch (Exception e) {
 				e.printStackTrace();
 				// 跳到錯誤頁面

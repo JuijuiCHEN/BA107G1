@@ -5,10 +5,15 @@
 <%@ page import="com.guide.model.*"%>
 <%@page import="com.guideComm.model.*" %>
 
-<% List<GuideVO> areaGuideList = (List<GuideVO>)request.getAttribute("areaGuideList");%>
-<% String area = (String)request.getAttribute("area");%> 
-<%AddToLet api = new AddToLet();
-String areaLet = api.googleApi(area);%> 
+<%
+	List<GuideVO> areaGuideList = (List<GuideVO>)request.getAttribute("areaGuideList");
+	String area = (String)request.getAttribute("area");
+	AddToLet api = new AddToLet();
+	String areaLet = api.googleApi(area);
+	GuideDAO guideDAO = new GuideDAO();
+	GuideIndexVO guideIndexVO = guideDAO.getGuideIndexVO(area);
+%> 
+
 
 <!DOCTYPE html>
 <html lang="">
@@ -45,7 +50,7 @@ String areaLet = api.googleApi(area);%>
 
 <body>
 <div class="guidebook-new-guest-page__recommendation-container">
-	<div class="guidebook-new-guest-page__image" style="background-image:url('<%=request.getContextPath()%>/front-end/guide/images/title.jpg')"></div>
+	<div class="guidebook-new-guest-page__image" style="background-image:url('<%=request.getContextPath()%>/guideImg.do?action=getOne_For_Display&guideImgId=<%= guideIndexVO.getGuideImgId()%>')"></div>
 		<div class="panel">
 			<div class="guidebook-new-guest-page__body">
 				<div>

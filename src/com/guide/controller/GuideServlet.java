@@ -89,8 +89,6 @@ public class GuideServlet extends HttpServlet {
 				guideVO.setGuideMap(guideMap);
 				guideVO.setGuideLatLng(guideLatLng);
 
-				System.out.println("guideVO: " + guideVO.toString());
-
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("guideVO", guideVO); // 含有輸入格式錯誤的guideVO物件,也存入req
 					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/guide/addGuide.jsp");
@@ -196,6 +194,7 @@ public class GuideServlet extends HttpServlet {
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
+			System.out.println("11111111111111111111111");
 
 			try {
 				/*************************** 1.接收請求參數 ***************************************/
@@ -216,6 +215,8 @@ public class GuideServlet extends HttpServlet {
 				guideVO.setGuideId(guideId);
 				guideVO.setGuideTitle(guideTitle);
 				guideVO.setGuideContent(guideContent);
+
+				System.out.println(guideVO.toString());
 
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("guideVO", guideVO); // 含有輸入格式錯誤的guideVO物件,也存入req
@@ -271,7 +272,6 @@ public class GuideServlet extends HttpServlet {
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
-
 			try {
 				/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
 				String str = req.getParameter("guideId");
@@ -280,7 +280,7 @@ public class GuideServlet extends HttpServlet {
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/guide/updateFront.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/guide/xxx.jsp");
 					failureView.forward(req, res);
 					return;// 程式中斷
 				}
@@ -300,6 +300,7 @@ public class GuideServlet extends HttpServlet {
 				/*************************** 2.開始查詢資料 *****************************************/
 				GuideService guideSvc = new GuideService();
 				GuideVO guideVO = guideSvc.getOneGuide(guideId);
+
 				if (guideVO == null) {
 					errorMsgs.add("查無資料");
 				}

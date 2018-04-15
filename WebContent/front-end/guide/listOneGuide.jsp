@@ -1,11 +1,18 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ page import="com.guide.model.*"%>
 <%@ page import="com.guideImg.model.GuideImgVO"%>
+<%@page import="com.guideComm.model.*"%>
 <%@ page import="java.util.*"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<% GuideVO guideVO = (GuideVO) request.getAttribute("guideVO");%>
-<% List<GuideImgVO> imgList = guideVO.getGuideImgList();%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+<%
+	GuideVO guideVO = (GuideVO) request.getAttribute("guideVO");
+%>
+<%
+	List<GuideImgVO> imgList = guideVO.getGuideImgList();
+%>
 
 
 <!DOCTYPE html>
@@ -29,13 +36,18 @@
 	href="<%=request.getContextPath()%>/front-end/guide/guideCss/style4.css"
 	media="screen" rel="stylesheet" type="text/css">
 
-<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+<script defer
+	src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+	integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+	crossorigin="anonymous"></script>
 
-
-<style data-aphrodite="data-aphrodite">
+<style type="text/css">
+/* <!-- <style data-aphrodite="data-aphrodite"> --> */
 ._ljkqu4 {
 	padding-top: 24px !important;
 	padding-bottom: 72px !important;
+    padding-left: 15px !important;
+	
 }
 
 @media ( max-width : 743px) {
@@ -328,59 +340,291 @@ to {
 ._tvcjyp9:active {
 	color: #006C70 !important;
 }
+
+._1mkvpvr {
+	position: fixed !important;
+	z-index: 2000 !important;
+	top: 0px !important;
+	right: 0px !important;
+	bottom: 0px !important;
+	left: 0px !important;
+	overflow-y: auto !important;
+	webkit-transform: translate3d(0, 0, 0) !important;
+	background-color: rgba(255, 255, 255, 0.8) !important;
+	display: -webkit-box !important;
+	display: -moz-box !important;
+	display: -ms-flexbox !important;
+	display: -webkit-flex !important;
+	display: flex !important;
+}
+
+._1mkvpvrA {
+	position: fixed !important;
+	overflow-y: auto !important;
+	webkit-transform: translate3d(0, 0, 0) !important;
+	background-color: rgba(255, 255, 255, 0) !important;
+	display: -webkit-box !important;
+	display: -moz-box !important;
+	display: -ms-flexbox !important;
+	display: -webkit-flex !important;
+	display: flex !important;
+}
+
+@media ( max-width : 743px) {
+	._1mkvpvr {
+		background: none !important;
+		overflow-y: hidden !important;
+	}
+}
+
+._1k9frrx {
+	display: -webkit- box !important;
+	display: -moz- box !important;
+	display: -ms- flexbox !important;
+	display: -webkit- flex !important;
+	display: flex !important;
+	margin: auto !important;
+	padding: 64 px !important;
+	max-width: 760px !important;
+	width: 100% !important;
+	max-width: 760px !important;
+}
+
+._1k9frrx: focus {
+	outline: none !important;
+}
+
+@media ( max-width : 1127 px) {
+	._1k9frrx {
+		max-width: 696px !important;
+	}
+}
+
+@media ( max - width: 743 px) {
+	._1k9frrx {
+		padding: 0 px !important;
+		margin: 0 px !important;
+		display: block !important;
+		max
+		-
+		width
+		:
+		none
+		!important;
+	}
+}
+
+._vyj67w {background - color:#ffffff!important;box - shadow:01px10px0rgba
+	(0, 0, 0, 0.2)!important; - webkit - flex:1!important; - ms - flex:1!important;
+	flex: 1 !important;
+	width: 100% !important;
+	position: relative !important;
+}
+
+._vyj67w: focus {
+	outline: none !important;
+}
+
+@media ( max - width: 743 px) {
+	._vyj67w {
+		position: fixed !important;
+		left: 0 px !important;
+		right: 0 px !important;
+		top: 0 px !important;
+		bottom: 0 px !important;
+		overflow
+		-
+		y
+		:
+		auto
+		!important;
+	}
+}
+
+._1dm128x {
+	background-color: #ffffff !important;
+	padding: 64 px !important;
+	-
+	moz
+	-
+	box
+	-
+	sizing
+	:
+	border
+	-
+	
+	
+	
+	
+	
+	
+	box
+	!important;
+	box
+	-
+	sizing
+	:
+	border
+	-box
+	!important;
+}
+
+@media ( max - width: 1127 px) {
+	._1dm128x {
+		padding: 32 px !important;
+	}
+}
+
+@media ( max - width: 743 px) {
+	._1dm128x {max - width:569px!important;
+		margin: 0 auto !important;
+	}
+}
+
+._p03egf {margin - bottom:16px!important;
+	
+}
+
+._tpbrp {
+	color: inherit !important;
+	font-size: 1em !important;
+	font-weight: inherit !important;
+	line-height: inherit !important;
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+#comm1 {
+	font-size: 28px;
+	font-weight: 700;
+}
 </style>
 </head>
 
 <style>
-       #map {
-        height: 350px;
-        width: 100%;
-       }
-    </style>
+#map {
+	height: 350px;
+	width: 100%;
+}
+</style>
+
+
+<style>
+/*         body { */
+/*             background-image: url(http://p1.pichost.me/i/11/1344899.jpg); */
+/*             background-size: cover; */
+/*             background-repeat: no-repeat; */
+/*             font-family: Arial, sans-serif; */
+/*             font-weight: bold; */
+/*             font-size: 14px; */
+/*         } */
+p a {
+	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	display: block;
+	/* margin: 20px auto; */
+	max-width: 130px;
+	text-decoration: none;
+	border-radius: 4px;
+	padding: 15px 20px;
+}
+
+p a.button {
+	color: rgba(30, 22, 54, 0.6);
+	box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+}
+
+p a.button:hover {
+	color: rgba(255, 255, 255, 0.85);
+	box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+}
+
+p a.button2 {
+	color: rgba(30, 22, 54, 0.6);
+	box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+}
+
+p a.button2:hover {
+	color: rgba(255, 255, 255, 0.85);
+	box-shadow: rgba(30, 22, 54, 0.7) 0 80px 0px 2px inset;
+}
+
+.commcon {
+	padding-top: 24px;
+	padding-bottom: 24px;
+}
+</style>
+
+
 
 <body>
-		<div class="_ysxyvab" style="top: 80px;">
-			<div class="page-container-responsive">
-				<div class="col-lg-offset-7 col-lg-5 col-md-offset-6 col-md-6">
-					<div class="_39300i" style="padding-top: 0">
-						<div style="margin-left: 40px">
-							<div class="_1sc94wj0">
-								<div class="_10rdc6v carousel slide" id="myCarousel"
-									data-ride="carousel">
-									<div class="_1kkopm5">
-									
-										<!-- Indicators -->
-										<ol class="carousel-indicators">
-										<%for (int i = 0; i < imgList.size(); i++) {
-											if(i==0){%>
-												<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-											<% }else{%>
-												<li data-target="#myCarousel" data-slide-to="<%=i %>"></li>
-											<%} %>
-										<%}%>
-										</ol>
+	<div class="_ysxyvab" style="top: 80px;">
+		<div class="page-container-responsive">
+			<div class="col-lg-offset-7 col-lg-5 col-md-offset-6 col-md-6">
+				<div class="_39300i" style="padding-top: 0">
+					<div style="margin-left: 40px">
+						<div class="_1sc94wj0">
+							<div class="_10rdc6v carousel slide" id="myCarousel"
+								data-ride="carousel">
+								<div class="_1kkopm5">
 
-										<!-- Wrapper for slides -->
-										<div class="carousel-inner">
-												<%for (int i = 0; i < imgList.size(); i++) {
-												if(i==0){%> 
-												<div class="item active">
-												<%}else{%>
-												<div class="item">
-												<%}%>
-													<img src="<%=request.getContextPath()%>/guideImg.do?action=getOne_For_Display&guideImgId=<%=imgList.get(i).getGuideImgId()%>" alt="Los Angeles" class="_10rdc6v">
-												</div>
-												<%}%>
+									<!-- Indicators -->
+									<ol class="carousel-indicators">
+										<%
+											for (int i = 0; i < imgList.size(); i++) {
+												if (i == 0) {
+										%>
+										<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+										<%
+											} else {
+										%>
+										<li data-target="#myCarousel" data-slide-to="<%=i%>"></li>
+										<%
+											}
+										%>
+										<%
+											}
+										%>
+									</ol>
+
+									<!-- Wrapper for slides -->
+									<div class="carousel-inner">
+										<%
+											for (int i = 0; i < imgList.size(); i++) {
+												if (i == 0) {
+										%>
+										<div class="item active">
+											<%
+												} else {
+											%>
+											<div class="item">
+												<%
+													}
+												%>
+												<img
+													src="<%=request.getContextPath()%>/guideImg.do?action=getOne_For_Display&guideImgId=<%=imgList.get(i).getGuideImgId()%>"
+													alt="Los Angeles" class="_10rdc6v">
+											</div>
+											<%
+												}
+											%>
 										</div>
 
 										<!-- Left and right controls -->
-										<a class="left carousel-control" style="background-image: none;" href="#myCarousel" data-slide="prev"> 
-										<span class="glyphicon glyphicon-chevron-left"></span> 
-										<span class="sr-only">Previous</span>
-										</a> 
-										<a class="right carousel-control" style="background-image: none;" href="#myCarousel" data-slide="next"> 
-										<span class="glyphicon glyphicon-chevron-right"></span> 
-										<span class="sr-only">Next</span>
+										<a class="left carousel-control"
+											style="background-image: none;" href="#myCarousel"
+											data-slide="prev"> <span
+											class="glyphicon glyphicon-chevron-left"></span> <span
+											class="sr-only">Previous</span>
+										</a> <a class="right carousel-control"
+											style="background-image: none;" href="#myCarousel"
+											data-slide="next"> <span
+											class="glyphicon glyphicon-chevron-right"></span> <span
+											class="sr-only">Next</span>
 										</a>
 									</div>
 								</div>
@@ -388,17 +632,48 @@ to {
 							<div class="_ljkqu4">
 								<div class="_nedp51">
 									<div class="_9kqfyx">
-										<button type="button" class="_1rp5252" style="padding: 0; margin: 0" aria-busy="false">
-											<p>我要留言  <span class="fas fa-comment-alt fa-sm" ></span></p>
+										<button type="button" class="_1rp5252" data-toggle="modal"
+											data-target="#myModal2" style="padding: 0; margin: 0"
+											aria-busy="false">
+											<p>
+												 <span class="far fa-comment-alt fa-lg"></span>我要留言
+											</p>
 										</button>
 									</div>
-									
+
+
+									<div class="_9kqfyx">
+										<button type="button" class="_1rp5252"
+											style="padding: 0; margin: 0" aria-busy="false">
+											<p>
+												 <span class="far fa-thumbs-up fa-lg"></span>案讚
+											</p>
+										</button>
+									</div>
+
+									<div class="_9kqfyx">
+										<button type="button" class="_1rp5252"
+											style="padding: 0; margin: 0" aria-busy="false">
+											<p>
+												 <span class="far fa-frown fa-lg"></span>檢舉文章
+											</p>
+										</button>
+									</div>
 									
 									<div class="_9kqfyx">
-										<button type="button" class="_1rp5252" style="padding: 0; margin: 0" aria-busy="false">
-											<p>我喜歡  <span class="far fa-heart fa-sm" ></span></p>
+									<form METHOD="post" ACTION="<%=request.getContextPath()%>/guide/guide.do" style="margin-bottom: 0px;">
+										<button type="submit" class="_1rp5252"
+											style="padding: 0; margin: 0" aria-busy="false">
+											<p>
+												 <span class="fas fa-edit fa-lg"></span>編輯文章
+												 <input type="hidden" name="guideId" value="${guideVO.guideId}">
+												 <input type="hidden" name="action" value="fromListOne">
+												 <%System.out.println("修改guideId====" + guideVO.getGuideId());%>
+											</p>
 										</button>
+										</form>
 									</div>
+									
 								</div>
 							</div>
 						</div>
@@ -407,7 +682,7 @@ to {
 			</div>
 		</div>
 	</div>
-	
+
 
 	<div id="main-hero-content" class="page-container-responsive">
 		<div class="col-lg-7 col-md-6 col-sm-12">
@@ -416,10 +691,12 @@ to {
 					<div class="_13nd2f7d">${guideVO.guideTitle}</div>
 
 					<div class="_rotqmn2">
-						<span><fmt:formatDate value="<%=guideVO.getGuideCreateTime()%>" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+						<span><fmt:formatDate
+								value="<%=guideVO.getGuideCreateTime()%>"
+								pattern="yyyy-MM-dd HH:mm:ss" /></span>
 					</div>
 				</div>
-			
+
 				<div class="_1f9rmq80">
 					<div class="row">
 						<div class="hide-lg">
@@ -431,107 +708,242 @@ to {
 									<div class="_1ouw2w0">
 										<div class="_rotqmn2">${guideVO.guideContent}</div>
 									</div>
-									<img alt="" src="https://a0.muscache.com/im/pictures/710d0c96-2bc0-4037-870a-623d7e362f3f.jpg?aki_policy=profile_small" class="_1i6x6g5">
-									<span>由<span>
-									<a target="_blank" rel="noopener noreferrer" href="/users/show/9249211">
-										<span>${guideVO.memId}</span>
-									</a>
-									</span>撰寫</span>
+									<img alt=""
+										src="https://a0.muscache.com/im/pictures/710d0c96-2bc0-4037-870a-623d7e362f3f.jpg?aki_policy=profile_small"
+										class="_1i6x6g5"> <span>由 <span> <a
+											target="_blank" rel="noopener noreferrer"
+											href="/users/show/9249211"> <span>${guideVO.memId}</span>
+										</a>
+									</span>撰寫
+									</span>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-							
-					
-						<div class="_1f9rmq80">
-							<div class="_33hj8bi">
-								<button type="button" class="_b82bweu" data-toggle="modal" data-target="#myModal">
-									<span>查看來自${guideVO.guideCommSize}位會員的留言</span>
-								</button>
-							
-					
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-     
-  </div>
 
-  </div>
-</div>
-</div>
 
-						
-						
-				
-				</div>
 				<div class="_1f9rmq80">
-					<div>
-						<div class="row">
-							<div class="hide-lg">
-								<div class="col-sm-12">
-									<div style="margin-bottom: 16px">
-										<div class="_33hj8bi">
-											<span>地址</span>
-										</div>
-									</div>
-									<div>
-										<div class="_rotqmn2">${guideVO.guideMap}</div>
-									</div>
-								</div>
-							</div>
-							<div class="show-lg">
-								<div class="_mr7uf7w">
+					<div class="_33hj8bi">
+						<button type="button" class="_b82bweu" data-toggle="modal"
+							data-target="#myModal" aria-disabled="false" aria-busy="false">
+							<span>查看來自${guideVO.guideCommSize}位會員的留言</span>
+						</button>
+					</div>
+				</div>
+
+
+
+
+			</div>
+			<div class="_1f9rmq80">
+				<div>
+					<div class="row">
+						<div class="hide-lg">
+							<div class="col-sm-12">
+								<div style="margin-bottom: 16px">
 									<div class="_33hj8bi">
 										<span>地址</span>
 									</div>
 								</div>
-								<div class="_8alzzaw">
+								<div>
 									<div class="_rotqmn2">${guideVO.guideMap}</div>
+								</div>
+							</div>
+						</div>
+						<div class="show-lg">
+							<div class="_mr7uf7w">
+								<div class="_33hj8bi">
+									<span>地址</span>
+								</div>
+							</div>
+							<div class="_8alzzaw">
+								<div class="_rotqmn2">${guideVO.guideMap}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="margin-bottom: 32px"></div>
+
+			<div class="_1pq2f04">
+				<div id="map"></div>
+			</div>
+		</div>
+	</div>
+	<BR>
+	<BR>
+	<BR>
+	<BR>
+
+
+	<!-- 查看留言跳窗開始 -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div>
+			<div dir="ltr">
+				<div class="_1mkvpvr">
+					<div tabindex="-1" class="_1k9frrx">
+						<div role="dialog" aria-labelledby="dls-modal__Tips from hosts"
+							tabindex="-1" class="_vyj67w" aria-hidden="true">
+							<div>
+								<div role="document">
+									<div class="_1dm128x"
+										style="padding: 64px; background-color: #ffffff;">
+										<div class="_p03egf">
+
+											<button type="button" class="close" data-dismiss="modal"
+												style="font-size: 30px; margin-right: 10px">&times;</button>
+										</div>
+
+										<section>
+											<div>
+												<div id="comm1">
+													<span>留言</span>
+												</div>
+												<div>
+													<div>
+														<%
+															GuideCommService commSvc = new GuideCommService();
+															List<GuideCommVO> commList = commSvc.getAllFromGuideId(guideVO.getGuideId());
+															for (int i = 0; i < commList.size(); i++) {
+														%>
+														<div class="_1f9rmq80">
+															<div>
+
+																<div class="_1ouw2w0">
+																	<div class="_rotqmn2"><%=commList.get(i).getCommContent()%></div>
+																</div>
+																<a href="/users/show/9129703" target="_blank"
+																	rel="noopener noreferrer" class="_tvcjyp9"
+																	aria-disabled="false" aria-busy="false"> <img
+																	alt=""
+																	src="https://a0.muscache.com/im/pictures/e44f92af-37d9-43ae-b4b7-366f590d8d1e.jpg?aki_policy=profile_x_medium"
+																	class="_1i6x6g5"> <a target="_blank"
+																	href="/users/show/9129703"> <span><%=commList.get(i).getMemId()%></span>
+																</a>
+
+																</a>
+
+																<div class="_9kqfyx">
+																	<button type="button" class="_1rp5252"
+																		style="margin-bottom: ); margin-left: 400px;"
+																		aria-busy="false">
+																		<p>
+																		 <span class="far fa-frown fa-lg"></span>檢舉留言
+																		</p>
+																	</button>
+																</div>
+
+
+															</div>
+														</div>
+														<%
+															}
+														%>
+													</div>
+												</div>
+											</div>
+										</section>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div style="margin-bottom: 32px"></div>
-				
-				<div class="_1pq2f04">
-					<div id="map"></div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- 撰寫留言跳窗開始 -->
+	<div class="modal fade" id="myModal2" role="dialog">
+		<div>
+			<div dir="ltr">
+				<div class="_1mkvpvr">
+					<div tabindex="-1" class="_1k9frrx">
+						<div role="dialog" aria-labelledby="dls-modal__Tips from hosts"
+							tabindex="-1" class="_vyj67w" aria-hidden="true">
+							<div>
+								<div role="document">
+									<div class="_1dm128x"
+										style="padding: 64px; background-color: #ffffff;">
+										<div class="_p03egf">
+
+											<button type="button" class="close" data-dismiss="modal"
+												style="font-size: 30px; margin-right: 10px">&times;</button>
+										</div>
+
+										<section>
+											<div>
+												<div id="comm1">
+													<span>撰寫留言</span>
+												</div>
+												<div>
+													<form METHOD="post" action="<%=request.getContextPath()%>/guideComm/guideComm.do" id="sub">
+														<div class="commcon">
+															<div>
+																<textarea name="commContent" class="form-control"
+																	placeholder="輸入留言內容" autocomplete="off" rows="5"></textarea>
+																<input type="hidden" name="guideId"
+																	value="${guideVO.guideId}"> <input
+																	type="hidden" name="memId" value="M000001"> <input
+																	type="hidden" name="action" value="insert">
+															</div>
+														</div>
+													</form>
+												</div>
+												<div style="margin-bottom: 28px; margin-right: 25%">
+													<div class="_1pq2f04" style="text-align: center">
+														<p>
+															<a class="button" id="subcomm" aria-busy="false">送出留言</a>
+														</p>
+													</div>
+												</div>
+											</div>
+										</section>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-    
+	</div>
+
+
+
+
+
+
 </body>
 </html>
 <script>
-      function initMap() {
-        var uluru = <%=guideVO.getGuideLatLng()%>;
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 16,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
-    
-    
-    <script async defer src="https://maps.googleapis.com/maps/api/js?region=cn&language=zh-TW&key=AIzaSyBuS1-gsXN4HrHQaqjuaFaMxIqcayPPaoY&callback=initMap">
-    </script>
+	function initMap() {
+		var uluru =
+<%=guideVO.getGuideLatLng()%>
+	;
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom : 16,
+			center : uluru
+		});
+		var marker = new google.maps.Marker({
+			position : uluru,
+			map : map
+		});
+	}
+</script>
+
+
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?region=cn&language=zh-TW&key=AIzaSyBuS1-gsXN4HrHQaqjuaFaMxIqcayPPaoY&callback=initMap">
 	
-    
+</script>
+<script>
+	document.getElementById("subcomm").onclick = function() {
+		document.getElementById("sub").submit();
+	}
+</script>
+

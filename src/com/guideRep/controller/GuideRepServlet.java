@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.guideRep.model.GuideRepDAO;
+import com.guideRep.model.GuideRepService;
 import com.guideRep.model.GuideRepVO;
 
 /**
@@ -32,6 +33,7 @@ public class GuideRepServlet extends HttpServlet {
 		if ("insert".equals(action)) {
 
 			try {
+				/*************************** 1.取得新增資料 ***************************************/
 				String guideId = req.getParameter("guideId");
 				String memId = req.getParameter("memId");
 				String guideRepContent = req.getParameter("guideRepContent");
@@ -40,14 +42,19 @@ public class GuideRepServlet extends HttpServlet {
 				guideRepVO.setGuideId(guideId);
 				guideRepVO.setMemId(memId);
 				guideRepVO.setGuideRepContent(guideRepContent);
-
-				GuideRepDAO guideRepDAO = new GuideRepDAO();
-				guideRepDAO.insert(guideRepVO);
-				System.out.println("新增成功");
-
+				/*************************** 2.開始新增資料 ***************************************/
+				GuideRepService guideRepSvc = new GuideRepService();
+				guideRepSvc.addGuideRep(guideId, memId, guideRepContent);
+				System.out.println("檢舉新增成功");
+				/*************************** 3.新增完成,準備轉交(Send the Success view) ***********/
+				String url = "/front-end/select_page.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url);
+				successView.forward(req, res);
+				/*************************** 其他可能的錯誤處理 **********************************/
 			} catch (Exception e) {
 				e.printStackTrace();
-				// 跳到錯誤頁面
+				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/guide/xxx.jsp");
+				failureView.forward(req, res);
 			}
 		} else if ("update".equals(action)) {
 			try {
