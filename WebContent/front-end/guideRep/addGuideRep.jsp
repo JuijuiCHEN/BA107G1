@@ -1,11 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
-
-
+<%
+	String guideId = request.getParameter("guideId");
+	String memId = request.getParameter("memId");
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<script src="jquery-3.3.1.min.js"></script>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -295,13 +295,14 @@ input[type="radio"]:disabled+.label-text:before {
 	padding-left: 58px;
 	font-size: 15px;
 }
-#guideCommit{
-margin-left:23px;
-}
-#repContent{
-display: none;
+
+#guideCommit {
+	margin-left: 23px;
 }
 
+#repContent {
+	display: none;
+}
 </style>
 
 
@@ -337,10 +338,9 @@ display: none;
 						<div class="left-backdrop"></div>
 						<div
 							class="right-backdrop hide-sm bg-white right-backdrop--with-bg"></div>
-						<div class="list-your-space__content" style="padding-top:0px;">
+						<div class="list-your-space__content" style="padding-top: 0px;">
 							<div class="centered-content clearfix">
-								<form method="post"
-									action="<%=request.getContextPath()%>/guide/guideRep.do"
+								<form action="<%=request.getContextPath()%>/guideRep.do"
 									id="GuideRepForm">
 									<div
 										class="main-panel-container no-padding-h bg-white main-panel-outer-half clearfix"
@@ -354,34 +354,46 @@ display: none;
 														<div class="container">
 															<div class="col-sm-12">
 																<div style="margin-bottom: 8px;">
-																	<h2 style="margin-bottom:30px">請選擇該文章內容哪裡不適當</h2>
+																	<h2 style="margin-bottom: 30px">請選擇該文章內容哪裡不適當</h2>
 																</div>
 																<div class="form-check">
-																	<label> <input type="radio" name="radio" onclick="inputClose()" value="這則指南包含暴力、色情、促銷或其他具有冒犯性的內容。" checked> 
+																	<label> <input type="radio" name="radio"
+																		onclick="inputClose()"
+																		value="內容不適當:這則指南包含暴力、色情、促銷或其他具有冒犯性的內容。" checked>
 																		<span class="label-text">內容不適當</span><br>
 																		<div class="repcss">這則指南包含暴力、色情、促銷或其他具有冒犯性的內容。</div>
 																	</label>
 																</div>
 																<div class="form-check">
-																	<label> <input type="radio" name="radio" onclick="inputClose()" value="這則指南包含虛假資訊。">
+																	<label> <input type="radio" name="radio"
+																		onclick="inputClose()" value="虛假內容:這則指南包含虛假資訊。">
 																		<span class="label-text">虛假內容</span> <br>
 																		<div class="repcss">這則指南包含虛假資訊。</div>
 																	</label>
 																</div>
 																<div class="form-check">
-																	<label><input type="radio" name="radio" onclick="inputClose()" value="這則指南內容含有惡意中傷和人身攻擊內容">
-																		<span class="label-text">不實欺詐內容或仇恨言論</span> <br>
+																	<label><input type="radio" name="radio"
+																		onclick="inputClose()"
+																		value="不實欺詐內容或仇恨言論:這則指南內容含有惡意中傷和人身攻擊內容"> <span
+																		class="label-text">不實欺詐內容或仇恨言論</span> <br>
 																		<div class="repcss">這則指南內容含有惡意中傷和人身攻擊內容。</div> </label>
 																</div>
 
 																<div class="form-check">
-																	<label> <input type="radio" name="radio" id="otherBtn" onclick="change()">
-																		<span class="label-text">其他</span> <br>
+																	<label> <input type="radio" name="radio"
+																		id="otherBtn" onclick="change()" value=""> <span
+																		class="label-text">其他</span> <br>
 																		<div class="col-xs-4">
-																			<input id="repContent" class="form-control" type="text" style="margin-left: 44px;margin-bottom:20px;" placeholder="請輸入檢舉內容">
+																			<input id="repContent" onchange="repContentCh()"
+																				class="form-control" type="text"
+																				style="margin-left: 44px; margin-bottom: 20px;"
+																				placeholder="請輸入檢舉內容">
 																		</div>
 																	</label>
 																</div>
+																<input type="hidden" name="guideId" value="<%=guideId%>">
+																<input type="hidden" name="memId" value="<%=memId%>">
+																<input type="hidden" name="action" value="insert">
 															</div>
 														</div>
 													</div>
@@ -392,7 +404,7 @@ display: none;
 
 						<div style="margin-top: 20%; margin-right: 25%;">
 							<div class="wrap">
-								<a class="button" id="guideCommit" aria-busy="false">送出編輯</a>
+								<a class="button" id="guideRepCommit" aria-busy="false">送出</a>
 							</div>
 						</div>
 					</div>
@@ -405,26 +417,20 @@ display: none;
 			</div>
 		</div>
 		<div class="help-panel-container">
-			<div class="hide-sm help-panel panel" style="margin:0px 30px 0">
+			<div class="hide-sm help-panel panel" style="margin: 0px 30px 0">
 				<div class="panel-body">
-					<div class="help-panel__bulb-img space-2"></div>
 					<div class="help-panel__text">
 						<div>
 							<p>
-								<span>我們只會將您的具體地址分享給已確認預訂的房客。</span>
+								<span>感謝您的意見，我們會審查遭檢舉的文章是否違反正常言論發表，累犯或情節重大者的帳戶甚至可能遭到終止。
+								。</span>
 							</p>
 							<div class="tip-address-img"></div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="show-sm help-panel__floating-container">
-				<span class="tooltip-popup__transition-container">
-				<button class="help-panel--collapsed help-panel__bulb-img-bubble" aria-label="了解詳情">
-				<div class="help-panel__bulb-img img-center"></div>
-				</button>
-				</span>
-			</div>
+			
 		</div>
 	</div>
 	</main>
@@ -432,22 +438,30 @@ display: none;
 </html>
 
 <script>
-var repContent = true;
-
-function change(){
-	if(repContent){
-		$("#repContent").show();
-		repContent =false;
-	}else{
-		$("#repContent").hide();
-		repContent =true;
+	document.getElementById("guideRepCommit").onclick = function() {
+		document.getElementById("GuideRepForm").submit();
 	}
-}
+</script>
 
-function inputClose(){
-	if(!repContent){
-		$("#repContent").hide();
-		repContent = true;
+<script>
+	var repContent = true;
+	function repContentCh() {
+		var str = $("#repContent").val();
+		$("#otherBtn").val(str);
 	}
-}
+	function change() {
+		if (repContent) {
+			$("#repContent").show();
+			repContent = false;
+		} else {
+			$("#repContent").hide();
+			repContent = true;
+		}
+	}
+	function inputClose() {
+		if (!repContent) {
+			$("#repContent").hide();
+			repContent = true;
+		}
+	}
 </script>

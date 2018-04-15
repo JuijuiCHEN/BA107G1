@@ -12,6 +12,8 @@ public interface GuideDAO_interface {
 
 	public void updateBack(GuideVO guideVO);
 
+	public void updateVote(GuideVO guideVO);
+
 	public void delete(String guideId);
 
 	public GuideVO findByPrimaryKey(String guideId);

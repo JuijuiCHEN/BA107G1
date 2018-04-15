@@ -73,7 +73,7 @@ public class GuideRepDAO implements GuideRepDAO_interface {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(UPDATE);
 
-			pstmt.setInt(1, guideRepVO.getGuideRepStatus());
+			pstmt.setInt(1, 1); // 1=未審核, 2=審核中, 3=已結案
 			pstmt.setString(2, guideRepVO.getGuideRepId());
 
 			int a = pstmt.executeUpdate();

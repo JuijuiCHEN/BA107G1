@@ -30,24 +30,29 @@ public class GuideRepServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
+		System.out.println("action : " + action);
 		if ("insert".equals(action)) {
 
 			try {
 				/*************************** 1.取得新增資料 ***************************************/
 				String guideId = req.getParameter("guideId");
 				String memId = req.getParameter("memId");
-				String guideRepContent = req.getParameter("guideRepContent");
+				String guideRepContent = new String(req.getParameter("radio").getBytes("ISO-8859-1"), "UTF-8");
+
+				System.out.println("guideRepContent : " + guideRepContent);
+				System.out.println("guideId : " + guideId);
 
 				GuideRepVO guideRepVO = new GuideRepVO();
 				guideRepVO.setGuideId(guideId);
 				guideRepVO.setMemId(memId);
 				guideRepVO.setGuideRepContent(guideRepContent);
+
 				/*************************** 2.開始新增資料 ***************************************/
 				GuideRepService guideRepSvc = new GuideRepService();
 				guideRepSvc.addGuideRep(guideId, memId, guideRepContent);
 				System.out.println("檢舉新增成功");
 				/*************************** 3.新增完成,準備轉交(Send the Success view) ***********/
-				String url = "/front-end/select_page.jsp";
+				String url = "/guide.do?action=getOne&guideId=" + guideId;
 				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
 				/*************************** 其他可能的錯誤處理 **********************************/
@@ -68,7 +73,7 @@ public class GuideRepServlet extends HttpServlet {
 				GuideRepDAO guideRepDAO = new GuideRepDAO();
 				guideRepDAO.update(guideRepVO);
 
-				System.out.println("修改成功");
+				System.out.println("檢舉修改成功");
 
 			} catch (Exception e) {
 				e.printStackTrace();

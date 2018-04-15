@@ -42,7 +42,6 @@
 	crossorigin="anonymous"></script>
 
 <style type="text/css">
-/* <!-- <style data-aphrodite="data-aphrodite"> --> */
 ._ljkqu4 {
 	padding-top: 24px !important;
 	padding-bottom: 72px !important;
@@ -511,14 +510,6 @@ to {
 
 
 <style>
-/*         body { */
-/*             background-image: url(http://p1.pichost.me/i/11/1344899.jpg); */
-/*             background-size: cover; */
-/*             background-repeat: no-repeat; */
-/*             font-family: Arial, sans-serif; */
-/*             font-weight: bold; */
-/*             font-size: 14px; */
-/*         } */
 p a {
 	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
@@ -643,34 +634,39 @@ p a.button2:hover {
 
 
 									<div class="_9kqfyx">
-										<button type="button" class="_1rp5252"
-											style="padding: 0; margin: 0" aria-busy="false">
-											<p>
-												 <span class="far fa-thumbs-up fa-lg"></span>案讚
-											</p>
-										</button>
-									</div>
-
-									<div class="_9kqfyx">
-										<button type="button" class="_1rp5252"
-											style="padding: 0; margin: 0" aria-busy="false">
-											<p>
-												 <span class="far fa-frown fa-lg"></span>檢舉文章
-											</p>
-										</button>
-									</div>
-									
-									<div class="_9kqfyx">
 									<form METHOD="post" ACTION="<%=request.getContextPath()%>/guide/guide.do" style="margin-bottom: 0px;">
 										<button type="submit" class="_1rp5252"
 											style="padding: 0; margin: 0" aria-busy="false">
 											<p>
-												 <span class="fas fa-edit fa-lg"></span>編輯文章
-												 <input type="hidden" name="guideId" value="${guideVO.guideId}">
-												 <input type="hidden" name="action" value="fromListOne">
-												 <%System.out.println("修改guideId====" + guideVO.getGuideId());%>
+												 <span class="far fa-thumbs-up fa-lg"></span>案讚
+												  <input type="hidden" name="guideId" value="${guideVO.guideId}">
 											</p>
 										</button>
+									</form>
+									</div>
+
+									<div class="_9kqfyx">
+										<form ACTION="<%=request.getContextPath()%>/front-end/guideRep/addGuideRep.jsp" style="margin-bottom: 0px;">
+											<button type="submit" class="_1rp5252" style="padding: 0; margin: 0" aria-busy="false">
+												<p>
+													<span class="far fa-frown fa-lg"></span>檢舉文章
+													<input type="hidden" name="guideId" value="${guideVO.guideId}">
+													<input type="hidden" name="memId" value="M000001">
+												</p>
+											</button>
+										</form>
+									</div>
+									
+									<div class="_9kqfyx">
+										<form METHOD="post" ACTION="<%=request.getContextPath()%>/guide/guide.do" style="margin-bottom: 0px;">
+											<button type="submit" class="_1rp5252"
+												style="padding: 0; margin: 0" aria-busy="false">
+												<p>
+													 <span class="fas fa-edit fa-lg"></span>編輯文章
+													 <input type="hidden" name="guideId" value="${guideVO.guideId}">
+													 <input type="hidden" name="action" value="fromListOne">
+												</p>
+											</button>
 										</form>
 									</div>
 									

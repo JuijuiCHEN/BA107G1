@@ -94,6 +94,17 @@ public class GuideService {
 		return guideVO;
 	}
 
+	public GuideVO updateGuideVote(Integer guideVoteSize, String guideId) {
+
+		GuideVO guideVO = new GuideVO();
+
+		guideVO.setGuideStatus(guideVoteSize);
+		guideVO.setGuideId(guideId);
+		guideDao.updateVote(guideVO);
+
+		return guideVO;
+	}
+
 	// 拿到一個會員所有文章列表
 	public List<GuideVO> getAllFromOneId(String memId) {
 		return guideDao.getAllFromOneId(memId);

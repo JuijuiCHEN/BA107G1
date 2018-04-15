@@ -266,6 +266,34 @@ public class GuideServlet extends HttpServlet {
 			} finally {
 				res.sendRedirect("");
 			}
+		} else if ("updateVote".equals(action)) {
+			try {
+				// req取得資料
+				String guideId = req.getParameter("guideId");
+				Integer guideVoteSize = Integer.parseInt(req.getParameter("guideVoteSize"));
+
+				// 創建DAO的輸入參數
+				GuideVO guideVO = new GuideVO();
+				guideVO.setGuideVoteSize(guideVoteSize);
+				guideVO.setGuideId(guideId);
+
+				GuideService guideSvc = new GuideService();
+				guideVO = guideSvc.updateGuideVote(guideVoteSize, guideId);
+				System.out.println("指南讚數修改成功");
+
+				guideVO = guideSvc.getOneGuide(guideId);
+
+				/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
+				req.setAttribute("guideVO", guideVO); // 資料庫updata成功後,正確的guideVO物件,存入req
+				String url = "/front-end/guide/listOneGuide.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後轉交jsp
+				successView.forward(req, res);
+
+				/*************************** 其他可能的錯誤處理 *************************************/
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		} else if ("getOne".equals(action) || "fromListOne".equals(action)) {
 
 			List<String> errorMsgs = new LinkedList<String>();

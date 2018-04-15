@@ -6,6 +6,7 @@ public class GuideRepService {
 
 	public GuideRepService() {
 		guideRepDAO = new GuideRepDAO();
+
 	}
 
 	public void addGuideRep(String guideId, String memId, String guideRepContent) {
@@ -14,6 +15,14 @@ public class GuideRepService {
 		guideRepVO.setMemId(memId);
 		guideRepVO.setGuideRepContent(guideRepContent);
 		guideRepDAO.insert(guideRepVO);
+
+	}
+
+	public void update(String guideRepId, Integer guideRepStatus) {
+		GuideRepVO guideRepVO = new GuideRepVO();
+		guideRepVO.setGuideRepId(guideRepId);
+		guideRepVO.setGuideRepStatus(guideRepStatus);
+		guideRepDAO.update(guideRepVO);
 	}
 
 }
