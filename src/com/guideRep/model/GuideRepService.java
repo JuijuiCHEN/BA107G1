@@ -1,5 +1,7 @@
 package com.guideRep.model;
 
+import java.util.List;
+
 public class GuideRepService {
 
 	private GuideRepDAO_interface guideRepDAO;
@@ -23,6 +25,14 @@ public class GuideRepService {
 		guideRepVO.setGuideRepId(guideRepId);
 		guideRepVO.setGuideRepStatus(guideRepStatus);
 		guideRepDAO.update(guideRepVO);
+	}
+
+	public List<GuideRepVO> getAllStatus1() {
+		return guideRepDAO.getAllStatus1();
+	}
+
+	public GuideRepVO getOneGuideRep(String guideRepId) {
+		return guideRepDAO.findByPrimaryKey(guideRepId);
 	}
 
 }

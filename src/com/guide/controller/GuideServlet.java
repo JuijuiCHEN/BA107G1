@@ -136,20 +136,20 @@ public class GuideServlet extends HttpServlet {
 					RequestDispatcher failureView = req.getRequestDispatcher("aaa.jsp");
 					failureView.forward(req, res);
 					return;
-
 				}
-
 				/*************************** 2.開始新增資料 ***************************************/
 
 				GuideService guideSvc = new GuideService();
-				guideSvc.addGuide(memId, guideTitle, guideContent, guideArea, guideMap, guideLatLng, imgList);
+				String guideId = guideSvc.addGuide(memId, guideTitle, guideContent, guideArea, guideMap, guideLatLng,
+						imgList);
 				System.out.println("文章新增成功");
 
+				GuideVO getOneVO = guideSvc.getOneGuide(guideId);
 				/*************************** 3.新增完成,準備轉交(Send the Success view) ***********/
-				String url = "/front-end/select_page.jsp";
+				req.setAttribute("guideVO", getOneVO); // 資料庫取出的guideVO物件,存入req
+				String url = "/front-end/guide/listOneGuide.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
-
 				/*************************** 其他可能的錯誤處理 **********************************/
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -189,27 +189,19 @@ public class GuideServlet extends HttpServlet {
 			}
 
 		} else if ("updateFront".equals(action)) {
-			System.out.println("====================================");
 			List<String> errorMsgs = new LinkedList<String>();
-			// Store this set in the request scope, in case we need to
-			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
-			System.out.println("11111111111111111111111");
-
 			try {
 				/*************************** 1.接收請求參數 ***************************************/
 				// req取得資料
 				String guideId = req.getParameter("guideId");
-
 				String guideTitle = req.getParameter("guideTitle").trim();
 				if (guideTitle == null || guideTitle.trim().length() == 0) {
 					errorMsgs.add("文章標題: 請勿空白");
-
 				}
 				String guideContent = req.getParameter("guideContent").trim();
 				if (guideContent == null || guideContent.trim().length() == 0) {
 					errorMsgs.add("文章內容: 請勿空白");
-
 				}
 				GuideVO guideVO = new GuideVO();
 				guideVO.setGuideId(guideId);

@@ -6,7 +6,7 @@ import com.guideImg.model.GuideImgVO;
 
 public interface GuideDAO_interface {
 
-	public void insert(GuideVO guideVO, List<GuideImgVO> imgList);
+	public String insert(GuideVO guideVO, List<GuideImgVO> imgList);
 
 	public void updateFront(GuideVO guideVO);
 

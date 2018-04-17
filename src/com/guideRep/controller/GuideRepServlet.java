@@ -61,22 +61,33 @@ public class GuideRepServlet extends HttpServlet {
 				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/guide/xxx.jsp");
 				failureView.forward(req, res);
 			}
-		} else if ("update".equals(action)) {
+		} else if ("update".equals(action)) { // V
+			String requestURL = req.getParameter("requestURL");
+			System.out.println("requestURL = " + requestURL);
 			try {
+				/*************************** 1.接收請求參數 ***************************************/
 				String guideRepId = req.getParameter("guideRepId");
 				Integer guideRepStatus = Integer.parseInt(req.getParameter("guideRepStatus"));
+
+				System.out.println("guideRepId: " + guideRepId);
+				System.out.println("guideRepStatus: " + guideRepStatus);
 
 				GuideRepVO guideRepVO = new GuideRepVO();
 				guideRepVO.setGuideRepId(guideRepId);
 				guideRepVO.setGuideRepStatus(guideRepStatus);
-
-				GuideRepDAO guideRepDAO = new GuideRepDAO();
-				guideRepDAO.update(guideRepVO);
-
-				System.out.println("檢舉修改成功");
-
+				/*************************** 2.開始修改資料 ***************************************/
+				GuideRepService guideRepSvc = new GuideRepService();
+				guideRepSvc.update(guideRepId, guideRepStatus);
+				System.out.println("後台檢舉修改成功");
+				/*************************** 3.修改完成,準備轉交(Send the Success view) ***********/
+				String url = "/back-end/guideRep/listAllGuideRep.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url);
+				successView.forward(req, res);
+				/*************************** 其他可能的錯誤處理 **********************************/
 			} catch (Exception e) {
 				e.printStackTrace();
+				RequestDispatcher failureView = req.getRequestDispatcher(requestURL);
+				failureView.forward(req, res);
 			}
 
 		} else if ("delete".equals(action)) {
@@ -95,66 +106,33 @@ public class GuideRepServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		} else if ("findByPrimaryKey".equals(action)) {
+		} else if ("findByPrimaryKey".equals(action)) { // V
 			List<String> errorMsgs = new LinkedList<String>();
 			req.setAttribute("errorMsgs", errorMsgs);
 
+			String requestURL = req.getParameter("requestURL");		// 送出修改的來源網頁路徑
 			try {
-				// 接收請求參數,輸入格式錯誤處理
-				String str = req.getParameter("guideRepId");
-				if (str == null || (str.trim()).length() == 0) {
-					errorMsgs.add("請輸入指南編號");
-				}
-				if (!errorMsgs.isEmpty()) {
-					System.out.println(errorMsgs);
-					RequestDispatcher failureView = req.getRequestDispatcher("/test.jsp");
-					failureView.forward(req, res);
-					return;// 程式中斷
-				}
-				String guideRepId = null;
-				try {
-					guideRepId = new String(str);
-				} catch (Exception e) {
-					errorMsgs.add("指南編號格式不正確");
-				}
-				// Send the use back to the form, if there were errors
-				if (!errorMsgs.isEmpty()) {
-					System.out.println(errorMsgs);
-					RequestDispatcher failureView = req.getRequestDispatcher("/test.jsp");
-					failureView.forward(req, res);
-					return;// 程式中斷
-				}
+				// 接收請求參數
+				String guideRepId = req.getParameter("guideRepId");
+
 				// 開始查資料
-				GuideRepDAO dao = new GuideRepDAO();
-				GuideRepVO guideRepVO = dao.findByPrimaryKey(guideRepId);
-				if (guideRepId == null) {
-					errorMsgs.add("查無資料");
-				}
-				// Send the use back to the form, if there were errors
-				if (!errorMsgs.isEmpty()) {
-					System.out.println(errorMsgs);
-					RequestDispatcher failureView = req.getRequestDispatcher("/test.jsp");
-					failureView.forward(req, res);
-					return;// 程式中斷
-				}
+				GuideRepService guideRepSvc = new GuideRepService();
+				GuideRepVO guideRepVO = guideRepSvc.getOneGuideRep(guideRepId);
 
 				// 查詢完成,準備轉交
-				req.setAttribute("guideRepVO", guideRepVO); // 資料庫取出的guideVO物件,存入req
-				String url = "/testGuideRepSelect.jsp";
-
-				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交
+				req.setAttribute("guideRepVO", guideRepVO); // 資料庫取出的guideRepVO物件,存入req
+				// String url = "/back-end/guideRep/listOneGuideRep.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(requestURL); // 成功轉交
 				successView.forward(req, res);
 
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println(errorMsgs);
 				errorMsgs.add("無法取得資料:" + e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/test.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher(requestURL);
 				failureView.forward(req, res);
 
 			}
 		}
-
 	}
 
 }

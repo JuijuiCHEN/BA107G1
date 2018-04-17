@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
@@ -27,6 +28,7 @@ public class GuideRepDAO implements GuideRepDAO_interface {
 	private static final String UPDATE = "UPDATE gd_rep set guide_rep_status=? where guide_rep_id=?";
 	private static final String DELETE = "DELETE FROM gd_rep where guide_rep_id = ?";
 	private static final String GET_ONE_STMT = "SELECT guide_rep_id,guide_id,mem_id,guide_rep_content,guide_rep_date,guide_rep_status FROM gd_rep where guide_rep_id = ?";
+	private static final String GET_ALL_STATUS1 = "SELECT GUIDE_REP_ID,GUIDE_ID,MEM_ID,GUIDE_REP_DATE,GUIDE_REP_CONTENT,GUIDE_REP_STATUS FROM GD_REP WHERE GUIDE_REP_STATUS=1";
 
 	@Override
 	public void insert(GuideRepVO guideRepVO) {
@@ -73,7 +75,7 @@ public class GuideRepDAO implements GuideRepDAO_interface {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(UPDATE);
 
-			pstmt.setInt(1, 1); // 1=未審核, 2=審核中, 3=已結案
+			pstmt.setInt(1, guideRepVO.getGuideRepStatus()); // 1=未審核, 2=已結案
 			pstmt.setString(2, guideRepVO.getGuideRepId());
 
 			int a = pstmt.executeUpdate();
@@ -186,8 +188,58 @@ public class GuideRepDAO implements GuideRepDAO_interface {
 	}
 
 	@Override
-	public List<GuideRepVO> getAll() {
-		return null;
+	public List<GuideRepVO> getAllStatus1() {
+
+		List<GuideRepVO> guideRepList = new ArrayList<GuideRepVO>();
+		GuideRepVO guideRepVO = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GET_ALL_STATUS1);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				guideRepVO = new GuideRepVO();
+				guideRepVO.setGuideRepId(rs.getString("GUIDE_REP_ID"));
+				guideRepVO.setGuideId(rs.getString("GUIDE_ID"));
+				guideRepVO.setMemId(rs.getString("MEM_ID"));
+
+				guideRepVO.setGuideRepDate(rs.getTimestamp("GUIDE_REP_DATE"));
+				guideRepVO.setGuideRepContent(rs.getString("GUIDE_REP_CONTENT"));
+				guideRepVO.setGuideRepStatus(rs.getInt("GUIDE_REP_STATUS"));
+				guideRepList.add(guideRepVO);
+			}
+		} catch (SQLException se) {
+			se.printStackTrace();
+			throw new RuntimeException("A database error occured. " + se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return guideRepList;
 	}
 
 }

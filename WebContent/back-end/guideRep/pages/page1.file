@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%  int rowsPerPage = 3;  //–掸计    
     int rowNumber=0;      //羆掸计
     int pageNumber=0;     //羆计      
@@ -31,9 +31,3 @@
          }
     } 
 %>
-
-<%if (pageNumber>0){%>
-  <b><font color=red>材<%=whichPage%>/<%=pageNumber%></font></b>
-<%}%>
-
-<b>〈才  琩 高 兵 ン   ┮ ボ: <font color=red><%=rowNumber%></font>掸</b>

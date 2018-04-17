@@ -46,9 +46,10 @@ public class GuideDAO implements GuideDAO_interface {
 	private static final String GET_ALL_GUIDE_FROM_AREA = "SELECT GUIDE_AREA,GUIDE_ID,MEM_ID,GUIDE_TITLE,GUIDE_CONTENT,GUIDE_CREATE_TIME,GUIDE_READ_SIZE,GUIDE_COMM_SIZE,GUIDE_VOTE_SIZE,GUIDE_STATUS,GUIDE_LAT_LNG FROM GUIDE WHERE GUIDE_AREA=?";
 
 	@Override
-	public void insert(GuideVO guideVO, List<GuideImgVO> imgList) {
+	public String insert(GuideVO guideVO, List<GuideImgVO> imgList) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		String guideId = "";
 		try {
 			con = ds.getConnection();
 			con.setAutoCommit(false); // 關閉自動commit, 因同一條連線要帶去給新增圖片
@@ -68,7 +69,6 @@ public class GuideDAO implements GuideDAO_interface {
 			PreparedStatement pstmt1 = con
 					.prepareStatement("select 'G'||LPAD(to_char(GUIDE_PK_SEQ.currVal), 6, '0') as id from dual");
 			ResultSet rs = pstmt1.executeQuery(); // rs = 查詢結果
-			String guideId = "";
 			while (rs.next()) {               // 拿到自增主鍵值
 				guideId = rs.getString("id"); // 放到guideId
 			}
@@ -99,6 +99,7 @@ public class GuideDAO implements GuideDAO_interface {
 				}
 			}
 		}
+		return guideId;
 	}
 
 	@Override

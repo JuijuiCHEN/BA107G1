@@ -4,15 +4,9 @@
 <%@page import="com.guideComm.model.*"%>
 <%@ page import="java.util.*"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-<%
-	GuideVO guideVO = (GuideVO) request.getAttribute("guideVO");
-%>
-<%
-	List<GuideImgVO> imgList = guideVO.getGuideImgList();
-%>
+<%request.setCharacterEncoding("UTF-8");%>
+<%GuideVO guideVO = (GuideVO) request.getAttribute("guideVO");%>
+<%List<GuideImgVO> imgList = guideVO.getGuideImgList();%>
 
 
 <!DOCTYPE html>

@@ -1,13 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ page import="com.guide.model.*"%>
 
-<%
-	GuideVO guideVO = (GuideVO) request.getAttribute("guideVO");
-%>
+<%GuideVO guideVO = (GuideVO) request.getAttribute("guideVO");%>
 
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <style type="text/css">
 .pac-container {
 	background-color: #fff;
@@ -241,7 +240,6 @@
     </style>
 
 
-<meta charset="utf-8">
 
 <link
 	href="<%=request.getContextPath()%>/front-end/guide/guideCss/update1.css"
@@ -253,16 +251,10 @@
 <link
 	href="<%=request.getContextPath()%>/front-end/guide/guideCss/addGuide2.css"
 	media="screen" rel="stylesheet" type="text/css">
-
-
 <title>Anti-G®È¹C«ü«n</title>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-
- 
 </head>
-
 
 <body>
 	<main id="site-content" role="main" tabindex="-1">
@@ -278,7 +270,7 @@
 							class="right-backdrop hide-sm bg-white right-backdrop--with-bg"></div>
 						<div class="list-your-space__content">
 							<div class="centered-content clearfix">
-								<form>
+								
 									<div
 										class="main-panel-container no-padding-h bg-white main-panel-outer-half clearfix"
 										tabindex="-1">
@@ -291,7 +283,7 @@
 												<div>
 												
 													<div class="row">
-														<form METHOD="post" action="<%=request.getContextPath()%>/guide/guide.do" id="guideEdit">
+														<form id="guideedit" METHOD="post" action="<%=request.getContextPath()%>/guide.do" >
 														<div class="space-top-2 col-sm-12 col-md-6">
 															<div style="margin-top: 8px;">
 																<div class="_1a3dnh4">
@@ -380,7 +372,7 @@
 												</button></span>
 										</div>
 									</div>
-								</form>
+								
 							</div>
 						</div>
 					</div>
@@ -398,7 +390,7 @@
 
 <script>
 	document.getElementById("guideCommit").onclick = function() {
-		document.getElementById("guideEdit").submit();
+		 document.getElementById("guideedit").submit()
 	}
 </script>
 

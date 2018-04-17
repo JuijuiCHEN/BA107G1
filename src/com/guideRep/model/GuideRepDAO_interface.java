@@ -11,6 +11,6 @@ public interface GuideRepDAO_interface {
 
 	public GuideRepVO findByPrimaryKey(String guideRepId);
 
-	public List<GuideRepVO> getAll();
+	public List<GuideRepVO> getAllStatus1(); // 查詢所有被檢舉文章
 
 }

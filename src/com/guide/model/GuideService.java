@@ -26,7 +26,7 @@ public class GuideService {
 	}
 
 	// 新增指南包含圖
-	public void addGuide(String memId, String guideTitle, String guideContent, String guideArea, String guideMap,
+	public String addGuide(String memId, String guideTitle, String guideContent, String guideArea, String guideMap,
 			String guideLatLng, List<GuideImgVO> imgList) {
 		GuideVO guideVO = new GuideVO();
 		guideVO.setMemId(memId);
@@ -35,7 +35,7 @@ public class GuideService {
 		guideVO.setGuideArea(guideArea);
 		guideVO.setGuideMap(guideMap);
 		guideVO.setGuideLatLng(guideLatLng);
-		guideDao.insert(guideVO, imgList); // 把資料給dao去新增文章, 以及圖片list帶過去
+		return guideDao.insert(guideVO, imgList); // 把資料給dao去新增文章, 以及圖片list帶過去
 
 	}
 

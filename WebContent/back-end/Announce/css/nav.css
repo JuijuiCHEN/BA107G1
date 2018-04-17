@@ -1,0 +1,49 @@
+body{
+	background-color: #ddd;
+}
+.navbar-custom{
+ background: linear-gradient(#3187C8,#2076b7);
+}
+
+#nav-logo{
+	width:fit-parent;
+	position:relative;
+}
+.navbar-brand-custom{
+
+	padding-top:0px;
+	padding-bottom:0px;
+	padding-right:0px; 
+	padding-left:0px;
+}
+.navbar-inverse .navbar-brand{
+	color: #FFF;
+	font-family:malgun gothic;
+	font-weight: bold;
+	font-size: 20px;
+	font-border:1px black;
+}
+
+.navbar-inverse .navbar-nav>li>a{
+	color: #FFF;
+	font-family:malgun gothic;
+	font-weight: bold;
+}
+
+.navbar-form-custom{
+	background: linear-gradient(#2387b7,#2076b7);
+	width: fit-parent;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover{
+	background-color:#2060a5;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover{
+	background-color:#2060a5;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+	background-color:#3187C8;
+	border-color: #3187C8;
+}

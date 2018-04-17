@@ -439,8 +439,10 @@ input[type="radio"]:disabled+.label-text:before {
 
 <script>
 	document.getElementById("guideRepCommit").onclick = function() {
+		alert("提交成功");
 		document.getElementById("GuideRepForm").submit();
 	}
+
 </script>
 
 <script>
