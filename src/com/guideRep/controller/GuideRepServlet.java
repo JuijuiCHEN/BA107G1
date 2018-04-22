@@ -68,20 +68,23 @@ public class GuideRepServlet extends HttpServlet {
 				/*************************** 1.接收請求參數 ***************************************/
 				String guideRepId = req.getParameter("guideRepId");
 				Integer guideRepStatus = Integer.parseInt(req.getParameter("guideRepStatus"));
+				String guideId = req.getParameter("guideId");
 
 				System.out.println("guideRepId: " + guideRepId);
+				System.out.println("guideId: " + guideId);
 				System.out.println("guideRepStatus: " + guideRepStatus);
 
 				GuideRepVO guideRepVO = new GuideRepVO();
 				guideRepVO.setGuideRepId(guideRepId);
+				guideRepVO.setGuideId(guideId);
 				guideRepVO.setGuideRepStatus(guideRepStatus);
 				/*************************** 2.開始修改資料 ***************************************/
 				GuideRepService guideRepSvc = new GuideRepService();
-				guideRepSvc.update(guideRepId, guideRepStatus);
+				guideRepSvc.update(guideRepId, guideRepStatus, guideId);
 				System.out.println("後台檢舉修改成功");
 				/*************************** 3.修改完成,準備轉交(Send the Success view) ***********/
-				String url = "/back-end/guideRep/listAllGuideRep.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url);
+				// String url = "/back-end/guideRep/listAllGuideRep.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(requestURL);
 				successView.forward(req, res);
 				/*************************** 其他可能的錯誤處理 **********************************/
 			} catch (Exception e) {
@@ -122,6 +125,7 @@ public class GuideRepServlet extends HttpServlet {
 				// 查詢完成,準備轉交
 				req.setAttribute("guideRepVO", guideRepVO); // 資料庫取出的guideRepVO物件,存入req
 				// String url = "/back-end/guideRep/listOneGuideRep.jsp";
+
 				RequestDispatcher successView = req.getRequestDispatcher(requestURL); // 成功轉交
 				successView.forward(req, res);
 

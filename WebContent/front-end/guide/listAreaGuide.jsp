@@ -1,3 +1,5 @@
+<%@page import="com.mem.model.MemVO"%>
+<%@page import="com.mem.model.MemService"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -12,7 +14,8 @@
 	String areaLet = api.googleApi(area);
 	GuideDAO guideDAO = new GuideDAO();
 	GuideIndexVO guideIndexVO = guideDAO.getGuideIndexVO(area);
-%> 
+	MemService memSvc = new MemService();
+%>
 
 
 <!DOCTYPE html>
@@ -59,119 +62,24 @@
 							<span>${area}攻略大全</span>
 						</h1>
 						<h4 class="guidebook-new-guest-page__introduction">
-							<span>由Anti-G會員編寫推薦的獨家指南，所有好去處一覽無遺，來開啟您在這座城市的新故事吧。</span>
+							<span>由Anti-G會員編寫推薦的獨家指南，所有好去處一覽無遺，來探索您在這座城市的新故事吧。</span>
 						</h4>
-	<!-- 					<hr class="guidebook-new-guest-page__hr-tag"> -->
-	<!-- 					<div class="guidebook-new-guest-page__carousel"> -->
-	<!-- 						<div class="guidebook-nav-card-carousel"> -->
-	<!-- 							<div class="guidebook-nav-card-carousel__right-icon"> -->
-	<!-- 								<i class="icon icon-chevron-right icon-gray icon-size-2"></i> -->
-	<!-- 							</div> -->
-	<!-- 							<div class="guidebook-nav-card-carousel__scroll"> -->
-	<!-- 								<div class="guidebook-nav-card-carousel__window"> -->
-	<!-- 									<div class="guidebook-nav-card-carousel__window-item"> -->
-	<!-- 										<div class="guidebook-nav-card-carousel__window-item"> -->
-	<!-- 											<div class="guidebook-nav-card fixed-small" style="background-image:url(./img/food.jpg)"> -->
-	<!-- 												<div style="position:absolute"> -->
-	<!-- 													<div class="guidebook-nav-card__text-wrapper"> -->
-	<!-- 														<a class="link-reset" href="/things-to-do/san-francisco/food-scene"> -->
-	<!-- 															<h4 class="guidebook-nav-card__title">美食</h4> -->
-	<!-- 														</a> -->
-	<!-- 													</div> -->
-	<!-- 												</div> -->
-	<!-- 												<a href="/things-to-do/san-francisco/food-scene" data-prevent-default="true" class="guidebook-nav-card__button-overlay col-sm-12"></a> -->
-	<!-- 											</div> -->
-	<!-- 										</div> -->
-	<!-- 									</div> -->
-	<!-- 									<div class="guidebook-nav-card-carousel__window-item"> -->
-	<!-- 										<div class="guidebook-nav-card-carousel__window-item"> -->
-	<!-- 											<div class="guidebook-nav-card fixed-small" style="background-image:url(./img/nightlife.jpg)"> -->
-	<!-- 												<div style="position:absolute"> -->
-	<!-- 													<div class="guidebook-nav-card__text-wrapper"> -->
-	<!-- 														<a class="link-reset" href="/things-to-do/san-francisco/drinks-nightlife"> -->
-	<!-- 															<h4 class="guidebook-nav-card__title">酒吧與夜生活</h4> -->
-	<!-- 														</a> -->
-	<!-- 													</div> -->
-	<!-- 												</div> -->
-	<!-- 												<a href="/things-to-do/san-francisco/drinks-nightlife" data-prevent-default="true" class="guidebook-nav-card__button-overlay col-sm-12"></a> -->
-	<!-- 											</div> -->
-	<!-- 										</div> -->
-	<!-- 									</div> -->
-	<!-- 									<div class="guidebook-nav-card-carousel__window-item"> -->
-	<!-- 										<div class="guidebook-nav-card-carousel__window-item"> -->
-	<!-- 											<div class="guidebook-nav-card fixed-small" style="background-image:url(./img/sightseeing.jpg)"> -->
-	<!-- 												<div style="position:absolute"> -->
-	<!-- 													<div class="guidebook-nav-card__text-wrapper"> -->
-	<!-- 														<a class="link-reset" href="/things-to-do/san-francisco/sightseeing"> -->
-	<!-- 															<h4 class="guidebook-nav-card__title">景點</h4> -->
-	<!-- 														</a> -->
-	<!-- 													</div> -->
-	<!-- 												</div> -->
-	<!-- 												<a href="/things-to-do/san-francisco/sightseeing" data-prevent-default="true" class="guidebook-nav-card__button-overlay col-sm-12"></a> -->
-	<!-- 											</div> -->
-	<!-- 										</div> -->
-	<!-- 									</div> -->
-	<!-- 									<div class="guidebook-nav-card-carousel__window-item"> -->
-	<!-- 										<div class="guidebook-nav-card-carousel__window-item"> -->
-	<!-- 											<div class="guidebook-nav-card fixed-small" style="background-image:url(./img/parks.jpg)"> -->
-	<!-- 												<div style="position:absolute"> -->
-	<!-- 													<div class="guidebook-nav-card__text-wrapper"> -->
-	<!-- 														<a class="link-reset" href="/things-to-do/san-francisco/parks-nature"> -->
-	<!-- 															<h4 class="guidebook-nav-card__title">公園與自然風光</h4> -->
-	<!-- 														</a> -->
-	<!-- 													</div> -->
-	<!-- 												</div> -->
-	<!-- 												<a href="/things-to-do/san-francisco/parks-nature" data-prevent-default="true" class="guidebook-nav-card__button-overlay col-sm-12"></a> -->
-	<!-- 											</div> -->
-	<!-- 										</div> -->
-	<!-- 									</div> -->
-	<!-- 									<div class="guidebook-nav-card-carousel__window-item"> -->
-	<!-- 										<div class="guidebook-nav-card-carousel__window-item"> -->
-	<!-- 											<div class="guidebook-nav-card fixed-small" style="background-image:url(./img/culture.jpg)"> -->
-	<!-- 												<div style="position:absolute"> -->
-	<!-- 													<div class="guidebook-nav-card__text-wrapper"> -->
-	<!-- 														<a class="link-reset" href="/things-to-do/san-francisco/arts-culture"> -->
-	<!-- 															<h4 class="guidebook-nav-card__title">藝術與文化</h4> -->
-	<!-- 														</a> -->
-	<!-- 													</div> -->
-	<!-- 												</div> -->
-	<!-- 												<a href="/things-to-do/san-francisco/arts-culture" data-prevent-default="true" class="guidebook-nav-card__button-overlay col-sm-12"></a> -->
-	<!-- 											</div> -->
-	<!-- 										</div> -->
-	<!-- 									</div> -->
-	<!-- 									<div class="guidebook-nav-card-carousel__window-item"> -->
-	<!-- 										<div class="guidebook-nav-card-carousel__window-item"> -->
-	<!-- 											<div class="guidebook-nav-card fixed-small" style="background-image:url(https://a0.muscache.com/airbnb/guidebook/v1_san_francisco_everything_else_carousel@2x.jpg)"> -->
-	<!-- 												<div style="position:absolute"> -->
-	<!-- 													<div class="guidebook-nav-card__text-wrapper"> -->
-	<!-- 														<a class="link-reset" href="/things-to-do/san-francisco/everything-else"> -->
-	<!-- 															<h4 class="guidebook-nav-card__title">其他</h4> -->
-	<!-- 														</a> -->
-	<!-- 													</div> -->
-	<!-- 												</div> -->
-	<!-- 												<a href="/things-to-do/san-francisco/everything-else" data-prevent-default="true" class="guidebook-nav-card__button-overlay col-sm-12"></a> -->
-	<!-- 											</div> -->
-	<!-- 										</div> -->
-	<!-- 									</div> -->
-	<!-- 								</div> -->
-	<!-- 							</div> -->
-	<!-- 						</div> -->
-	<!-- 					</div> -->
-	<!-- 					<hr class="guidebook-new-guest-page__cut-off"> -->
 						
-						
-						
-						<h3 class="guidebook-new-guest-page__best-of-best">
-							<span>推薦熱點</span>
+					<h3 class="guidebook-new-guest-page__best-of-best">
+							<span>景點文章列表</span>
 						</h3>
 					</div>
 				</div>
 	
 	<!-- 文章列表 -->
+	
 				<div class="guidebook-place-card-collection">
+				<%int count=0; %>
 			<% for(int i = 0 ; i<areaGuideList.size();i++){ 
 				GuideCommService gc =new GuideCommService();
 				List<GuideCommVO> commList =  gc.getAllFromGuideId(areaGuideList.get(i).getGuideId());
+				if(areaGuideList.get(i).getGuideStatus()==2){
+					 
 			%>
 				<div class="guidebook-place-card"  style="margin-top:20px;" >
 					<div class="guidebook-place-card-collection__item">
@@ -179,11 +87,18 @@
 													
 							<div class="guidebook-place-card__place-frame">
 								<div>
-									<p class="guidebook-place-card__number">#<%= i+1 %></p>
+									<p class="guidebook-place-card__number">#<%= count=count+1 %></p>
 								</div>
+								
+<%-- 								<form id="readForm" action="<%=request.getContextPath()%>/guide.do"> --%>
 								<h3 class="guidebook-place-card__title">
-									<a href="<%=request.getContextPath()%>/guide.do?action=getOne&guideId=<%=areaGuideList.get(i).getGuideId()%>"><%=areaGuideList.get(i).getGuideTitle()%></a>
+									<a id="aTitle" href="<%=request.getContextPath()%>/guide.do?action=updateRead&guideReadSize=<%=areaGuideList.get(i).getGuideReadSize()%>&guideId=<%=areaGuideList.get(i).getGuideId()%>"><%=areaGuideList.get(i).getGuideTitle()%></a>
 								</h3>
+<%-- 								<input type="hidden" name="guideId" value="<%=areaGuideList.get(i).getGuideId()%>"> --%>
+<%-- 								<input type="hidden" name="guideReadSize" value="<%=areaGuideList.get(i).getGuideReadSize()%>"> --%>
+<!-- 								<input type="hidden" name="action" value="updateRead"> -->
+<!-- 								</form> -->
+								
 								<p>撰寫時間: <fmt:formatDate value="<%=areaGuideList.get(i).getGuideCreateTime()%>" pattern="yyyy-MM-dd"/></p>
 							</div>
 							<div class="guidebook-place-recommendation__frame">
@@ -194,9 +109,17 @@
 										<span><%=areaGuideList.get(i).getGuideReadSize()%>人訪問過 &nbsp &nbsp</span>
 									</p>
 								</div>
-								<% for(int j = 0 ; j<commList.size()/2;j++){%>	
-								<p class="guidebook-place-recommendation__description"><%= commList.get(j).getCommContent() %>
-									<a href="#" data-prevent-default="true" class="guidebook-place-recommendation__link">&nbsp;
+								
+								<% 	String commStr = "";
+									String oneComm="";
+									for(int j = 0 ; j<commList.size()/2;j++){
+									MemVO memCommVO = memSvc.getOneMem(commList.get(j).getMemId());
+									
+									commStr = commList.get(j).getCommContent();
+									oneComm = commStr.substring(0,commStr.length()/2);
+								%>	
+								<p class="guidebook-place-recommendation__description"><%=oneComm %>...
+									<a href="<%=request.getContextPath()%>/guide.do?action=getOne&guideId=<%=areaGuideList.get(i).getGuideId()%>" data-prevent-default="true" class="guidebook-place-recommendation__link">&nbsp;
 										<span>閱讀更多</span>
 									</a>
 								</p>
@@ -206,13 +129,14 @@
 										    class="media-photo media-round" style="height:32px;width:32px">
 									</div>
 									<a href="/things-to-do/rooms/4365969" data-prevent-default="true" class="guidebook-place-recommendation__host-guidebook-link">
-										<span>來自<%= commList.get(j).getMemId() %>的留言</span>
+										<span>來自【<%=memCommVO.getMem_name()%>】的留言</span>
 									</a>
 								</div>
 								<%} %>
 							</div>
 						</div>
 					</div>
+					<%} %>
 			<% } %>	
 			
 				<div class="pagination pagination-responsive">
@@ -276,11 +200,14 @@
 
             // Create an array of alphabetical characters used to label the markers.
             var labels = [
-            	<% for(int a = 0;a<areaGuideList.size();a++){%>
-            	'#<%=a+1%>'
+            	<%count = 0;%>
+            	<% for(int a = 0;a<areaGuideList.size();a++){
+            	if(areaGuideList.get(a).getGuideStatus()==2){%>
+            	'#<%=count=count+1%>'
            			<%if(a != areaGuideList.size()-1){%>
 						,
    	 				<%}%>
+   	 			<%}%>
            		<%}%>
             ];
 
@@ -303,14 +230,17 @@
         
        
         var locations = [
-        	 <% for(int a = 0;a<areaGuideList.size();a++){%>
+        	 <% for(int a = 0;a<areaGuideList.size();a++){
+        		 if(areaGuideList.get(a).getGuideStatus()==2){%>
         	 <%= areaGuideList.get(a).getGuideLatLng() %>
         	 <%if(a != areaGuideList.size()-1){%>
 					,
         	 <%}%>
         	 <%}%>
+        	 <%}%>
         	 
         ]
         
-    </script>	
+</script>	
+
 

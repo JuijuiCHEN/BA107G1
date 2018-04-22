@@ -85,7 +85,16 @@ main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4 {
 								<td><div align="center"><%=guideRepVO.getMemId()%> 【<%=memVO.getMem_name()%>】
 								</div></td>
 								
-								<td><div align="center"><%=guideRepVO.getGuideRepStatus()%></div></td>
+								<td><div align="center">
+								<c:if test="${guideRepVO.guideRepStatus==1}">
+									未審核
+									</c:if>
+									<c:if test="${guideRepVO.guideRepStatus==2}">
+									無效檢舉
+									</c:if>
+									<c:if test="${guideRepVO.guideRepStatus==3}">
+									有效檢舉-隱藏文章
+								</c:if></div></td>
 							</tr>
 							
 							<tr class="table-title">
@@ -94,24 +103,26 @@ main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4 {
 							</tr>
 							<tr class="table-title">
 								<td class="table-title" colspan="1" align="center">檢舉原因</td>
-								<td colspan="4" align="center"><%=guideRepVO.getGuideRepContent()%></td>
+								<td colspan="4" align="center">
+								<%=guideRepVO.getGuideRepContent()%>
+								</td>
 							</tr>
 							
 						</table>
-
+						<c:if test="${guideRepVO.guideRepStatus==1}">
 						<table class="table table-7 table-hover" width="100%">
 							<tr class="table-title">
 								<th align="center">
 
 									<div class="radio">
-										<label> <input type="radio" name="guideRepStatus" value="有效檢舉">
-											有效檢舉
+										<label> <input type="radio" name="guideRepStatus" value="3">
+											有效檢舉-隱藏文章
 										</label>
 									</div>
 								</th>
 								<th align="center">
 									<div class="radio">
-										<label> <input type="radio" name="guideRepStatus" value="無效檢舉">
+										<label> <input type="radio" name="guideRepStatus" value="2">
 											無效檢舉
 
 										</label>
@@ -125,6 +136,7 @@ main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4 {
 									<span>
 									<button id="submit" class="btn btn-primary" value="確認送出">確認送出</button>
 									<input type="hidden" name="guideRepId" value="<%=guideRepVO.getGuideRepId()%>">
+									<input type="hidden" name="guideId" value="<%=guideVO.getGuideId()%>">
 									<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>">
 									<input type="hidden" name="action" value="update"> 
 									</span>
@@ -134,7 +146,7 @@ main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4 {
 							</tr>
 
 						</table>
-
+						</c:if>
 					</div>
 				
 

@@ -1,13 +1,18 @@
+<%@page import="com.mem.model.MemService"%>
+<%@page import="com.mem.model.MemVO"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ page import="com.guide.model.*"%>
 <%@ page import="com.guideImg.model.GuideImgVO"%>
 <%@page import="com.guideComm.model.*"%>
 <%@ page import="java.util.*"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%request.setCharacterEncoding("UTF-8");%>
 <%GuideVO guideVO = (GuideVO) request.getAttribute("guideVO");%>
 <%List<GuideImgVO> imgList = guideVO.getGuideImgList();%>
-
+<%
+	MemService memSvc = new MemService();
+	MemVO memVO = memSvc.getOneMem(guideVO.getMemId());
+	
+%>
 
 <!DOCTYPE html>
 <html>
@@ -678,6 +683,15 @@ p a.button2:hover {
 		<div class="col-lg-7 col-md-6 col-sm-12">
 			<div class="_11q3g7k">
 				<div style="margin-bottom: 16px">
+				<div class="_rotqmn2">
+									<a href="<%=request.getContextPath()%>/guide.do?action=getOne_Area&guideArea=<%=guideVO.getGuideArea()%>">
+											
+										<span class="fas fa-arrow-left fa-lg"></span>返回<%=guideVO.getGuideArea()%>文章列表
+											
+									</a>
+					</div>
+				
+				
 					<div class="_13nd2f7d">${guideVO.guideTitle}</div>
 
 					<div class="_rotqmn2">
@@ -702,7 +716,7 @@ p a.button2:hover {
 										src="https://a0.muscache.com/im/pictures/710d0c96-2bc0-4037-870a-623d7e362f3f.jpg?aki_policy=profile_small"
 										class="_1i6x6g5"> <span>由 <span> <a
 											target="_blank" rel="noopener noreferrer"
-											href="/users/show/9249211"> <span>${guideVO.memId}</span>
+											href="/users/show/9249211"> <span>【<%=memVO.getMem_name()%>】</span>
 										</a>
 									</span>撰寫
 									</span>
@@ -794,8 +808,12 @@ p a.button2:hover {
 													<div>
 														<%
 															GuideCommService commSvc = new GuideCommService();
+															
+															
 															List<GuideCommVO> commList = commSvc.getAllFromGuideId(guideVO.getGuideId());
+															
 															for (int i = 0; i < commList.size(); i++) {
+															MemVO memCommVO = memSvc.getOneMem(commList.get(i).getMemId());
 														%>
 														<div class="_1f9rmq80">
 															<div>
@@ -809,7 +827,11 @@ p a.button2:hover {
 																	alt=""
 																	src="https://a0.muscache.com/im/pictures/e44f92af-37d9-43ae-b4b7-366f590d8d1e.jpg?aki_policy=profile_x_medium"
 																	class="_1i6x6g5"> <a target="_blank"
-																	href="/users/show/9129703"> <span><%=commList.get(i).getMemId()%></span>
+																	href="/users/show/9129703"> <span>
+																	
+																	【<%=memCommVO.getMem_name()%>】
+																	
+																	</span>
 																</a>
 
 																</a>

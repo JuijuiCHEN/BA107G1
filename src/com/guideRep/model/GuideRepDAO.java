@@ -28,7 +28,7 @@ public class GuideRepDAO implements GuideRepDAO_interface {
 	private static final String UPDATE = "UPDATE gd_rep set guide_rep_status=? where guide_rep_id=?";
 	private static final String DELETE = "DELETE FROM gd_rep where guide_rep_id = ?";
 	private static final String GET_ONE_STMT = "SELECT guide_rep_id,guide_id,mem_id,guide_rep_content,guide_rep_date,guide_rep_status FROM gd_rep where guide_rep_id = ?";
-	private static final String GET_ALL_STATUS1 = "SELECT GUIDE_REP_ID,GUIDE_ID,MEM_ID,GUIDE_REP_DATE,GUIDE_REP_CONTENT,GUIDE_REP_STATUS FROM GD_REP WHERE GUIDE_REP_STATUS=1";
+	private static final String GET_ALL_STATUS = "SELECT GUIDE_REP_ID,GUIDE_ID,MEM_ID,GUIDE_REP_DATE,GUIDE_REP_CONTENT,GUIDE_REP_STATUS FROM GD_REP WHERE GUIDE_REP_STATUS=?";
 
 	@Override
 	public void insert(GuideRepVO guideRepVO) {
@@ -188,7 +188,7 @@ public class GuideRepDAO implements GuideRepDAO_interface {
 	}
 
 	@Override
-	public List<GuideRepVO> getAllStatus1() {
+	public List<GuideRepVO> getAllStatus(Integer guideRepStatus) {
 
 		List<GuideRepVO> guideRepList = new ArrayList<GuideRepVO>();
 		GuideRepVO guideRepVO = null;
@@ -198,7 +198,8 @@ public class GuideRepDAO implements GuideRepDAO_interface {
 
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(GET_ALL_STATUS1);
+			pstmt = con.prepareStatement(GET_ALL_STATUS);
+			pstmt.setInt(1, guideRepStatus);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {

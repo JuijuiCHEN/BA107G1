@@ -143,13 +143,8 @@ public class GuideServlet extends HttpServlet {
 				String guideId = guideSvc.addGuide(memId, guideTitle, guideContent, guideArea, guideMap, guideLatLng,
 						imgList);
 				System.out.println("文章新增成功");
-
-				GuideVO getOneVO = guideSvc.getOneGuide(guideId);
 				/*************************** 3.新增完成,準備轉交(Send the Success view) ***********/
-				req.setAttribute("guideVO", getOneVO); // 資料庫取出的guideVO物件,存入req
-				String url = "/front-end/guide/listOneGuide.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url);
-				successView.forward(req, res);
+				res.sendRedirect("/BA107G1/guide.do?action=updateRead&guideReadSize=1316&guideId=" + guideId);
 				/*************************** 其他可能的錯誤處理 **********************************/
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -286,7 +281,39 @@ public class GuideServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		} else if ("getOne".equals(action) || "fromListOne".equals(action)) {
+		} else if ("updateRead".equals(action)) {
+			Integer guideReadSize;
+			try {
+				// req取得資料
+				String guideId = req.getParameter("guideId");
+				guideReadSize = Integer.parseInt(req.getParameter("guideReadSize"));
+				System.out.println("guideReadSize一: " + guideReadSize);
+				guideReadSize += 1;
+				// 創建DAO的輸入參數
+				GuideVO guideVO = new GuideVO();
+				guideVO.setGuideReadSize(guideReadSize);
+				guideVO.setGuideId(guideId);
+				System.out.println("guideReadSize二: " + guideReadSize);
+
+				GuideService guideSvc = new GuideService();
+				guideVO = guideSvc.updateGuideRead(guideReadSize, guideId);
+				System.out.println("指南訪問數修改成功");
+
+				guideVO = guideSvc.getOneGuide(guideId);
+
+				/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
+				req.setAttribute("guideVO", guideVO); // 資料庫updata成功後,正確的guideVO物件,存入req
+				String url = "/front-end/guide/listOneGuide.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後轉交jsp
+				successView.forward(req, res);
+
+				/*************************** 其他可能的錯誤處理 *************************************/
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		else if ("getOne".equals(action) || "fromListOne".equals(action)) {
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to

@@ -6,7 +6,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%  
 	GuideRepService repSvc = new GuideRepService();
-	List<GuideRepVO> guideRepList = repSvc.getAllStatus1();
+	List<GuideRepVO> guideRepList = repSvc.getAllStatus(3);
 	pageContext.setAttribute("guideRepList", guideRepList);
 %>
 
@@ -177,14 +177,18 @@ main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4 {
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
 					<h4 class="h4">旅遊指南檢舉案件管理</h4>
+					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/guideRep/listAllGuideRep.jsp" style="margin-bottom: 0px;">
+					
 					<div align="right">
-						<select name="Sorting">
-							<option>依日期排序</option>
-							<option>未審核</option>
-							<option>有效檢舉</option>
-							<option>無效檢舉</option>
+						<select name="Sorting" onChange="location = this.options[this.selectedIndex].value;">
+							<option>請選擇案件狀態查詢</option>
+							<option value="<%=request.getContextPath()%>/back-end/guideRep/listAllGuideRep1.jsp">未審核</option>
+							<option value="<%=request.getContextPath()%>/back-end/guideRep/listAllGuideRep2.jsp">無效檢舉</option>
+							<option value="<%=request.getContextPath()%>/back-end/guideRep/listAllGuideRep3.jsp">有效檢舉</option>
 						</select>
-					</div><br>	
+					</div>
+					</FORM>
+					<br>	
 				</div>
 				<tr></tr>
 				<div ></div>
@@ -201,29 +205,40 @@ main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4 {
 										</tr>
 									</thead>
 									
-<%-- 									<%@ include file="pages/page1.file"%>	begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>"	 --%>
+									<%@ include file="pages/page1.file"%>		
 									<tbody>
-										<c:forEach var="guideRepVO" items="${guideRepList}" >
+										<c:forEach var="guideRepVO" items="${guideRepList}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
 											<tr>
 											<td height="30"><div align="center"><fmt:formatDate value="${guideRepVO.getGuideRepDate()}" pattern="yyyy-MM-dd"/></div></td>
 												<td high="30"><div align="center">${guideRepVO.guideRepId}</div></td>
 												<td high="30"><div align="center">${guideRepVO.guideId}</div></td>
 												<td high="30"><div align="center">
 												<c:forEach var="memVO" items="${memSvc.all}">
-													<c:if test="${expCommRepVO.mem_id==memVO.mem_id}">
+													<c:if test="${guideRepVO.memId==memVO.mem_id}">
 	                   		 							${memVO.mem_id}  -【${memVO.mem_name}】
                     								</c:if>
 												</c:forEach></div></td>
 												
-												<td high="20"><div align="center">${(guideRepVO.guideRepStatus == 1)?"未審核":"已審核"}</div>
+												<td high="20"><div align="center">
+												<c:if test="${guideRepVO.guideRepStatus==1}">
+												未審核
+												</c:if>
+												<c:if test="${guideRepVO.guideRepStatus==2}">
+												無效檢舉
+												</c:if>
+												<c:if test="${guideRepVO.guideRepStatus==3}">
+												有效檢舉-文章已隱藏
+												</c:if>
+												
+												</div>
 												</td>
 												<td>
 												<div align="center">
 													<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/guideRep.do" style="margin-bottom: 0px;">
-														<input type="submit" class="btn btn-primary" value="審核">
+														<input type="submit" class="btn btn-primary" value="查看內容">
 														<input type="hidden" name="guideRepId"value="${guideRepVO.guideRepId}">
-														<input type="hidden" name="requestURL"value="/back-end/guideRep/listAllGuideRep.jsp">
-<%-- 														<input type="hidden" name="whichPage" value="<%=whichPage%>"> --%>
+														<input type="hidden" name="requestURL"value="/back-end/guideRep/listAllGuideRep3.jsp">
+														<input type="hidden" name="whichPage" value="<%=whichPage%>">
 														<input type="hidden" name="action" value="findByPrimaryKey">
 													</FORM>
 												</div>
@@ -232,8 +247,9 @@ main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4 {
 										</c:forEach>
 									</tbody>
 								</table>
-<%-- 								<%@ include file="pages/page2.file"%> --%>
-								<%if (request.getAttribute("GuideRepVO") != null) { %>
+								<%@ include file="pages/page2.file"%>
+							
+								<%if (request.getAttribute("guideRepVO") != null) { %>
 									<jsp:include page="/back-end/guideRep/listOneGuideRep.jsp"/>
 								<%}%>
 							</div>

@@ -98,9 +98,18 @@ public class GuideService {
 
 		GuideVO guideVO = new GuideVO();
 
-		guideVO.setGuideStatus(guideVoteSize);
+		guideVO.setGuideVoteSize(guideVoteSize);
 		guideVO.setGuideId(guideId);
 		guideDao.updateVote(guideVO);
+
+		return guideVO;
+	}
+
+	public GuideVO updateGuideRead(Integer guideReadSize, String guideId) {
+		GuideVO guideVO = new GuideVO();
+		guideVO.setGuideReadSize(guideReadSize);
+		guideVO.setGuideId(guideId);
+		guideDao.updateRead(guideVO);
 
 		return guideVO;
 	}
