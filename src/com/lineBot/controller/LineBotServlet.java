@@ -25,7 +25,8 @@ public class LineBotServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		System.out.println("有人訪問");
-
+		String ip = req.getLocalAddr();
+		System.out.println("ip" + ip);
 		StringBuffer jb = new StringBuffer();
 		String line = null;
 		try {
@@ -44,6 +45,6 @@ public class LineBotServlet extends HttpServlet {
 				LineBotModel.class); // 把JSON轉成指定的JAVA物件
 		System.out.println(model.toString());
 		LineBotService lineBotSvc = new LineBotService();
-		lineBotSvc.reply(model);
+		lineBotSvc.reply(model, ip);
 	}
 }

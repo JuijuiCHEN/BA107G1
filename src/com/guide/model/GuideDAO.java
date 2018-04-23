@@ -55,7 +55,7 @@ public class GuideDAO implements GuideDAO_interface {
 			con = ds.getConnection();
 			con.setAutoCommit(false); // 關閉自動commit, 因同一條連線要帶去給新增圖片
 			pstmt = con.prepareStatement(INSERT_STMT);
-			pstmt.setString(1, "M000005");
+			pstmt.setString(1, guideVO.getMemId());
 			pstmt.setString(2, guideVO.getGuideTitle());
 			pstmt.setString(3, guideVO.getGuideContent());
 			pstmt.setInt(4, 0);

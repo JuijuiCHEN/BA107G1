@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <% request.setCharacterEncoding("UTF-8");%>
 <% String guideTitle = new String(request.getParameter("guideTitle").getBytes("ISO-8859-1"), "UTF-8");%>
-
+<%String memId = (String)session.getAttribute("memId"); %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -749,6 +749,7 @@ background-color: #fff;
                                                                 <div class="row row-condensed space-1">
                                                                     <div class="col-sm-12">
                                                                         <textarea name="guideContent" class="form-control" rows="10" autocomplete="off"></textarea>
+                                                                         <input type="hidden" name="memId" value="<%=memId%>">
                                                                          <input type="hidden" name="guideTitle" value="<%=guideTitle%>">
                                                                     </div>
                                                                 </div>

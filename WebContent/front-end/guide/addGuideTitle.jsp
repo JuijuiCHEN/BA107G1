@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
-
+<%String memId = (String)session.getAttribute("memId"); %>
 
 <!DOCTYPE html>
 <html>
@@ -783,6 +783,7 @@ background-color: #fff;
 															<div class="row row-condensed space-1">
 																<div class="col-sm-10">
 																	<input name="guideTitle" type="text" class="form-control" placeholder="桃園市大溪老街" autocomplete="off">
+																	<input type="hidden" name="memId" value="<%=memId%>">
 																</div>
 
 															</div>
@@ -793,6 +794,7 @@ background-color: #fff;
 														<div class="wrap">
 															<div>
 																<a class="button" id="keep" aria-busy="false">繼續</a>
+																
 															</div>
 														</div>
 													</div>

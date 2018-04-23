@@ -239,8 +239,6 @@
         }
     </style>
 
-
-
 <link
 	href="<%=request.getContextPath()%>/front-end/guide/guideCss/update1.css"
 	media="all" rel="stylesheet" type="text/css">

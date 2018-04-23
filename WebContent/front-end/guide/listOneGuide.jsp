@@ -1,3 +1,4 @@
+<%@page import="oracle.net.aso.i"%>
 <%@page import="com.mem.model.MemService"%>
 <%@page import="com.mem.model.MemVO"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
@@ -11,8 +12,8 @@
 <%
 	MemService memSvc = new MemService();
 	MemVO memVO = memSvc.getOneMem(guideVO.getMemId());
-	
 %>
+<%String memId = (String)session.getAttribute("memId"); %>
 
 <!DOCTYPE html>
 <html>
@@ -41,6 +42,9 @@
 	crossorigin="anonymous"></script>
 
 <style type="text/css">
+.item img {
+  width:100%
+}
 ._ljkqu4 {
 	padding-top: 24px !important;
 	padding-bottom: 72px !important;
@@ -50,7 +54,6 @@
 
 @media ( max-width : 743px) {
 	._ljkqu4 {
-		position: absolute !important;
 		top: 0px !important;
 		right: 0px !important;
 		z-index: 1 !important;
@@ -95,7 +98,7 @@
 }
 
 ._39300i {
-	width: 85% !important;
+	width: 100% !important;
 	margin-left: auto !important;
 }
 
@@ -552,13 +555,105 @@ p a.button2:hover {
 
 
 <body>
-	<div class="_ysxyvab" style="top: 80px;">
-		<div class="page-container-responsive">
-			<div class="col-lg-offset-7 col-lg-5 col-md-offset-6 col-md-6">
-				<div class="_39300i" style="padding-top: 0">
-					<div style="margin-left: 40px">
-						<div class="_1sc94wj0">
-							<div class="_10rdc6v carousel slide" id="myCarousel"
+
+
+	<div class="col-lg-1"></div>
+	<div id="main-hero-content" class="col-lg-5 col-sm-12 page-container-responsive">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<div class="_11q3g7k">
+				<div style="margin-bottom: 16px">
+				<div class="_rotqmn2">
+					<a href="<%=request.getContextPath()%>/guide.do?action=getOne_Area&guideArea=<%=guideVO.getGuideArea()%>">
+						<span class="fas fa-arrow-left fa-lg"></span>返回<%=guideVO.getGuideArea()%>文章列表
+					</a>
+				</div>
+					<div class="_13nd2f7d">${guideVO.guideTitle}</div>
+
+					<div class="_rotqmn2">
+						<span>
+						<fmt:formatDate
+								value="<%=guideVO.getGuideCreateTime()%>"
+								pattern="yyyy-MM-dd HH:mm:ss" />
+								</span>
+					</div>
+				</div>
+
+				<div class="_1f9rmq80">
+					<div class="row">
+						<div class="hide-lg">
+							<div class="col-sm-12"></div>
+						</div>
+							<div class="_8alzzaw">
+								<div>
+									<div class="_1ouw2w0">
+										<div class="_rotqmn2">${guideVO.guideContent}</div>
+									</div>
+									<img alt=""
+										src="https://a0.muscache.com/im/pictures/710d0c96-2bc0-4037-870a-623d7e362f3f.jpg?aki_policy=profile_small"
+										class="_1i6x6g5"> <span>由 <span> <a
+											target="_blank" rel="noopener noreferrer"
+											href="/users/show/9249211"> <span>【<%=memVO.getMem_name()%>】</span>
+										</a>
+									</span>撰寫
+									</span>
+								</div>
+							</div>
+					</div>
+				</div>
+
+				<div class="_1f9rmq80">
+					<div class="_33hj8bi">
+						<button type="button" class="_b82bweu" data-toggle="modal"
+							data-target="#myModal" aria-disabled="false" aria-busy="false">
+							<span>查看來自${guideVO.guideCommSize}位會員的留言</span>
+						</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="_1f9rmq80">
+				<div>
+					<div class="row">
+						<div class="hide-lg">
+							<div class="col-sm-12">
+								<div style="margin-bottom: 16px">
+									<div class="_33hj8bi">
+										<span>地址</span>
+									</div>
+								</div>
+								<div>
+									<div class="_rotqmn2">${guideVO.guideMap}</div>
+								</div>
+							</div>
+						</div>
+						<div class="show-lg">
+							<div class="_mr7uf7w">
+								<div class="_33hj8bi">
+									<span>地址</span>
+								</div>
+							</div>
+							<div class="_8alzzaw">
+								<div class="_rotqmn2">${guideVO.guideMap}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="margin-bottom: 32px"></div>
+
+			<div class="_1pq2f04">
+				<div id="map"></div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="col-lg-5 col-sm-12">
+		<div class="col-lg-12 col-sm-12 page-container-responsive">
+				<div class="col-lg-12 _39300i" style="padding:0px">
+					<div class="" >
+						<div class="col-sm-12 _1sc94wj0">
+							<div class=" _10rdc6v carousel slide" id="myCarousel"
 								data-ride="carousel">
 								<div class="_1kkopm5">
 
@@ -619,7 +714,8 @@ p a.button2:hover {
 									</div>
 								</div>
 							</div>
-							<div class="_ljkqu4">
+							<%if(memId!=null){ %>
+							<div class="col-sm-12 _ljkqu4">
 								<div class="_nedp51">
 									<div class="_9kqfyx">
 										<button type="button" class="_1rp5252" data-toggle="modal"
@@ -650,12 +746,14 @@ p a.button2:hover {
 												<p>
 													<span class="far fa-frown fa-lg"></span>檢舉文章
 													<input type="hidden" name="guideId" value="${guideVO.guideId}">
-													<input type="hidden" name="memId" value="M000001">
+													<input type="hidden" name="memId" value=<%=memId%>>
 												</p>
 											</button>
 										</form>
 									</div>
 									
+									
+									<%if(guideVO.getMemId().equals(memId)){ %>
 									<div class="_9kqfyx">
 										<form METHOD="post" ACTION="<%=request.getContextPath()%>/guide/guide.do" style="margin-bottom: 0px;">
 											<button type="submit" class="_1rp5252"
@@ -663,118 +761,24 @@ p a.button2:hover {
 												<p>
 													 <span class="fas fa-edit fa-lg"></span>編輯文章
 													 <input type="hidden" name="guideId" value="${guideVO.guideId}">
+													 <input type="hidden" name="memId" value="${guideVO.memId}">
 													 <input type="hidden" name="action" value="fromListOne">
 												</p>
 											</button>
 										</form>
 									</div>
-									
+									<%}%>
 								</div>
 							</div>
+						<%}%>	
 						</div>
 					</div>
 				</div>
-			</div>
 		</div>
 	</div>
-
-
-	<div id="main-hero-content" class="page-container-responsive">
-		<div class="col-lg-7 col-md-6 col-sm-12">
-			<div class="_11q3g7k">
-				<div style="margin-bottom: 16px">
-				<div class="_rotqmn2">
-									<a href="<%=request.getContextPath()%>/guide.do?action=getOne_Area&guideArea=<%=guideVO.getGuideArea()%>">
-											
-										<span class="fas fa-arrow-left fa-lg"></span>返回<%=guideVO.getGuideArea()%>文章列表
-											
-									</a>
-					</div>
-				
-				
-					<div class="_13nd2f7d">${guideVO.guideTitle}</div>
-
-					<div class="_rotqmn2">
-						<span><fmt:formatDate
-								value="<%=guideVO.getGuideCreateTime()%>"
-								pattern="yyyy-MM-dd HH:mm:ss" /></span>
-					</div>
-				</div>
-
-				<div class="_1f9rmq80">
-					<div class="row">
-						<div class="hide-lg">
-							<div class="col-sm-12"></div>
-						</div>
-						<div class="show-lg">
-							<div class="_8alzzaw">
-								<div>
-									<div class="_1ouw2w0">
-										<div class="_rotqmn2">${guideVO.guideContent}</div>
-									</div>
-									<img alt=""
-										src="https://a0.muscache.com/im/pictures/710d0c96-2bc0-4037-870a-623d7e362f3f.jpg?aki_policy=profile_small"
-										class="_1i6x6g5"> <span>由 <span> <a
-											target="_blank" rel="noopener noreferrer"
-											href="/users/show/9249211"> <span>【<%=memVO.getMem_name()%>】</span>
-										</a>
-									</span>撰寫
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="_1f9rmq80">
-					<div class="_33hj8bi">
-						<button type="button" class="_b82bweu" data-toggle="modal"
-							data-target="#myModal" aria-disabled="false" aria-busy="false">
-							<span>查看來自${guideVO.guideCommSize}位會員的留言</span>
-						</button>
-					</div>
-				</div>
-
-
-
-
-			</div>
-			<div class="_1f9rmq80">
-				<div>
-					<div class="row">
-						<div class="hide-lg">
-							<div class="col-sm-12">
-								<div style="margin-bottom: 16px">
-									<div class="_33hj8bi">
-										<span>地址</span>
-									</div>
-								</div>
-								<div>
-									<div class="_rotqmn2">${guideVO.guideMap}</div>
-								</div>
-							</div>
-						</div>
-						<div class="show-lg">
-							<div class="_mr7uf7w">
-								<div class="_33hj8bi">
-									<span>地址</span>
-								</div>
-							</div>
-							<div class="_8alzzaw">
-								<div class="_rotqmn2">${guideVO.guideMap}</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div style="margin-bottom: 32px"></div>
-
-			<div class="_1pq2f04">
-				<div id="map"></div>
-			</div>
-		</div>
-	</div>
+	
+	
+	
 	<BR>
 	<BR>
 	<BR>
@@ -900,7 +904,7 @@ p a.button2:hover {
 																	placeholder="輸入留言內容" autocomplete="off" rows="5"></textarea>
 																<input type="hidden" name="guideId"
 																	value="${guideVO.guideId}"> <input
-																	type="hidden" name="memId" value="M000001"> <input
+																	type="hidden" name="memId" value="<%=memId %>"> <input
 																	type="hidden" name="action" value="insert">
 															</div>
 														</div>

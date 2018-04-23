@@ -16,6 +16,7 @@
 	GuideIndexVO guideIndexVO = guideDAO.getGuideIndexVO(area);
 	MemService memSvc = new MemService();
 %>
+<%String memId = (String)session.getAttribute("memId"); %>
 
 
 <!DOCTYPE html>
@@ -90,14 +91,12 @@
 									<p class="guidebook-place-card__number">#<%= count=count+1 %></p>
 								</div>
 								
-<%-- 								<form id="readForm" action="<%=request.getContextPath()%>/guide.do"> --%>
+								<form id="readForm">
 								<h3 class="guidebook-place-card__title">
 									<a id="aTitle" href="<%=request.getContextPath()%>/guide.do?action=updateRead&guideReadSize=<%=areaGuideList.get(i).getGuideReadSize()%>&guideId=<%=areaGuideList.get(i).getGuideId()%>"><%=areaGuideList.get(i).getGuideTitle()%></a>
 								</h3>
-<%-- 								<input type="hidden" name="guideId" value="<%=areaGuideList.get(i).getGuideId()%>"> --%>
-<%-- 								<input type="hidden" name="guideReadSize" value="<%=areaGuideList.get(i).getGuideReadSize()%>"> --%>
-<!-- 								<input type="hidden" name="action" value="updateRead"> -->
-<!-- 								</form> -->
+								<input type="hidden" name="memId" value="<%=memId%>">
+								</form>
 								
 								<p>¼¶¼g®É¶¡: <fmt:formatDate value="<%=areaGuideList.get(i).getGuideCreateTime()%>" pattern="yyyy-MM-dd"/></p>
 							</div>
@@ -242,5 +241,9 @@
         ]
         
 </script>	
-
+<script>
+	document.getElementById("aTitle").onclick = function() {
+		document.getElementById("readForm").submit();
+	}
+</script>
 

@@ -144,7 +144,7 @@ public class GuideServlet extends HttpServlet {
 						imgList);
 				System.out.println("文章新增成功");
 				/*************************** 3.新增完成,準備轉交(Send the Success view) ***********/
-				res.sendRedirect("/BA107G1/guide.do?action=updateRead&guideReadSize=1316&guideId=" + guideId);
+				res.sendRedirect("/BA107G1/guide.do?action=getOne&guideId=" + guideId);
 				/*************************** 其他可能的錯誤處理 **********************************/
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -321,33 +321,10 @@ public class GuideServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 			try {
 				/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
-				String str = req.getParameter("guideId");
-				if (str == null || (str.trim()).length() == 0) {
-					errorMsgs.add("請輸入指南編號");
-				}
-				// Send the use back to the form, if there were errors
-				if (!errorMsgs.isEmpty()) {
-					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/guide/xxx.jsp");
-					failureView.forward(req, res);
-					return;// 程式中斷
-				}
-				String guideId = null;
-				try {
-					guideId = new String(str);
-				} catch (Exception e) {
-					errorMsgs.add("指南編號格式不正確");
-				}
-				// Send the use back to the form, if there were errors
-				if (!errorMsgs.isEmpty()) {
-					RequestDispatcher failureView = req.getRequestDispatcher("ccc.jsp");
-					failureView.forward(req, res);
-					return;// 程式中斷
-				}
-
+				String guideId = req.getParameter("guideId");
 				/*************************** 2.開始查詢資料 *****************************************/
 				GuideService guideSvc = new GuideService();
 				GuideVO guideVO = guideSvc.getOneGuide(guideId);
-
 				if (guideVO == null) {
 					errorMsgs.add("查無資料");
 				}

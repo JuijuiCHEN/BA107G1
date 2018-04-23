@@ -9,6 +9,7 @@
 <% String guideLatLng =URLEncoder.encode(new String(request.getParameter("guideLatLng").getBytes("ISO-8859-1"), "UTF-8"));%> 
 <%@ page import="com.guide.model.*"%>
 <%GuideVO guideVO = (GuideVO) request.getAttribute("guideVO");%>
+<%String memId = (String)session.getAttribute("memId"); %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -793,6 +794,7 @@ background-color: #fff;
 															<div class="row row-condensed space-1">
 																<div class="col-sm-10">
                                               						 <input accept="image/*" name="upload[]" type="file" id="file-input" multiple /> 
+                                              						 <input type="hidden" name="memId" value="<%=memId%>">
                                               						 <input type="hidden" name="guideTitle" value="<%=guideTitle%>">
 																	 <input type="hidden" name="guideContent" value="<%=guideContent%>">
 																	 <input type="hidden" name="guideMap" value="<%=guideMap%>">

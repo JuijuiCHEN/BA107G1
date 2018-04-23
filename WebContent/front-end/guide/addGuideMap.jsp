@@ -2,7 +2,7 @@
 <% request.setCharacterEncoding("UTF-8");%>
 <% String guideTitle = new String(request.getParameter("guideTitle").getBytes("ISO-8859-1"), "UTF-8");%>
 <% String guideContent = new String(request.getParameter("guideContent").getBytes("ISO-8859-1"), "UTF-8");%>
-
+<%String memId = (String)session.getAttribute("memId"); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -197,6 +197,7 @@ a.button2:hover {
 												</select>
 												<input type="hidden" name="guideTitle" value="<%=guideTitle%>">
 												<input type="hidden" name="guideContent" value="<%=guideContent%>">
+												<input type="hidden" name="memId" value="<%=memId%>">
 												<input type="hidden" name="guideMap" id="guideMap">
 												<input type="hidden" name="guideLatLng" id="guideLatLng">
  											</div> 

@@ -6,6 +6,11 @@
 	GuideService aGuideService = new GuideService();
 	List<String> indexTemplate = aGuideService.getGuideIndexVO(request.getContextPath());
 %>
+<%
+String memId="M000004";
+//(key,value)
+session.setAttribute("memId",memId);
+%>
 <!DOCTYPE html>
 <html>
 
@@ -80,7 +85,10 @@
 						<div style="margin-top: 60%; margin-bottom: 28px;">
 						<div class="wrap">
 							<div id="btncss">
-							<a class="button" id="add" onclick="location.href='addGuideTitle.jsp'" aria-busy="false" style="font-size:15px">新增文章</a>
+							<form id="addForm" action="<%=request.getContextPath() %>/front-end/guide/addGuideTitle.jsp">
+								<a class="button" id="add" aria-busy="false" style="font-size:15px">新增文章</a>
+								<input type="hidden" name="memId" value="<%=memId%>">
+							</form>
 							</div>
 						</div>
 						</div>
@@ -115,3 +123,9 @@
 </body>
 
 </html>
+
+<script>
+	document.getElementById("add").onclick = function() {
+		document.getElementById("addForm").submit();
+	}
+</script>
