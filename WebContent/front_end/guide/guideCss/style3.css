@@ -1,0 +1,1770 @@
+#header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    z-index: 2
+}
+
+@media (max-width: 799px) {
+    #header {
+        height: 64px
+    }
+}
+
+#header .icon-airbnb-alt {
+    display: inline-block !important
+}
+
+#header .icon-airbnb {
+    display: none !important
+}
+
+#header .icon-airbnb-cn {
+    display: none !important
+}
+
+.guidebook-header {
+    height: 65px;
+    position: fixed;
+    z-index: 4
+}
+
+@media (max-width: 799px) {
+    .guidebook-header {
+        height: 64px
+    }
+}
+
+.guidebook-header__underlay {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    background: rgba(0, 0, 0, 0.4)
+}
+
+.guidebook-header__bar {
+    z-index: 3;
+    height: 65px;
+    margin-left: 80px;
+    width: 400px
+}
+
+@media (max-width: 799px) {
+    .guidebook-header__bar {
+        border-bottom: 1px solid #dce0e0;
+        margin: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 64px
+    }
+}
+
+.guidebook-header__hider {
+    display: none;
+    z-index: -1;
+    background: #fff;
+    position: absolute;
+    width: 100%;
+    height: 100%
+}
+
+@media (max-width: 799px) {
+    .guidebook-header__hider {
+        display: block
+    }
+}
+
+.guidebook-header__button,
+.guidebook-header__icon-button {
+    display: inline-block;
+    cursor: pointer;
+    line-height: 65px;
+    vertical-align: middle
+}
+
+@media (max-width: 799px) {
+    .guidebook-header__button,
+    .guidebook-header__icon-button {
+        line-height: 64px
+    }
+}
+
+@media (max-width: 799px) {
+    .guidebook-header__button--title {
+        text-align: center;
+        margin-left: 50px;
+        width: -webkit-calc(100% - 100px);
+        width: -moz-calc(100% - 100px);
+        width: calc(100% - 100px);
+        position: absolute;
+        left: 0;
+        z-index: -1
+    }
+}
+
+.guidebook-header__icon-button {
+    margin: 0 20px;
+    font-size: 2.3em
+}
+
+@media (min-width: 800px) {
+    .guidebook-header__icon-button {
+        display: none
+    }
+}
+
+@media (max-width: 799px) {
+    .guidebook-header__icon-button {
+        font-size: 2em
+    }
+}
+
+.guidebook-header__icon-button--map {
+    right: 0;
+    position: absolute
+}
+
+.guidebook-header__menu {
+    width: 100%
+}
+
+@media (max-width: 799px) {
+    .guidebook-header__menu {
+        top: 64px
+    }
+}
+
+.guidebook-header__menu-content {
+    width: 100%;
+    background: #fff
+}
+
+.guidebook-header__hidden-links {
+    height: 0;
+    overflow: hidden
+}
+
+.guidebook-place-card {
+    border-width: 1px;
+    border-color: #c4c4c4;
+    border-style: solid
+}
+
+.guidebook-place-card__place-frame {
+    padding: 15px 20px;
+    width: 100%;
+    border-width: 1px;
+    border-color: #c4c4c4;
+    border-bottom-style: solid
+}
+
+.guidebook-place-card-v2__place-frame {
+    padding: 15px 15px 15px 0;
+    width: 100%;
+    min-height: 90px
+}
+
+@media (min-width: 1128px) {
+    .guidebook-place-card-v2__place-frame {
+        min-height: 180px
+    }
+}
+
+.guidebook-place-card__save-button {
+    width: 32px;
+    display: inline-block;
+    color: #c4c4c4;
+    float: right;
+    cursor: pointer
+}
+
+.guidebook-place-card__number {
+    display: inline-block;
+    font-size: 24px;
+    font-family: CircularAirPro, Circular;
+    font-weight: normal;
+    margin: 0;
+    padding-top: 5px
+}
+
+.guidebook-place-card__host-recommendation {
+    display: none;
+    width: -webkit-calc(100% - 32px);
+    width: -moz-calc(100% - 32px);
+    width: calc(100% - 32px);
+    font-size: 12px;
+    font-family: CircularAirPro, Circular;
+    font-weight: bold;
+    margin: 0
+}
+
+.guidebook-place-card__frame-color {
+    color: #c4c4c4;
+    width: 20px
+}
+
+.guidebook-place-card__content {
+    display: inline-block;
+    padding-left: 20px;
+    top: 15px;
+    margin-left: 60px;
+    width: -webkit-calc(100% - 60px);
+    width: -moz-calc(100% - 60px);
+    width: calc(100% - 60px);
+    min-height: 60px
+}
+
+@media (min-width: 1128px) {
+    .guidebook-place-card__content {
+        width: -webkit-calc(100% - 150px);
+        width: -moz-calc(100% - 150px);
+        width: calc(100% - 150px);
+        margin-left: 150px
+    }
+}
+
+.guidebook-place-card__title {
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 400px;
+    font-family: CircularAirPro, Circular;
+    font-weight: bold;
+    font-size: 32px
+}
+
+@media (min-width: 1128px) {
+    .guidebook-place-card__title {
+        margin-top: 6px
+    }
+}
+
+.guidebook-place-card__title-airmoji {
+    display: inline;
+    margin-left: 10px;
+    color: #000
+}
+
+.guidebook-place-card__description {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    margin-top: 10px
+}
+
+@media (min-width: 1128px) {
+    .guidebook-place-card__description {
+        margin-top: 0;
+        margin-left: 150px;
+        padding-left: 20px;
+        width: -webkit-calc(100% - 150px);
+        width: -moz-calc(100% - 150px);
+        width: calc(100% - 150px)
+    }
+}
+
+.guidebook-place-card__category {
+    display: inline-block;
+    font-family: CircularAirPro, Circular;
+    font-weight: normal;
+    color: #008489;
+    margin-right: 15px
+}
+
+.guidebook-place-card__image {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    -moz-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    width: 60px;
+    height: 60px
+}
+
+@media (min-width: 1128px) {
+    .guidebook-place-card__image {
+        width: 150px;
+        height: 150px
+    }
+}
+
+.guidebook-place-card__content-arrow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    -webkit-text-stroke: 1.5px #bbb
+}
+
+.guidebook-place-card__content-arrow>a {
+    color: #bbb;
+    text-decoration: none
+}
+
+.guidebook-place-card__content-arrow>a:hover {
+    text-decoration: none
+}
+
+.guidebook-place-card__other-highlights {
+    padding-top: 20px;
+    word-wrap: break-word;
+    font-family: CircularAirPro, Circular;
+    font-weight: normal
+}
+
+.guidebook-place-card__highlights-text {
+    white-space: nowrap;
+    display: inline-block;
+    padding-right: 7px
+}
+
+.guidebook-place-card__highlights-extra-padding {
+    padding-right: 7px
+}
+
+.guidebook-place-card__highlight:last-child .guidebook-place-card__highlights-extra-padding {
+    display: none
+}
+
+.guidebook-place-card__map-hours-and-website-group {
+    white-space: nowrap;
+    display: inline-block
+}
+
+.guidebook-place-card__link {
+    color: #008489;
+    cursor: pointer;
+    padding-right: 7px
+}
+
+.guidebook-place-card__link:last-child {
+    padding-right: 0
+}
+
+@media (min-width: 1128px) {
+    .guidebook-place-card__map {
+        display: none
+    }
+}
+
+.guidebook-place-card--focus {
+    border-color: #aaa
+}
+
+.guidebook-place-recommendation__frame {
+    padding: 0 20px 20px;
+    width: 100%
+}
+
+.guidebook-place-recommendation__frame:last-child {
+    padding: 0 20px 24px
+}
+
+.guidebook-place-recommendation__first-recommendation-title {
+    font-size: 9pt;
+    font-family: CircularAirPro, Circular;
+    font-weight: bold;
+    margin-top: 24px;
+    margin-bottom: 14px
+}
+
+.guidebook-place-recommendation__recommendation-toggle-button,
+.guidebook-place-recommendation__recommendation-toggle-button:focus {
+    padding: 24px 0 10px;
+    display: block;
+    font-weight: bold;
+    color: #484848;
+    border-style: none;
+    outline: none;
+    background: transparent
+}
+
+.guidebook-place-recommendation__recommendation-title {
+    font-size: 9pt
+}
+
+.guidebook-place-recommendation__description {
+    font-family: CircularAirPro, Circular;
+    font-weight: normal;
+    margin-bottom: 8px
+}
+
+.guidebook-place-recommendation__host-profile-image {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    margin-right: 10px
+}
+
+.guidebook-place-recommendation__link {
+    display: inline-block;
+    cursor: pointer;
+    font-family: CircularAirPro, Circular;
+    font-weight: normal;
+    color: #2076b7
+}
+
+.guidebook-place-recommendation__host-guidebook-link {
+    display: inline-block;
+    cursor: pointer;
+    font-family: CircularAirPro, Circular;
+    font-weight: normal;
+    color: #2076b7;
+    vertical-align: super
+}
+
+.guidebook-listing-nav-card {
+    height: 120px;
+    width: 160px;
+    position: relative
+}
+
+.guidebook-listing-nav-card__button-overlay {
+    z-index: 1;
+    height: 120px;
+    width: 160px;
+    position: absolute;
+    left: 0;
+    top: 0
+}
+
+.guidebook-listing-nav-card__image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%
+}
+
+.guidebook-listing-nav-card__text {
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff
+}
+
+.guidebook-listing-nav-card__line_one {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    margin: 0
+}
+
+.guidebook-listing-nav-card__line_two {
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    margin: 0
+}
+
+.guidebook-nav-card {
+    position: relative;
+    -moz-background-size: cover;
+    background-size: cover
+}
+
+.guidebook-nav-card__button-overlay {
+    z-index: 1;
+    position: absolute;
+    background: transparent;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%
+}
+
+.guidebook-nav-card__text-wrapper {
+    position: relative;
+    white-space: normal;
+    margin: 0 10px;
+    max-width: 140px
+}
+
+.guidebook-nav-card__title {
+    padding-top: 20px;
+    font-weight: bold;
+    color: #fff;
+    margin: 0
+}
+
+.guidebook-nav-card__host-recommendation {
+    padding-top: 5px;
+    margin: 0;
+    color: #fff;
+    font-size: 14px
+}
+
+.fixed-small {
+    width: 160px;
+    height: 160px
+}
+
+.responsive-small {
+    height: 130px
+}
+
+.responsive-large {
+    height: 280px
+}
+
+.guidebook-nav-card-carousel {
+    position: relative
+}
+
+.guidebook-nav-card-carousel__left-icon {
+    left: -40px;
+    top: 50px;
+    position: absolute
+}
+
+@media (max-width: 799px) {
+    .guidebook-nav-card-carousel__left-icon {
+        display: none
+    }
+}
+
+.guidebook-nav-card-carousel__right-icon {
+    right: -40px;
+    top: 50px;
+    position: absolute
+}
+
+@media (max-width: 799px) {
+    .guidebook-nav-card-carousel__right-icon {
+        display: none
+    }
+}
+
+.guidebook-nav-card-carousel__scroll {
+    width: inherit;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 25px
+}
+
+@media (min-width: 800px) {
+    .guidebook-nav-card-carousel__scroll {
+        padding: 0
+    }
+}
+
+.guidebook-nav-card-carousel__window {
+    white-space: nowrap;
+    display: inline-block
+}
+
+.guidebook-nav-card-carousel__window-item {
+    display: inline-block;
+    position: relative;
+    width: 165px
+}
+
+.guidebook-nav-card-carousel__window-item:last-child {
+    width: 160px
+}
+
+.guidebook-nav-card-carousel__scroll::-webkit-scrollbar {
+    display: none
+}
+
+.guidebook-new-guest-page {
+    min-height: 600px
+}
+
+.guidebook-insider-guidebook-page {
+    padding-top: 65px
+}
+
+.guidebook-new-guest-page__map-container {
+    height: -webkit-calc(100%);
+    height: -moz-calc(100%);
+    height: calc(100%);
+    left: 420px;
+    right: 0;
+    top: 0px;
+    position: fixed
+}
+
+@media (max-width: 799px) {
+    .guidebook-new-guest-page__map-container {
+        left: -99999999px;
+        width: 100%;
+        top: 64px;
+        height: -webkit-calc(100% - 64px);
+        height: -moz-calc(100% - 64px);
+        height: calc(100% - 64px)
+    }
+}
+
+@media (min-width: 990px) {
+    .guidebook-new-guest-page__map-container {
+        left: 600px
+    }
+}
+
+@media (min-width: 1160px) {
+    .guidebook-new-guest-page__map-container {
+        left: 770px
+    }
+}
+
+.guidebook-insider-guidebook-page__map-container {
+    height: -webkit-calc(100% - 65px);
+    height: -moz-calc(100% - 65px);
+    height: calc(100% - 65px);
+    right: 0;
+    top: 65px;
+    position: fixed
+}
+
+@media (max-width: 799px) {
+    .guidebook-insider-guidebook-page__map-container {
+        width: 100%;
+        top: 64px;
+        height: -webkit-calc(100% - 64px);
+        height: -moz-calc(100% - 64px);
+        height: calc(100% - 64px)
+    }
+}
+
+.is-header-hidden .guidebook-new-guest-page__map-container {
+    top: 0;
+    height: 100%
+}
+
+.guidebook-new-guest-page__image {
+    width: 100%;
+    height: 400px;
+    -moz-background-size: cover;
+    background-size: cover
+}
+
+@media (max-width: 799px) {
+    .guidebook-new-guest-page__image {
+        height: 250px
+    }
+}
+
+.guidebook-new-guest-page__recommendation-container {
+    max-width: 420px
+}
+
+@media (max-width: 799px) {
+    .guidebook-new-guest-page__recommendation-container {
+        max-width: 100%
+    }
+}
+
+@media (min-width: 990px) {
+    .guidebook-new-guest-page__recommendation-container {
+        max-width: 600px
+    }
+}
+
+@media (min-width: 1160px) {
+    .guidebook-new-guest-page__recommendation-container {
+        max-width: 770px
+    }
+}
+
+.guidebook-new-guest-page__body {
+    padding: 0 55px
+}
+
+@media (max-width: 799px) {
+    .guidebook-new-guest-page__body {
+        padding: 0 25px
+    }
+}
+
+.guidebook-new-guest-page__small-nav-link {
+    padding-top: 5px;
+    font-size: 11px
+}
+
+@media (max-width: 799px) {
+    .guidebook-new-guest-page__small-nav-link {
+        display: none
+    }
+}
+
+.guidebook-new-guest-page__title {
+    font-weight: bold;
+    margin: 0;
+    padding-top: 30px;
+    padding-bottom: 0
+}
+
+.guidebook-new-guest-page__bookmark-title {
+    font-family: CircularAirPro, Circular;
+    font-weight: bold;
+    margin: 0;
+    padding: 30px 0
+}
+
+.guidebook-new-guest-page__introduction {
+    font-family: CircularAirPro, Circular;
+    font-weight: normal;
+    line-height: 24px;
+    font-size: 19px;
+    margin-top: 10px;
+    width: 90%;
+    margin-bottom: 0
+}
+
+@media (max-width: 1159px) {
+    .guidebook-new-guest-page__introduction {
+        width: 100%
+    }
+}
+
+.guidebook-new-guest-page__hr-tag {
+    margin: 24px 0;
+    width: 50px
+}
+
+@media (max-width: 799px) {
+    .guidebook-new-guest-page__carousel {
+        margin: 0 -25px
+    }
+}
+
+.guidebook-new-guest-page__cut-off {
+    color: #c4c4c4;
+    margin: 24px -55px 0
+}
+
+@media (max-width: 799px) {
+    .guidebook-new-guest-page__cut-off {
+        margin: 24px -25px 0
+    }
+}
+
+.guidebook-new-guest-page__best-of-best {
+    margin-top: 48px;
+    margin-bottom: 32px
+}
+
+.guidebook-new-guest-page__partial-cut-off {
+    color: #c4c4c4;
+    margin: 10px 0
+}
+
+@media (max-width: 799px) {
+    .guidebook-new-guest-page__partial-cut-off {
+        margin: 10px -25px 0
+    }
+}
+
+.guidebook-new-guest-page__property-type {
+    padding: 10px 0
+}
+
+@media (max-width: 799px) {
+    .guidebook-new-guest-page--map-view .guidebook-new-guest-page__map-container {
+        left: 0
+    }
+    .guidebook-new-guest-page--map-view .guidebook-new-guest-page__recommendation-container {
+        display: none
+    }
+}
+
+.guidebook-new-guest-page__title-and-host-pic {
+    position: relative;
+    width: 100%;
+    margin-top: 115px;
+    margin-bottom: 0
+}
+
+.guidebook-new-guest-page__listing-page-title {
+    font-weight: bold;
+    display: inline-block;
+    width: -webkit-calc(100% - 60px);
+    width: -moz-calc(100% - 60px);
+    width: calc(100% - 60px);
+    vertical-align: top
+}
+
+.guidebook-new-guest-page__host-pic {
+    display: inline-block
+}
+
+.guidebook-new-guest-page__host-description {
+    word-wrap: break-word;
+    margin: 0;
+    font-family: CircularAirPro, Circular;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 24px
+}
+
+.guidebook-new-guest-page__listing {
+    position: relative;
+    margin-top: 34px
+}
+
+.guidebook-new-guest-page__listing-img {
+    display: inline-block;
+    height: 80px;
+    width: 115px;
+    left: 0;
+    -moz-background-size: cover;
+    background-size: cover;
+    margin-right: 10px
+}
+
+.guidebook-new-guest-page__listing-info {
+    display: inline-block;
+    vertical-align: top;
+    height: inherit;
+    width: -webkit-calc(100% - 125px);
+    width: -moz-calc(100% - 125px);
+    width: calc(100% - 125px);
+    min-width: 120px;
+    max-width: 400px;
+    padding: 0;
+    font-family: CircularAirPro, Circular;
+    font-weight: normal
+}
+
+.guidebook-new-guest-page__text-link {
+    display: inline-block;
+    font-size: 17px;
+    color: #008489;
+    cursor: pointer;
+    font-family: CircularAirPro, Circular;
+    font-weight: normal;
+    white-space: nowrap
+}
+
+.guidebook-new-guest-page__p3-link {
+    display: inline-block;
+    cursor: pointer;
+    font-family: CircularAirPro, Circular;
+    font-weight: bold;
+    color: #008489;
+    word-wrap: normal
+}
+
+.guidebook-new-guest-page__listing-name {
+    color: #484848;
+    margin-bottom: 0;
+    word-wrap: break-word
+}
+
+.guidebook-new-guest-page__temporary_title-gap {
+    height: 24px;
+    margin: 0
+}
+
+.guidebook-place-card-collection {
+    padding-bottom: 20px;
+    min-height: 700px
+}
+
+.guidebook-place-card-collection__item {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px
+}
+
+.guidebook-place-card-collection__item:last-child .guidebook-place-card hr {
+    display: none
+}
+
+.guidebook-place-card-collection__scroll-anchor {
+    position: absolute;
+    top: -75px
+}
+
+@media (max-width: 799px) {
+    .guidebook-place-card-collection__scroll-anchor {
+        top: -69px
+    }
+}
+
+.guidebook-place-card-collection__pagination li:not(.prev):not(.next) {
+    display: none
+}
+
+.guidebook-menu {
+    padding: 55px
+}
+
+@media (max-width: 799px) {
+    .guidebook-menu {
+        padding: 20px
+    }
+}
+
+.guidebook-menu__hr,
+.guidebook-menu__hr-small {
+    border-bottom: 1px solid #dce0e0;
+    margin: 30px 0
+}
+
+.guidebook-menu__hr {
+    margin: 30px -55px
+}
+
+@media (max-width: 799px) {
+    .guidebook-menu__hr {
+        margin: 30px -25px
+    }
+}
+
+.guidebook-menu__hr-small {
+    width: 30px;
+    border-bottom: 1px solid #dce0e0
+}
+
+.guidebook-menu__close-btn {
+    border: 0;
+    padding-left: 0;
+    background: transparent
+}
+
+.guidebook-menu__cards {
+    margin: -4px;
+    line-height: 0
+}
+
+.guidebook-menu__card {
+    display: inline-block;
+    margin: 4px;
+    line-height: normal
+}
+
+.guidebook-guest-page-footer__link-section {
+    padding: 30px 0
+}
+
+.guidebook-guest-page-footer__link-section-title {
+    font-weight: normal;
+    color: #484848
+}
+
+.guidebook-guest-page-footer__link-section-item {
+    color: #008489;
+    white-space: nowrap;
+    font-size: 14px;
+    padding-right: 30px;
+    display: inline-block;
+    min-width: 320px
+}
+
+.gb-icon-entertainment {
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_entertainment-f44d7dc38123eaae71fb0104b4216515.png);
+    width: 40px;
+    height: 40px
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .gb-icon-entertainment {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_entertainment@2x-b2bfffecf26f63ee0ad452324e103308.png);
+        -moz-background-size: 40px 40px;
+        background-size: 40px 40px
+    }
+}
+
+.gb-icon-everything-else {
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_everything-else-91278a8d9f4554311e847c6b5404bcad.png);
+    width: 40px;
+    height: 40px
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .gb-icon-everything-else {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_everything-else@2x-cd05a2e1f055c2fc29478079c740baf0.png);
+        -moz-background-size: 40px 40px;
+        background-size: 40px 40px
+    }
+}
+
+.gb-icon-getting-around {
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_getting-around-30810954d679f928ae51c5cc12406caf.png);
+    width: 40px;
+    height: 40px
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .gb-icon-getting-around {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_getting-around@2x-ffce7b7b0e22afb838a4fef26cdacb56.png);
+        -moz-background-size: 40px 40px;
+        background-size: 40px 40px
+    }
+}
+
+.gb-icon-parks-nature {
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_parks-nature-beec744038ca26c050e43e7e3f1ccfdd.png);
+    width: 40px;
+    height: 40px
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .gb-icon-parks-nature {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_parks-nature@2x-e68fe087e5121f83c3aa169306a1e765.png);
+        -moz-background-size: 40px 40px;
+        background-size: 40px 40px
+    }
+}
+
+.gb-icon-sightseeing {
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_sightseeing-fed764084f3b5dd37ba8ff4b2433d850.png);
+    width: 40px;
+    height: 40px
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .gb-icon-sightseeing {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_sightseeing@2x-633d6fb4839cba24fb0c9beab64e5285.png);
+        -moz-background-size: 40px 40px;
+        background-size: 40px 40px
+    }
+}
+
+.gb-icon-essentials {
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_essentials-18daecb06850867d3a1f4f9a299a45cb.png);
+    width: 40px;
+    height: 40px
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .gb-icon-essentials {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_essentials@2x-08a12b2ee140000a626936876effa245.png);
+        -moz-background-size: 40px 40px;
+        background-size: 40px 40px
+    }
+}
+
+.gb-icon-food-scene {
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_food-scene-b5416dfc9cfcfa4f2f842a1aff3ce7ac.png);
+    width: 40px;
+    height: 40px
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .gb-icon-food-scene {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_food-scene@2x-bdc259990d5be86391848d23de5d39dd.png);
+        -moz-background-size: 40px 40px;
+        background-size: 40px 40px
+    }
+}
+
+.gb-icon-nightlife {
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_nightlife-149212a307bcd1f26618069159a6a13c.png);
+    width: 40px;
+    height: 40px
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .gb-icon-nightlife {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_nightlife@2x-c5c7793f1a7095af3720e0cf69fb07ee.png);
+        -moz-background-size: 40px 40px;
+        background-size: 40px 40px
+    }
+}
+
+.gb-icon-shopping {
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_shopping-12bc8bc78386987a116206a4c8cc5c98.png);
+    width: 40px;
+    height: 40px
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .gb-icon-shopping {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_shopping@2x-466aa6aebca53be3ad78a8ba0c907552.png);
+        -moz-background-size: 40px 40px;
+        background-size: 40px 40px
+    }
+}
+
+.gb-icon-arts-culture {
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_arts-culture-56d1a8e0e520c6f635757a14e2fd4c52.png);
+    width: 40px;
+    height: 40px
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .gb-icon-arts-culture {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_arts-culture@2x-dfe110b9bb91bceb02889eee13b577c6.png);
+        -moz-background-size: 40px 40px;
+        background-size: 40px 40px
+    }
+}
+
+.gb-icon-bulb {
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_bulb-92b1c8f77291661a7c17a8fd9d0a5685.png);
+    width: 18px;
+    height: 25px
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .gb-icon-bulb {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_bulb@2x-c02218b7fe2b5074bce14a81a9172ebf.png);
+        -moz-background-size: 18px 25px;
+        background-size: 18px 25px
+    }
+}
+
+.gb-icon-floating-map {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_map-e3fc106222cc0ea5d74f6b83f29580b1.png);
+    width: 50px;
+    height: 50px
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .gb-icon-floating-map {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_map@2x-efa5466fc3d17dd4c93488d85f094049.png);
+        -moz-background-size: 50px 50px;
+        background-size: 50px 50px
+    }
+}
+
+.gb-icon-floating-bookmark {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_bookmark-96888316886083cae37e65e77eec10ba.png);
+    width: 50px;
+    height: 50px
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .gb-icon-floating-bookmark {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_bookmark@2x-fcc018d5543856a8aee59bea43db2c3d.png);
+        -moz-background-size: 50px 50px;
+        background-size: 50px 50px
+    }
+}
+
+.gb-icon-map-rausch {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_map_rausch-f410553360f032d968fc3b2efaa22860.png);
+    width: 25px;
+    height: 25px
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .gb-icon-map-rausch {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/icon_map_rausch@2x-56b11eed559456f70dd6ec6144bc827f.png);
+        -moz-background-size: 25px 25px;
+        background-size: 25px 25px
+    }
+}
+
+.guidebook-map {
+    width: 100%;
+    height: 100%;
+    margin-top: 0px
+}
+
+.guidebook-map__marker {
+    position: relative;
+    width: 37px;
+    height: 47px;
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/map_pins/map-pin-light-9de7a6660577466f9764fdaa2e9f33a3.png);
+    width: 37px;
+    height: 47px;
+    color: #fff;
+    line-height: 37.6px;
+    vertical-align: middle;
+    text-align: center
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .guidebook-map__marker {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/map_pins/map-pin-light@2x-e9f1287b0f83ad38a7806f3f0db5ced1.png);
+        -moz-background-size: 37px 47px;
+        background-size: 37px 47px
+    }
+}
+
+.guidebook-map__refresh-control {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 100%;
+    z-index: 1
+}
+
+.guidebook-map__marker--dark {
+    background-repeat: no-repeat;
+    background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/map_pins/map-pin-dark-2e7c2942cbea213a251f973a8c8cdd15.png);
+    width: 37px;
+    height: 47px
+}
+
+@media (min--moz-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 2.6 / 2),
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-device-pixel-ratio: 1.3),
+(-o-min-device-pixel-ratio: 13/10),
+(min-resolution: 1.3dppx) {
+    .guidebook-map__marker--dark {
+        background-image: url(https://a0.muscache.com/airbnb/static/guidebook_new/map_pins/map-pin-dark@2x-e8a1a02d154fcf0686b226e4aca37f3d.png);
+        -moz-background-size: 37px 47px;
+        background-size: 37px 47px
+    }
+}
+
+.guidebook-map__popup {
+    padding: 10px;
+    width: 320px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px
+}
+
+.guidebook-map__host-recommendation {
+    font-size: 12px;
+    font-family: CircularAirPro, Circular;
+    font-weight: bold
+}
+
+.guidebook-map__popup-h2 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-family: CircularAirPro, Circular;
+    font-weight: bold
+}
+
+.guidebook-map__popup-hightlight {
+    font-family: CircularAirPro, Circular;
+    font-weight: normal;
+    padding-top: 20px
+}
+
+.guidebook-map__popup-hightlight-text {
+    padding-right: 7px
+}
+
+.guidebook-map__popup-hightlight-extra-padding {
+    padding-right: 7px
+}
+
+.guidebook-map__link {
+    font-family: CircularAirPro, Circular;
+    font-weight: normal;
+    color: #008489;
+    cursor: pointer;
+    padding-right: 7px
+}
+
+.infoBox {
+    padding: 10px;
+    background: #fff;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3)
+}
+
+.infoBox:before {
+    border-color: #000000 transparent transparent;
+    border-color: rgba(0, 0, 0, 0.3) transparent transparent;
+    border-width: 16px;
+    border-style: solid;
+    content: '';
+    display: inline-block;
+    position: absolute;
+    bottom: -32px;
+    margin: 0 0 0 114px
+}
+
+.infoBox:after {
+    border-color: #fff transparent transparent;
+    border-width: 15px;
+    border-style: solid;
+    content: '';
+    display: inline-block;
+    position: absolute;
+    bottom: -30px;
+    margin: 0 0 0 115px
+}
+
+.guidebook-loader {
+    position: fixed;
+    z-index: 10;
+    top: 65px;
+    bottom: 0;
+    width: 420px;
+    left: 0
+}
+
+@media (max-width: 799px) {
+    .guidebook-loader {
+        top: 0;
+        left: 0;
+        width: 100%;
+        bottom: 0
+    }
+}
+
+@media (min-width: 990px) {
+    .guidebook-loader {
+        width: 600px
+    }
+}
+
+@media (min-width: 1160px) {
+    .guidebook-loader {
+        width: 770px
+    }
+}
+
+@media (max-width: 799px) {
+    .guidebook-loader--map-view {
+        bottom: auto;
+        height: 64px
+    }
+}
+
+@media (max-width: 799px) {
+    .guidebook-loader--map-view.guidebook-loader--no-header {
+        display: none
+    }
+}
+
+.opening-hours-modal {
+    padding: 10px 30px;
+    margin-top: 20px;
+    position: relative
+}
+
+.opening-hours-modal__close-btn {
+    color: #008489 !important
+}
+
+.opening-hours-modal__close {
+    text-align: center;
+    padding: 0 0 15px
+}
+
+.opening-hours-modal__title {
+    position: relative;
+    padding-top: 35px;
+    margin: 0
+}
+
+.opening-hours-modal__open-time {
+    position: relative;
+    height: 20px
+}
+
+.opening-hours-modal__day {
+    position: absolute;
+    left: 0
+}
+
+.opening-hours-modal__hour {
+    position: absolute;
+    right: 0
+}
+
+.opening-hours-modal__cut-off {
+    position: relative
+}
+
+.guidebook-listing-carousel {
+    padding-bottom: 10px
+}
+
+@media (max-width: 799px) {
+    .guidebook-listing-carousel {
+        margin: 0 -25px
+    }
+}
+
+.guidebook-listing-carousel__title {
+    padding: 25px 0;
+    font-family: CircularAirPro, Circular;
+    font-weight: normal;
+    margin: 0
+}
+
+.bookmarked-city-nav-card {
+    position: relative;
+    height: 205px;
+    width: 100%;
+    margin-bottom: 20px
+}
+
+.bookmarked-city-nav-card__image {
+    position: absolute;
+    height: 205px;
+    width: 100%
+}
+
+.bookmarked-city-nav-card__button-overlay {
+    position: absolute;
+    z-index: 2;
+    height: 205px;
+    width: 100%;
+    background: transparent;
+    left: 0;
+    top: 0
+}
+
+.bookmarked-city-nav-card__title {
+    position: relative;
+    padding-top: 80px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    z-index: 1
+}
+
+.guidebook-floating-map-button {
+    position: fixed !important;
+    bottom: 20px;
+    right: 20px;
+    z-index: 3;
+    cursor: pointer
+}
+
+.guidebook-floating-bookmark-nav-button {
+    position: fixed !important;
+    bottom: 20px;
+    right: 90px;
+    z-index: 3;
+    cursor: pointer
+}
+
+.searchbar__location input,
+.searchbar__location select,
+.searchbar__checkin input,
+.searchbar__checkin select,
+.searchbar__checkout input,
+.searchbar__checkout select,
+.searchbar__guests input,
+.searchbar__guests select {
+    border-right: 0;
+    -webkit-border-top-right-radius: 0;
+    -moz-border-radius-topright: 0;
+    border-top-right-radius: 0;
+    -webkit-border-bottom-right-radius: 0;
+    -moz-border-radius-bottomright: 0;
+    border-bottom-right-radius: 0
+}
+
+.searchbar__location {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0
+}
+
+.searchbar__checkin,
+.searchbar__checkout,
+.searchbar__guests {
+    padding: 0
+}
+
+.searchbar__checkin input,
+.searchbar__checkout input,
+.searchbar__guests input {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0
+}
+
+.searchbar__submit-wrapper {
+    padding-left: 0
+}
+
+.searchbar__submit-wrapper .searchbar__submit {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: normal
+}
+
+.searchbar__submit-wrapper .searchbar__submit-text {
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis
+}
+
+@media (max-width: 743px) {
+    .row-condensed-guidebook [class^="col"] {
+        padding-left: 10px;
+        padding-right: 10px
+    }
+    .guidebook-index-page__cards {
+        margin-left: -5px
+    }
+}
+
+@media (min-width: 744px) {
+    .row-condensed-guidebook [class^="col"] {
+        padding-left: 5px;
+        padding-right: 5px
+    }
+    .guidebook-index-page__cards {
+        margin-left: 0
+    }
+}
+
+.guidebook-index-page__panel {
+    border: 0
+}
+
+.guidebook-index-page {
+    min-height: 600px
+}
+
+.guidebook-index-page__body {
+    padding-top: 91px;
+    max-width: 880px;
+    margin: auto
+}
+
+.guidebook-index-page__title,
+.guidebook-index-page__content-title {
+    font-size: 32px;
+    font-weight: 300;
+    color: #484848
+}
+
+.guidebook-index-page__description {
+    font-size: 16px;
+    font-weight: 300;
+    max-width: 700px
+}
+
+.guidebook-index-page__hr {
+    border-bottom: 1px solid #dce0e0;
+    margin: 30px auto
+}
+
+.guidebook-index-page__cards {
+    line-height: 0;
+    margin-right: 0
+}
+
+.guidebook-index-page__card {
+    width: 100%
+}
+
+.search-area__header,
+.search-area__form-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 866px
+}
+
+.search-area__header {
+    font-size: 32px;
+    font-weight: 300;
+    color: #484848
+}
+
+.search-area-header {
+    padding-bottom: 20px
+}
+
+.footer-container {
+    position: relative
+}
+
+.map {
+    position: fixed;
+    right: 0;
+    left: auto;
+    bottom: 0;
+    width: 100%
+}
+
+.map div[data-hypernova-key] {
+    height: 100%
+}
+
+@media (min-width: 744px) {
+    .map-like-webcot {
+        width: 34% !important
+    }
+    .map {
+        display: block;
+        width: 40%
+    }
+}
+
+@media (min-width: 744px) and (min-width: 744px) and (max-width: 1127px) {
+    .map.webcot {
+        width: 100%
+    }
+}
+
+@media (min-width: 744px) {
+    .map:before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        right: 0;
+        -webkit-box-shadow: inset -1px 0 1px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: inset -1px 0 1px rgba(0, 0, 0, 0.3);
+        box-shadow: inset -1px 0 1px rgba(0, 0, 0, 0.3);
+        width: 2px;
+        z-index: 2
+    }
+}
+
+.map-refresh-controls.google {
+    position: absolute;
+    top: 10px;
+    left: 50px
+}
+
+@media (min-width: 744px) {
+    .touch .map-refresh-controls.google {
+        left: 40px
+    }
+}
+
+.map-refresh-controls.google label.checkbox {
+    padding: 8px 0
+}
+
+.custom-controls .gm-bundled-control {
+    margin: 60px 12px !important
+}
+
+.map-refresh-controls.mapbox {
+    position: absolute;
+    top: 11px;
+    left: 39px
+}
+
+.touch .map-refresh-controls.mapbox {
+    left: 40px
+}
+
+.map-refresh-controls.mapbox label.checkbox {
+    padding: 8px 0
+}
+
+.map-refresh-controls.gaode {
+    position: absolute;
+    top: 11px;
+    left: 39px
+}
+
+.touch .map-refresh-controls.gaode {
+    left: 40px
+}
+
+.map-refresh-controls.gaode label.checkbox {
+    padding: 8px 0
+}
+
+.map-auto-refresh {
+    padding: 0 8px
+}
+
+.map-canvas {
+    height: 100%
+}
+
+.icon-space-left {
+    margin-left: 10px
+}

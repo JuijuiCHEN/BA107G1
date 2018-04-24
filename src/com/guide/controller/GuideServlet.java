@@ -91,7 +91,7 @@ public class GuideServlet extends HttpServlet {
 
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("guideVO", guideVO); // 含有輸入格式錯誤的guideVO物件,也存入req
-					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/guide/addGuide.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/front_end/guide/addGuide.jsp");
 					failureView.forward(req, res);
 					return;
 				}
@@ -149,7 +149,7 @@ public class GuideServlet extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/guide/錯誤.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/guide/錯誤.jsp");
 				failureView.forward(req, res);
 			}
 
@@ -179,7 +179,7 @@ public class GuideServlet extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 				errorMsgs.add("刪除資料失敗:" + e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/guide/getAllGuideFromOneId.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/guide/getAllGuideFromOneId.jsp");
 				failureView.forward(req, res);
 			}
 
@@ -221,14 +221,14 @@ public class GuideServlet extends HttpServlet {
 
 				/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
 				req.setAttribute("guideVO", guideVO); // 資料庫updata成功後,正確的guideVO物件,存入req
-				String url = "/front-end/guide/listOneGuide.jsp";
+				String url = "/front_end/guide/listOneGuide.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後轉交aaa.jsp
 				successView.forward(req, res);
 
 				/*************************** 其他可能的錯誤處理 *************************************/
 			} catch (Exception e) {
 				errorMsgs.add("資料修改失敗:" + e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/select_page.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/select_page.jsp");
 				failureView.forward(req, res);
 				e.printStackTrace();
 			}
@@ -272,7 +272,7 @@ public class GuideServlet extends HttpServlet {
 
 				/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
 				req.setAttribute("guideVO", guideVO); // 資料庫updata成功後,正確的guideVO物件,存入req
-				String url = "/front-end/guide/listOneGuide.jsp";
+				String url = "/front_end/guide/listOneGuide.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後轉交jsp
 				successView.forward(req, res);
 
@@ -303,7 +303,7 @@ public class GuideServlet extends HttpServlet {
 
 				/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
 				req.setAttribute("guideVO", guideVO); // 資料庫updata成功後,正確的guideVO物件,存入req
-				String url = "/front-end/guide/listOneGuide.jsp";
+				String url = "/front_end/guide/listOneGuide.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後轉交jsp
 				successView.forward(req, res);
 
@@ -339,9 +339,9 @@ public class GuideServlet extends HttpServlet {
 
 				String url = null;
 				if ("getOne".equals(action))
-					url = "/front-end/guide/listOneGuide.jsp";
+					url = "/front_end/guide/listOneGuide.jsp";
 				else if ("fromListOne".equals(action))
-					url = "/front-end/guide/updateFront.jsp";
+					url = "/front_end/guide/updateFront.jsp";
 
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交
 				successView.forward(req, res);
@@ -403,7 +403,7 @@ public class GuideServlet extends HttpServlet {
 				}
 				/*************************** 3.查詢完成,準備轉交(Send the Success view) *************/
 				req.setAttribute("list", list); // 資料庫取出的guideVO物件,存入req
-				String url = "/front-end/guide/getAllGuideFromOneId.jsp";
+				String url = "/front_end/guide/getAllGuideFromOneId.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交
 				successView.forward(req, res);
 				/*************************** 其他可能的錯誤處理 *************************************/
@@ -431,7 +431,7 @@ public class GuideServlet extends HttpServlet {
 			// 轉交至liseAreaGuide.jsp setAttribute......
 			req.setAttribute("areaGuideList", areaGuideList); // 資料庫取出的guideVO物件,存入req
 			req.setAttribute("area", guideArea);
-			String url = "/front-end/guide/listAreaGuide.jsp";
+			String url = "/front_end/guide/listAreaGuide.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交
 			successView.forward(req, res);
 		}

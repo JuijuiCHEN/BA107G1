@@ -17,6 +17,8 @@ public class LineBotService {
 	private final String VOTE = new StringBuilder().appendCodePoint(0x100033).toString();
 	private final String DOWN = new StringBuilder().appendCodePoint(128071).toString();
 	private final String[] EMOJI = { MON_TOU_SHIN, JU_YI, TU_TU_KISS, DUCK, SHINY, VOTE };
+	// private static final String GOOGLE_SHORTEN_URL =
+	// "https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyAvP4TaCtLH52gW7wQJgR4Hjbi6jFMSELk";
 
 	private GuideDAO_interface guideDao;
 
@@ -66,4 +68,43 @@ public class LineBotService {
 		return returnJson;
 
 	}
+
+	// public static String shortURL(String longURL) {
+	// String shortURL = "";
+	// HttpsURLConnection con = null;
+	// try {
+	// Map<String, String> valueMap = new HashMap<>();
+	// valueMap.put("longUrl", longURL);
+	// String requestBody = new JSONSerializer().serialize(valueMap);
+	// con = (HttpsURLConnection) new URL(GOOGLE_SHORTEN_URL).openConnection();
+	// con.setDoOutput(true);
+	// con.setDoInput(true);
+	// con.setRequestMethod("POST");
+	// con.setRequestProperty("Content-Type", "application/json");
+	// con.getOutputStream().write(requestBody.getBytes());
+	// if (con.getResponseCode() == 200) {
+	// StringBuilder sb = new StringBuilder();
+	// try (BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+	// String line;
+	// while ((line = br.readLine()) != null) {
+	// sb.append(line);
+	// }
+	// Map<String, String> map = new JSONDeserializer<Map<String,
+	// String>>().deserialize(sb.toString());
+	//
+	// if (map != null && StringUtils.isNotEmpty(map.get("id"))) {
+	// shortURL = map.get("id");
+	// return shortURL;
+	// }
+	// } catch (IOException e) {
+	// e.printStackTrace();
+	// }
+	// }
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// }
+	// return shortURL;
+	//
+	// }
+
 }

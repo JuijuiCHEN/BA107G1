@@ -27,4 +27,8 @@ public class GuideCommService {
 		guideCommDao.insert(guideCommVO);
 	}
 
+	public GuideCommVO getOne(String commId) {
+		return guideCommDao.findByPrimaryKey(commId);
+	}
+
 }

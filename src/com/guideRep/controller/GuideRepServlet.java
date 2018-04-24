@@ -58,7 +58,7 @@ public class GuideRepServlet extends HttpServlet {
 				/*************************** 其他可能的錯誤處理 **********************************/
 			} catch (Exception e) {
 				e.printStackTrace();
-				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/guide/xxx.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/guide/xxx.jsp");
 				failureView.forward(req, res);
 			}
 		} else if ("update".equals(action)) { // V

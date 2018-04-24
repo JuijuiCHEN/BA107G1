@@ -106,7 +106,7 @@ public class GuideCommServlet extends HttpServlet {
 					errorMsgs.add("請輸入指南編號");
 				}
 				if (!errorMsgs.isEmpty()) {
-					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/select_page.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/front_end/select_page.jsp");
 					failureView.forward(req, res);
 					return;// 程式中斷
 				}
@@ -118,20 +118,22 @@ public class GuideCommServlet extends HttpServlet {
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/select_page.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/front_end/select_page.jsp");
 					failureView.forward(req, res);
 					return;// 程式中斷
 				}
 
 				// 開始查資料
-				GuideCommDAO dao = new GuideCommDAO();
-				GuideCommVO guideCommVO = dao.findByPrimaryKey(commId);
+
+				GuideCommService commSvc = new GuideCommService();
+				GuideCommVO guideCommVO = commSvc.getOne(commId);
+
 				if (commId == null) {
 					errorMsgs.add("查無資料");
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/select_page.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/front_end/select_page.jsp");
 					failureView.forward(req, res);
 					return;// 程式中斷
 				}
@@ -145,7 +147,7 @@ public class GuideCommServlet extends HttpServlet {
 
 			} catch (Exception e) {
 				errorMsgs.add("無法取得資料:" + e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/select_page.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/select_page.jsp");
 				failureView.forward(req, res);
 
 			}
@@ -167,7 +169,7 @@ public class GuideCommServlet extends HttpServlet {
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/select_page.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/front_end/select_page.jsp");
 					failureView.forward(req, res);
 					return;// 程式中斷
 				}
@@ -179,7 +181,7 @@ public class GuideCommServlet extends HttpServlet {
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/select_page.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/front_end/select_page.jsp");
 					failureView.forward(req, res);
 					return;// 程式中斷
 				}
@@ -192,13 +194,13 @@ public class GuideCommServlet extends HttpServlet {
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/guide/listGuideComm.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/front_end/guide/listGuideComm.jsp");
 					failureView.forward(req, res);
 					return;// 程式中斷
 				}
 				/*************************** 3.查詢完成,準備轉交(Send the Success view) *************/
 				req.setAttribute("guideCommlist", guideCommlist); // 資料庫取出的guideVO物件,存入req
-				String url = "/front-end/guide/liseAreaGuide.jsp";
+				String url = "/front_end/guide/liseAreaGuide.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交
 				successView.forward(req, res);
 				/*************************** 其他可能的錯誤處理 *************************************/
@@ -206,7 +208,7 @@ public class GuideCommServlet extends HttpServlet {
 				System.out.println("發生錯誤");
 				e.printStackTrace();
 				errorMsgs.add("無法取得資料:" + e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/select_page.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/select_page.jsp");
 				failureView.forward(req, res);
 			}
 
