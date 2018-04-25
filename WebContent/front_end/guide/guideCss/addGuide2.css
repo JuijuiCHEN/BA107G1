@@ -4146,7 +4146,8 @@ h3.no-margin-padding {
 }
 
 .landing__left-col-content {
-    max-width: 470px
+    max-width: 470px;
+    float:right;
 }
 
 @media (max-width: 743px) {

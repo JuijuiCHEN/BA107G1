@@ -120,8 +120,14 @@
 	background-color: transparent !important;
 	color: buttontext !important;
 	border: 0px !important;
-	display: block !important;
+/* 	display: block !important; */
 }
+
+._1rp5252:hover{
+	color: #2076b7 !important;
+	text-decoration: underline !important;
+}
+
 
 ._1rp5252:active {
 	outline: 0px !important;
@@ -253,7 +259,7 @@ to {
 	padding-left: 12px !important;
 	padding-right: 12px !important;
 	float: left !important;
-	width: 71.5% !important;
+	
 }
 
 ._33hj8bi {
@@ -483,16 +489,12 @@ to {
 	font-weight: 700;
 }
 </style>
-
-
 <style>
 #map {
-	height: 350px;
+	height: 400px;
 	width: 100%;
 }
 </style>
-
-
 <style>
 p a {
 	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
@@ -534,14 +536,11 @@ p a.button2:hover {
 }
 </style>
 </head>
-<body>
+<body style="font-weight: normal">
  <jsp:include page="/front_end/basic/nav.jsp" flush="true"/>
- <link
-	href="<%=request.getContextPath()%>/front_end/guide/guideCss/style.css"
-	media="all" rel="stylesheet" type="text/css">
-<link
-	href="<%=request.getContextPath()%>/front_end/guide/guideCss/style4.css"
-	media="screen" rel="stylesheet" type="text/css">
+ <link href="<%=request.getContextPath()%>/front_end/guide/guideCss/style.css" media="all" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/front_end/guide/guideCss/style4.css" media="screen" rel="stylesheet" type="text/css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<div style="padding-top: 120px">
 		<div class="col-lg-1"></div>
 		<div id="main-hero-content" class="col-lg-5 col-sm-12 page-container-responsive">
@@ -630,14 +629,16 @@ p a.button2:hover {
 				<div class="_1pq2f04">
 					<div id="map"></div>
 				</div>
+				<BR>
+				<BR>
 			</div>
 		</div>
 		<div class="col-lg-5 col-sm-12">
 		<div class="col-lg-12 col-sm-12 page-container-responsive">
 				<div class="col-lg-12 _39300i" style="padding:0px">
 					<div class="" >
-						<div class="col-sm-12 _1sc94wj0">
-							<div class=" _10rdc6v carousel slide" id="myCarousel"
+						<div class="col-sm-12">
+							<div class=" carousel slide" id="myCarousel"
 								data-ride="carousel">
 								<div class="_1kkopm5">
 
@@ -684,16 +685,13 @@ p a.button2:hover {
 										</div>
 
 										<!-- Left and right controls -->
-										<a class="left carousel-control"
-											style="background-image: none;" href="#myCarousel"
-											data-slide="prev"> <span
-											class="glyphicon glyphicon-chevron-left"></span> <span
-											class="sr-only">Previous</span>
-										</a> <a class="right carousel-control"
-											style="background-image: none;" href="#myCarousel"
-											data-slide="next"> <span
-											class="glyphicon glyphicon-chevron-right"></span> <span
-											class="sr-only">Next</span>
+										<a class="left carousel-control" style="background-image: none;" href="#myCarousel" data-slide="prev"> 
+											<span class="glyphicon glyphicon-chevron-left"></span>
+											<span class="sr-only">Previous</span>
+										</a> 
+										<a class="right carousel-control" style="background-image: none;" href="#myCarousel" data-slide="next"> 
+											<span class="glyphicon glyphicon-chevron-right"></span> 
+											<span class="sr-only">Next</span>
 										</a>
 									</div>
 								</div>
@@ -739,7 +737,7 @@ p a.button2:hover {
 									
 									<%if(guideVO.getMemId().equals(memId)){ %>
 									<div class="_9kqfyx">
-										<form METHOD="post" ACTION="<%=request.getContextPath()%>/guide/guide.do" style="margin-bottom: 0px;">
+										<form METHOD="post" ACTION="<%=request.getContextPath()%>/guide.do" style="margin-bottom: 0px;">
 											<button type="submit" class="_1rp5252"
 												style="padding: 0; margin: 0" aria-busy="false">
 												<p>
@@ -762,11 +760,6 @@ p a.button2:hover {
 	</div>
 	</div>
 	
-	<BR>
-	<BR>
-	<BR>
-	<BR>
-
 
 	<!-- 查看留言跳窗開始 -->
 	<div class="modal fade" id="myModal" role="dialog">
@@ -817,13 +810,10 @@ p a.button2:hover {
 																	href="/users/show/9129703"> <span>
 																	
 																	【<%=memCommVO.getMem_name()%>】
-																	
 																	</span>
 																</a>
 
 																</a>
-
-																<div class="_9kqfyx">
 																	<button type="button" class="_1rp5252"
 																		style="margin-bottom: ); margin-left: 400px;"
 																		aria-busy="false">
@@ -831,9 +821,6 @@ p a.button2:hover {
 																		 <span class="far fa-frown fa-lg"></span>檢舉留言
 																		</p>
 																	</button>
-																</div>
-
-
 															</div>
 														</div>
 														<%
@@ -883,8 +870,7 @@ p a.button2:hover {
 													<form METHOD="post" action="<%=request.getContextPath()%>/guideComm/guideComm.do" id="sub">
 														<div class="commcon">
 															<div>
-																<textarea name="commContent" class="form-control"
-																	placeholder="輸入留言內容" autocomplete="off" rows="5"></textarea>
+																<textarea name="commContent" class="form-control" placeholder="輸入留言內容" autocomplete="off" rows="5"></textarea>
 																<input type="hidden" name="guideId"
 																	value="${guideVO.guideId}"> <input
 																	type="hidden" name="memId" value="<%=memId %>"> <input

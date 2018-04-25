@@ -9,7 +9,7 @@ import com.guide.model.GuideDAO_interface;
 import com.guide.model.GuideVO;
 
 public class LineBotService {
-	private final String NGROK = "c5682761.ngrok.io";
+	private final String NGROK = "https://91358ff0.ngrok.io";
 	private final String URL = "https://api.line.me/v2/bot/message/reply";
 	private final String MON_TOU_SHIN = new StringBuilder().appendCodePoint(0x100078).toString();
 	private final String JU_YI = new StringBuilder().appendCodePoint(0x100035).toString();
@@ -19,8 +19,6 @@ public class LineBotService {
 	private final String VOTE = new StringBuilder().appendCodePoint(0x100033).toString();
 	private final String DOWN = new StringBuilder().appendCodePoint(128071).toString();
 	private final String[] EMOJI = { MON_TOU_SHIN, JU_YI, TU_TU_KISS, DUCK, SHINY, VOTE };
-	// private static final String GOOGLE_SHORTEN_URL =
-	// "https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyAvP4TaCtLH52gW7wQJgR4Hjbi6jFMSELk";
 
 	private GuideDAO_interface guideDao;
 
@@ -75,14 +73,15 @@ public class LineBotService {
 
 	}
 
+	// 縮網址
 	public static String shortURL(String longURL) {
-		String jsonStr = "{\"longUrl\": \"" + longURL + "\"}";
+		String jsonStr = "{\"longUrl\": \"" + longURL + "\"}"; // 設定長網址json
 		String returnMsg = HttpClientUtil.postHttpsForJsonparamGoogle(jsonStr);
 		System.out.println(returnMsg);
 		Map map = JSON.parseObject(returnMsg, Map.class);
 		System.out.println("Map" + map);
 		if (!"".equals(map.get("id"))) {
-			return longURL;
+			return (String) map.get("id");
 		} else {
 			return longURL;
 		}

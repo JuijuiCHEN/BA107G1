@@ -34,8 +34,8 @@ public class GuideRepService {
 
 		GuideVO guideVO = new GuideVO();
 		guideVO.setGuideId(guideId);
-		if (guideRepStatus == 3) {
-			guideVO.setGuideStatus(1);
+		if (guideRepStatus == 3) { // 如果檢舉狀態為有效
+			guideVO.setGuideStatus(1); // 文章狀態
 		} else {
 			guideVO.setGuideStatus(2);
 		}

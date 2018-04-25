@@ -1,5 +1,9 @@
+<%@page import="com.guide.model.GuideVO"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%String memId = (String)session.getAttribute("memId"); %>
+
+<%GuideVO guideVO = (GuideVO) request.getAttribute("guideVO"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +13,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 body {
-	background-image: url(http://p1.pichost.me/i/11/1344899.jpg);
-	background-size: cover;
-	background-repeat: no-repeat;
 	font-family: Arial, sans-serif;
 	font-weight: bold;
 	font-size: 14px;
@@ -718,11 +719,17 @@ background-color: #fff;
 </style>
 
 </head>
-
-
 <body>
- 
- <link href="<%=request.getContextPath()%>/front_end/guide/guideCss/addGuide1.css" media="all" rel="stylesheet" type="text/css">
+<%-- 錯誤表列 --%>
+<c:if test="${not empty errorMsgs}">
+	<font color='red'>請修正以下錯誤:</font>
+	<ul>
+		<c:forEach var="message" items="${errorMsgs}">
+			<li style="color:red">${message}</li>
+		</c:forEach>
+	</ul>
+</c:if>
+<link href="<%=request.getContextPath()%>/front_end/guide/guideCss/addGuide1.css" media="all" rel="stylesheet" type="text/css">
 <link href="<%=request.getContextPath()%>/front_end/guide/guideCss/addGuide2.css" media="screen" rel="stylesheet" type="text/css">
  <jsp:include page="/front_end/basic/nav.jsp" flush="true"/>
 	<main id="site-content" role="main" tabindex="-1">
@@ -731,9 +738,9 @@ background-color: #fff;
 			data-hypernova-id="2a3b37d8-d154-4f9c-b90a-5f03110dcc60">
 			<div data-reactroot>
 				<div>
-					<div class="bg-white">
+					<div class="bg-white" style="padding-top:90px">
 						<div>
-							<div class="landing-width bg-white row row-condensed list-your-space__landing-content" style="padding-top:100px">
+							<div class="bg-white row row-condensed list-your-space__landing-content">
 								<span>
 									<div class="col-md-6 landing__left-col fast-animation">
 										<div class="landing__left-col-content">
@@ -756,7 +763,8 @@ background-color: #fff;
 														<div class="earning-estimation__body">
 															<div class="row row-condensed space-1">
 																<div class="col-sm-10">
-																	<input name="guideTitle" type="text" class="form-control" placeholder="桃園市大溪老街" autocomplete="off">
+																	<input name="guideTitle" type="text" class="form-control" placeholder="桃園市大溪老街" autocomplete="off" style="margin-left:10px;margin-top:10px">
+																	<input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"> <!--接收原送出修改的來源網頁路徑後,再送給Controller準備轉交之用-->
 																	<input type="hidden" name="memId" value="<%=memId%>">
 																</div>
 
@@ -764,7 +772,7 @@ background-color: #fff;
 														</div>
 													</div>
 													<div
-														style="margin-top: 20%; margin-bottom: 28px; margin-right: 50%;">
+														style="margin-top: 25%; margin-bottom: 28px; margin-right: 50%;">
 														<div class="wrap">
 															<div>
 																<a class="button" id="keep" aria-busy="false">繼續</a>
@@ -775,6 +783,7 @@ background-color: #fff;
 												</form>
 											</div>
 										</div>
+									
 									</div>
 								</span>
 								<div class="col-md-5 landing__right-col">
@@ -981,7 +990,11 @@ background-color: #fff;
 </body>
 </html>
 <script>
+
+
+
 	document.getElementById("keep").onclick = function() {
-		document.getElementById("titleKeep").submit();
+	document.getElementById("titleKeep").submit();
+	
 	}
 </script>

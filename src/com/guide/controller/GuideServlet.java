@@ -48,30 +48,30 @@ public class GuideServlet extends HttpServlet {
 		if ("insert".equals(action)) { // 來自addGuide.jsp的請求
 			List<String> errorMsgs = new LinkedList<String>();
 			req.setAttribute("errorMsgs", errorMsgs);
+			String requestURL = req.getParameter("requestURL"); // 送出新增的來源網頁路徑
 
 			try {
 				/*********************** 1.接收請求參數 - 輸入格式的錯誤處理 *************************/
-
 				// req取得資料
 				String memId = req.getParameter("memId");
 				String guideTitle = req.getParameter("guideTitle").trim();
 				if (guideTitle == null || guideTitle.trim().length() == 0) {
-					errorMsgs.add("文章標題: 請勿空白");
+					errorMsgs.add("指南標題: 請勿空白");
 				}
 
 				String guideContent = req.getParameter("guideContent").trim();
 				if (guideContent == null || guideContent.trim().length() == 0) {
-					errorMsgs.add("文章內容: 請勿空白");
+					errorMsgs.add("指南內容: 請勿空白");
 				}
 
 				String guideArea = req.getParameter("guideArea").trim();
 				if (guideArea == null || guideArea.trim().length() == 0) {
-					errorMsgs.add("文章地區: 請勿空白");
+					errorMsgs.add("指南地區: 請選擇地區");
 				}
 
 				String guideMap = req.getParameter("guideMap").trim();
 				if (guideMap == null || guideMap.trim().length() == 0) {
-					errorMsgs.add("文章地址: 請勿空白");
+					errorMsgs.add("指南地址: 請填入地址");
 				}
 				System.out.println(guideArea);
 				System.out.println(guideMap);
@@ -91,7 +91,7 @@ public class GuideServlet extends HttpServlet {
 
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("guideVO", guideVO); // 含有輸入格式錯誤的guideVO物件,也存入req
-					RequestDispatcher failureView = req.getRequestDispatcher("/front_end/guide/addGuide.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher(requestURL);
 					failureView.forward(req, res);
 					return;
 				}
@@ -104,6 +104,9 @@ public class GuideServlet extends HttpServlet {
 				if (!fsaveDirectory.exists())
 					fsaveDirectory.mkdirs(); // 於ContextPath之下,自動建立目的目錄
 				Collection<Part> parts = req.getParts();
+				if (parts == null || parts.size() == 0) {
+					errorMsgs.add("指南圖片: 請選擇圖片");
+				}
 				System.out.println("partsSize: " + parts.size());
 
 				// new一個List裝全部圖片,要送去service新增用的
@@ -133,7 +136,7 @@ public class GuideServlet extends HttpServlet {
 				}
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("guideImgVO", guideImgVO); // 含有輸入格式錯誤的guideImgVO物件,也存入req
-					RequestDispatcher failureView = req.getRequestDispatcher("aaa.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher(requestURL);
 					failureView.forward(req, res);
 					return;
 				}
@@ -149,7 +152,7 @@ public class GuideServlet extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/guide/錯誤.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher(requestURL);
 				failureView.forward(req, res);
 			}
 

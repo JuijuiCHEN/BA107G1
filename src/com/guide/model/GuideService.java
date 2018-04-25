@@ -133,15 +133,13 @@ public class GuideService {
 		List<String> indexTemplate = new ArrayList<String>();
 		List<String> guideAreaList = guideDAO.getAllArea(); // 拿到所有不重複地區
 		System.out.println(guideAreaList);
-		// 迴圈跑所有(不重複)地區, 拿到各地區最高訪問量那一篇的第一個欄位(欄位包含訪問量.地區.第一章圖片id), add進guideIndexVOList
-		for (int i = 0; i < guideAreaList.size(); i++) {
-			// 是大的還是小的
-			String template = TEMPLATEARR[i % 10];
-			Boolean next = true;
-			// 如果是最後一個必然要div結尾
+		for (int i = 0; i < guideAreaList.size(); i++) { // 迴圈跑所有(不重複)地區
+			String template = TEMPLATEARR[i % 10]; // 指定為大圖或小圖
+			Boolean next = true; // 如果是最後一個必然要div結尾
 			if (i == guideAreaList.size() - 1) {
 				next = false;
 			}
+			// 拿到各地區最高訪問量那一篇的第一個欄位(訪問量.圖片id), add進guideIndexVOList
 			indexTemplate.add(atuoHtml(guideDAO.getGuideIndexVO(guideAreaList.get(i)), template, contextPath, next));
 		}
 		return indexTemplate;
@@ -156,7 +154,7 @@ public class GuideService {
 			areaUrl = "";
 		}
 		if (template.equals("big")) {
-			result = "<div class=\"col-md-6\">" + "<div class=\"col-md-12 space-2\">"
+			result = "<div class=\"col-md-6\">" + "<div class=\"col-md-12\">"
 					+ "<div class=\"guidebook-menu__card guidebook-index-page__card\">"
 					+ "<div class=\"guidebook-nav-card responsive-large\"" + "style=\"background-image: url("
 					+ contextPath + "/guideImg.do?action=getOne_For_Display&guideImgId=" + guideIndexVO.getGuideImgId()

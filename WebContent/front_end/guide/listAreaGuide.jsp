@@ -53,7 +53,7 @@
 							<span>${area}攻略大全</span>
 						</h1>
 						<h4 class="guidebook-new-guest-page__introduction">
-							<span>由Anti-G會員編寫推薦的獨家指南，所有好去處一覽無遺，來探索您在這座城市的新故事吧。</span>
+							<span>由Anti-Gravity會員編寫推薦的獨家指南，所有好去處一覽無遺，來探索您在這座城市的新故事吧。</span>
 						</h4>
 						
 					<h3 class="guidebook-new-guest-page__best-of-best">
@@ -84,7 +84,7 @@
 									<a id="aTitle" href="<%=request.getContextPath()%>/guide.do?action=updateRead&guideReadSize=<%=areaGuideList.get(i).getGuideReadSize()%>&guideId=<%=areaGuideList.get(i).getGuideId()%>"><%=areaGuideList.get(i).getGuideTitle()%></a>
 								</h3>
 								<input type="hidden" name="memId" value="<%=memId%>">
-								<p>撰寫時間: <fmt:formatDate value="<%=areaGuideList.get(i).getGuideCreateTime()%>" pattern="yyyy-MM-dd"/></p>
+								<p style="font-weight: normal">撰寫時間: <fmt:formatDate value="<%=areaGuideList.get(i).getGuideCreateTime()%>" pattern="yyyy-MM-dd"/></p>
 							</div>
 							<div class="guidebook-place-recommendation__frame">
 								<div>
@@ -103,20 +103,21 @@
 									commStr = commList.get(j).getCommContent();
 									oneComm = commStr.substring(0,commStr.length()/2);
 								%>	
-								<p class="guidebook-place-recommendation__description"><%=oneComm %>...
+								<p class="guidebook-place-recommendation__description" style="font-size:12px;"><%=oneComm %>...
 									<a href="<%=request.getContextPath()%>/guide.do?action=getOne&guideId=<%=areaGuideList.get(i).getGuideId()%>" data-prevent-default="true" class="guidebook-place-recommendation__link">&nbsp;
 										<span>閱讀更多</span>
 									</a>
 								</p>
-								<div>
+								<div style="margin-bottom:15px;">
 									<div class="guidebook-place-recommendation__host-profile-image">
 										<img src="https://a0.muscache.com/im/pictures/user/50428979-3e0f-407b-a968-5a5ef695e9fc.jpg?aki_policy=profile_small" alt="Leslie"
 										    class="media-photo media-round" style="height:32px;width:32px">
 									</div>
-									<a href="/things-to-do/rooms/4365969" data-prevent-default="true" class="guidebook-place-recommendation__host-guidebook-link">
+									<a href="/things-to-do/rooms/4365969" data-prevent-default="true" class="guidebook-place-recommendation__host-guidebook-link" style="font-size:14px;">
 										<span>來自【<%=memCommVO.getMem_name()%>】的留言</span>
 									</a>
 								</div>
+								
 								<%} %>
 							</div>
 						</div>

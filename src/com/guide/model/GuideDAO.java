@@ -20,7 +20,7 @@ public class GuideDAO implements GuideDAO_interface {
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/AntiDB");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/BA107G1");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -39,9 +39,7 @@ public class GuideDAO implements GuideDAO_interface {
 	private static final String GET_ALL_AREA = "SELECT DISTINCT GUIDE_AREA FROM GUIDE";
 
 	// 取得單一地區文章訪問量, 由高到低排序
-	private static final String GET_MSOT_READ_SIZE_BY_AREA = "SELECT GI.G_IMG_ID, GU.GUIDE_READ_SIZE FROM GUIDE GU LEFT JOIN GD_IMG GI "
-			+ "ON GU.GUIDE_ID = GI.GUIDE_ID " + "WHERE GU.GUIDE_AREA = ? "
-			+ " AND GI.G_IMG_ID IS NOT NULL ORDER BY GU.GUIDE_READ_SIZE DESC";
+	private static final String GET_MSOT_READ_SIZE_BY_AREA = "SELECT GI.G_IMG_ID, GU.GUIDE_READ_SIZE FROM GUIDE GU LEFT JOIN GD_IMG GI ON GU.GUIDE_ID = GI.GUIDE_ID WHERE GU.GUIDE_AREA = ? AND GI.G_IMG_ID IS NOT NULL ORDER BY GU.GUIDE_READ_SIZE ASC";
 
 	// 取得單一地區所有文章列表
 	private static final String GET_ALL_GUIDE_FROM_AREA = "SELECT GUIDE_AREA,GUIDE_ID,MEM_ID,GUIDE_TITLE,GUIDE_CONTENT,GUIDE_CREATE_TIME,GUIDE_READ_SIZE,GUIDE_COMM_SIZE,GUIDE_VOTE_SIZE,GUIDE_STATUS,GUIDE_LAT_LNG FROM GUIDE WHERE GUIDE_AREA=?";
@@ -407,14 +405,19 @@ public class GuideDAO implements GuideDAO_interface {
 		try {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(GET_MSOT_READ_SIZE_BY_AREA);
-			pstmt.setString(1, guideArea); // 拿到一個地區
-			rs = pstmt.executeQuery();
+			pstmt.setString(1, guideArea);
+			rs = pstmt.executeQuery(); // 拿到一個地區
 			guideIndexVO = new GuideIndexVO();
 			while (rs.next()) { // 拿到訪問量最高的單一地區文章圖片id
 				guideIndexVO.setGuideArea(guideArea);
 				guideIndexVO.setGuideImgId(rs.getString("G_IMG_ID"));
-				guideIndexVO.setGuideReadSize(rs.getString("GUIDE_READ_SIZE"));
+				guideIndexVO.setGuideReadSize(rs.getInt("GUIDE_READ_SIZE"));
 			}
+			// while (rs.next()) { // 拿到訪問量最高的單一地區文章圖片id
+			// guideIndexVO.setGuideArea(guideArea);
+			// guideIndexVO.setGuideImgId(rs.getString("G_IMG_ID"));
+			// guideIndexVO.setGuideReadSize(rs.getInt("GUIDE_READ_SIZE"));
+			// }
 		} catch (SQLException se) {
 			throw new RuntimeException("資料庫錯誤 : " + se.getMessage());
 			// Clean up JDBC resources

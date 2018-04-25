@@ -5,7 +5,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +13,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
         body {
-            background-image: url(http://p1.pichost.me/i/11/1344899.jpg);
-            background-size: cover;
-            background-repeat: no-repeat;
             font-family: Arial, sans-serif;
             font-weight: bold;
             font-size: 14px;
@@ -701,8 +697,6 @@ background-color: #fff;
 }
  </style>
 </head>
-
-
 <body>
 <link href="<%=request.getContextPath()%>/front_end/guide/guideCss/addGuide1.css" media="all" rel="stylesheet" type="text/css">
 <link href="<%=request.getContextPath()%>/front_end/guide/guideCss/addGuide2.css" media="screen" rel="stylesheet" type="text/css">
@@ -712,9 +706,9 @@ background-color: #fff;
             <div data-hypernova-key="list_your_spacebundlejs" data-hypernova-id="2a3b37d8-d154-4f9c-b90a-5f03110dcc60">
                 <div data-reactroot>
                     <div>
-                        <div class="bg-white" style="padding-top:100px">
+                        <div class="bg-white" style="padding-top:90px">
                             <div>
-                                <div class="landing-width bg-white row row-condensed list-your-space__landing-content">
+                                <div class="bg-white row row-condensed list-your-space__landing-content" >
                                     <span>
                                         <div class="col-md-6 landing__left-col fast-animation">
                                             <div class="landing__left-col-content">
@@ -735,7 +729,7 @@ background-color: #fff;
                                                             <div class="earning-estimation__body">
                                                                 <div class="row row-condensed space-1">
                                                                     <div class="col-sm-12">
-                                                                        <textarea name="guideContent" class="form-control" rows="10" autocomplete="off"></textarea>
+                                                                        <textarea name="guideContent" class="form-control" rows="10" autocomplete="off" style="margin-left:10px;"></textarea>
                                                                          <input type="hidden" name="memId" value="<%=memId%>">
                                                                          <input type="hidden" name="guideTitle" value="<%=guideTitle%>">
                                                                     </div>

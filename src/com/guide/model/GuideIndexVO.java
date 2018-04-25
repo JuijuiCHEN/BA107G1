@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class GuideIndexVO implements Serializable {
 	private String guideImgId;
 	private String guideArea;
-	private String guideReadSize;
+	private Integer guideReadSize;
 
 	public String getGuideImgId() {
 		return guideImgId;
@@ -24,11 +24,11 @@ public class GuideIndexVO implements Serializable {
 		this.guideArea = guideArea;
 	}
 
-	public String getGuideReadSize() {
+	public Integer getGuideReadSize() {
 		return guideReadSize;
 	}
 
-	public void setGuideReadSize(String guideReadSize) {
+	public void setGuideReadSize(Integer guideReadSize) {
 		this.guideReadSize = guideReadSize;
 	}
 

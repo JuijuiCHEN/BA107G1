@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="utf-8">
 <style type="text/css">
 .pac-container {
@@ -204,14 +205,13 @@
             text-align: center;
         }
 
-        a {
+        .wrap a {
             -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
             -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
             -ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
             -o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
             transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
             display: block;
-            /* margin: 20px auto; */
             max-width: 180px;
             text-decoration: none;
             border-radius: 4px;
@@ -240,22 +240,22 @@
     </style>
 
 <link
-	href="<%=request.getContextPath()%>/front-end/guide/guideCss/update1.css"
+	href="<%=request.getContextPath()%>/front_end/guide/guideCss/update1.css"
 	media="all" rel="stylesheet" type="text/css">
 <link
-	href="<%=request.getContextPath()%>/front-end/guide/guideCss/style2.css"
+	href="<%=request.getContextPath()%>/front_end/guide/guideCss/style2.css"
 	media="all" rel="stylesheet" type="text/css">
 
 <link
-	href="<%=request.getContextPath()%>/front-end/guide/guideCss/addGuide2.css"
+	href="<%=request.getContextPath()%>/front_end/guide/guideCss/addGuide2.css"
 	media="screen" rel="stylesheet" type="text/css">
 <title>Anti-G旅遊指南</title>
 
+ <jsp:include page="/front_end/basic/nav.jsp" flush="true"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 </head>
 
 <body>
- <jsp:include page="/front_end/basic/nav.jsp" flush="true"/>
 	<main id="site-content" role="main" tabindex="-1">
 	<meta name="pinterest" content="nopin">
 	<div id="lys-redesign-div">	
@@ -264,126 +264,68 @@
 			<div data-reactroot="">
 				<div>
 					<div class="list-your-space__progress">
-						<div class="left-backdrop"></div>
-						<div
-							class="right-backdrop hide-sm bg-white right-backdrop--with-bg"></div>
 						<div class="list-your-space__content">
-							<div class="centered-content clearfix">
-								
-									<div
-										class="main-panel-container no-padding-h bg-white main-panel-outer-half clearfix"
-										tabindex="-1">
-										<div
-											class="main-panel main-panel-padding main-panel-progress pull-right main-panel-inner-half space-sm-8">
-											<div class="_1mbllh6j">
-												<div class="_1vbkutid">編輯文章</div>
+							<div class="main-panel main-panel-progress space-sm-8" style="padding:30%;padding-top:30px;padding-bottom:0px;">
+								<div class="_1mbllh6j">
+									<h2 style="margin-bottom: 10px">編輯文章</h2>
+								</div>
+									<div>
+										<div class="row">
+											<form id="guideedit" METHOD="post" action="<%=request.getContextPath()%>/guide.do" >
+											<div class="space-top-2 col-sm-12 col-md-12">
+												<div style="margin-top: 10px;">
+													<div class="_1a3dnh4">
+														<div class="_9hxttoo">
+															<div style="margin-bottom: 8px;">
+																	<div class="_m2kx622">
+																		<h3>標題</h3>
+																	</div>
+															</div>
+															<div dir="ltr">
+																<input name="guideTitle" type="text" class="form-control" value="<%=guideVO.getGuideTitle()%>" autocomplete="off">
+															</div>
+														</div>
+													</div>
+												</div>
 											</div>
-											<div>
-												<div>
-												
-													<div class="row">
-														<form id="guideedit" METHOD="post" action="<%=request.getContextPath()%>/guide.do" >
-														<div class="space-top-2 col-sm-12 col-md-6">
-															<div style="margin-top: 8px;">
-																<div class="_1a3dnh4">
-																	<div class="_9hxttoo">
-																		<div style="margin-bottom: 8px;">
-																			<label class="_rin72m"
-																				for="address-form-field-zipcode"><div
-																					class="_m2kx622">
-																					<span>標題</span>
-																				</div></label>
-																		</div>
-																		<div dir="ltr">
-																			<div class="_buy62rq">
-																				<div class="_178faes">
-																					<input name="guideTitle" type="text" class="form-control" value="<%=guideVO.getGuideTitle()%>" autocomplete="off">
-																					
-																				</div>
-																			</div>
-																		</div>
+											<div class="space-top-2 col-sm-12">
+												<div style="margin-top: 10px;">
+													<div class="_1a3dnh4">
+														<div class="_9hxttoo">
+															<div style="margin-bottom: 8px;">
+																<div class="_m2kx622">
+																	<h3>內容</h3>
+																</div>
+															</div>
+															<div dir="ltr">
+																<div class="_buy62rq">
+																	<div class="_178faes">
+																	
+																		<textarea name="guideContent" class="form-control" rows="10" autocomplete="off"><%=guideVO.getGuideContent()%></textarea>
+																		<input type="hidden" name="guideId" value="<%=guideVO.getGuideId()%>">
+																		<input type="hidden" name="action" value="updateFront">
 																	</div>
 																</div>
 															</div>
 														</div>
-														
-														<div class="space-top-2 col-sm-12">
-															<div style="margin-top: 8px;">
-																<div class="_1a3dnh4">
-																	<div class="_9hxttoo">
-																		<div style="margin-bottom: 8px;">
-																			<label class="_rin72m"
-																				for="address-form-field-street"><div
-																					class="_m2kx622">
-																					<span>內容</span>
-																				</div></label>
-																		</div>
-																		<div dir="ltr">
-																			<div class="_buy62rq">
-																				<div class="_178faes">
-																				
-																					<textarea name="guideContent" class="form-control" rows="10" autocomplete="off"><%=guideVO.getGuideContent()%></textarea>
-																					<input type="hidden" name="guideId" value="<%=guideVO.getGuideId()%>">
-																					<input type="hidden" name="action" value="updateFront">
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														</form>
-													</div>
-													
-													<div style="margin-top: 20%; margin-right: 25%;">
-                                                        <div class="wrap">
-															<a class="button" id="guideCommit" aria-busy="false">送出編輯</a>
-                                                        </div>
-                                                    </div>
-												</div>
-											</div>
-											
-										</div>
-									
-										<div class="waypoint-container">
-											<span style="font-size: 0px;"></span>
-										</div>
-									</div>
-									<div class="help-panel-container">
-										<div class="hide-sm help-panel panel">
-											<div class="panel-body">
-												<div class="help-panel__bulb-img space-2"></div>
-												<div class="help-panel__text">
-													<div>
-														<p>
-															<span>我們只會將您的具體地址分享給已確認預訂的房客。</span>
-														</p>
-														<div class="tip-address-img"></div>
 													</div>
 												</div>
 											</div>
+											</form>
 										</div>
-										<div class="show-sm help-panel__floating-container">
-											<span class="tooltip-popup__transition-container"><button
-													class="help-panel--collapsed help-panel__bulb-img-bubble"
-													aria-label="了解詳情">
-													<div class="help-panel__bulb-img img-center"></div>
-												</button></span>
-										</div>
+										<div style="margin-top: 20%; margin-right: 25%;">
+                                           <div class="wrap">
+												<a class="button" id="guideCommit" aria-busy="false">送出編輯</a>
+                                           </div>
+                                        </div>
 									</div>
-								
 							</div>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	</main>
-
-
-
 </body>
 </html>
 

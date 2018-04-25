@@ -37,11 +37,12 @@ html, body {
  #pac-input { 
  	background-color: #fff; 
  	font-family: Roboto; 
- 	font-size: 15px; 
+ 	font-size: 14px; 
  	font-weight: 300; 
  	padding: 0 11px 0 13px; 
  	text-overflow: ellipsis; 
  	width: 300px; 
+ 	border-radius:4px;
  } 
 
 #pac-input:focus {
@@ -130,7 +131,7 @@ a.button2:hover {
 					<div class="landing-width bg-white  row-condensed list-your-space__landing-content">
 						<span>
 							<div class="col-md-6 landing__left-col fast-animation">
-								<div class="landing__left-col-content" style="margin-lefe:0px">
+								<div class="landing__left-col-content" style="float:none;" >
 									<div class="space-5">
 										<h2 class="landing__title-title">
 											<span>分享的旅程在哪個縣市 </span>
@@ -146,7 +147,8 @@ a.button2:hover {
 										</div>
 										<form role="form" action="<%=request.getContextPath() %>/front_end/guide/addGuideImg.jsp" class="earning-estimation-container" data-prevent-default="true" id="mapKeep">
  											<div class="form-group"> 
-												<select id="mySelect" name="guideArea" class="form-control">
+												<select id="mySelect" name="guideArea" class="form-control" style="width:250px;font-weight: normal">
+													<option>中壢</option>
 													<option>基隆</option>
 													<option>台北</option>
 													<option>新北</option>
@@ -181,7 +183,7 @@ a.button2:hover {
 							</span> 
 					
 						<span>
-							<div class="col-md-5">
+							<div class="col-md-6">
 								<div class="landing__left-col-content">
 									<div class="space-5">
 										<h2 class="landing__title-title">
@@ -194,11 +196,8 @@ a.button2:hover {
 										<div class="h3 landing__step-content-title space-3">
 											<span>請搜尋詳細地址</span>
 										</div>
-										
-										<div class="row">
-										 <div class="col-sm-10">
+										<div>
  										   <input type="text" class="form-control" id="pac-input" placeholder="請搜尋地址">
- 										 </div>
 										</div>
 										<br>
 										<div id="map"></div>

@@ -3853,7 +3853,7 @@ textarea {
 }
 
 select {
-    -webkit-appearance: none;
+/*     -webkit-appearance: none; */
     -moz-appearance: none;
     background: white\0 !important
 }

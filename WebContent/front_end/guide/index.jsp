@@ -73,8 +73,7 @@
 						<span>®È¹C«ü«n</span>
 					</h1>
 				</div>
-				<div
-					style="display: inline-block; vertical-align: top; text-align: right; float: right;">
+				<div style="display: inline-block; vertical-align: top; text-align: right; float: right;">
 					<span>
 						<div style="margin-top: 60%; margin-bottom: 28px;">
 							<div class="wrap">

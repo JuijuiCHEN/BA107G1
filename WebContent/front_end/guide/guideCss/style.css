@@ -319,7 +319,6 @@ html {
 
 body {
     font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
     line-height: 1.43;
     background-color: #fff !important;
     -webkit-font-smoothing: antialiased;
@@ -2449,7 +2448,7 @@ ol.panel-body>li>*:last-child {
     overflow-y: auto;
     -webkit-transform: translate3d(0, 0, 0);
     background-color: #f5f5f5;
-    background-color: rgba(0, 0, 0, 0.75)
+    background-color: rgba(255, 255, 255, 0.4)
 }
 
 .modal {

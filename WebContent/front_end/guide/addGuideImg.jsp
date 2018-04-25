@@ -20,9 +20,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 body {
-	background-image: url(http://p1.pichost.me/i/11/1344899.jpg);
-	background-size: cover;
-	background-repeat: no-repeat;
 	font-family: Arial, sans-serif;
 	font-weight: bold;
 	font-size: 14px;
@@ -168,7 +165,6 @@ a.button2:hover {
 	color: gray
 }
 </style>
-
 <style type="text/css">
 .fb_hidden {
 	position: absolute;
@@ -727,22 +723,19 @@ background-color: #fff;
  	width: 300px; 
 }
 </style>
-
 </head>
-
 <body>
 <link href="<%=request.getContextPath()%>/front_end/guide/guideCss/addGuide1.css" media="all" rel="stylesheet" type="text/css">
 <link href="<%=request.getContextPath()%>/front_end/guide/guideCss/addGuide2.css" media="screen" rel="stylesheet" type="text/css">
 <jsp:include page="/front_end/basic/nav.jsp" flush="true"/>
 	<main id="site-content" role="main" tabindex="-1">
 	<div id="lys-redesign-div">
-		<div data-hypernova-key="list_your_spacebundlejs"
-			data-hypernova-id="2a3b37d8-d154-4f9c-b90a-5f03110dcc60">
+		<div data-hypernova-key="list_your_spacebundlejs" data-hypernova-id="2a3b37d8-d154-4f9c-b90a-5f03110dcc60">
 			<div data-reactroot>
 				<div>
-					<div class="bg-white" style="padding-top:100px">
+					<div class="bg-white" style="padding-top:90px">
 						<div>
-							<div class="landing-width bg-white row row-condensed list-your-space__landing-content">
+							<div class="bg-white row row-condensed list-your-space__landing-content" >
 								<span>
 									<div class="col-md-6 landing__left-col fast-animation">
 										<div class="landing__left-col-content">

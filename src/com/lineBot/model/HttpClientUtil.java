@@ -19,16 +19,19 @@ public class HttpClientUtil {
 	private final static int DEFAULT_TIME_OUT = 30 * 1000;
 	private final static String access_token = "WoBvOdpaR8As2NevLHqrhlrU0qQ3GYjPZTqM91hYrboekarPXgZENd2D6Or+faeJCINpclVVjtz+loWJDmjqGtrCHYlyqEze+JNxq8LHf5c3O1bcm2IQTgey6EqM4Zfe3/cN3oybJB+JRjBqs1i5vgdB04t89/1O/w1cDnyilFU=";
 	private final static String GOOGLE_KEY = "AIzaSyAvP4TaCtLH52gW7wQJgR4Hjbi6jFMSELk";
-	private final static String GOOGLE_shorturl = "https://www.googleapis.com/urlshortener/v1/url";
+	private final static String GOOGLE_SHORTURL = "https://www.googleapis.com/urlshortener/v1/url";
 
 	public static String postHttpsForJsonparamGoogle(String jsonStr) {
 		HttpsURLConnection conn = null;
 		try {
-			SSLContext context = SSLContext.getInstance("SSL");
-			context.init(null, new TrustManager[] { new TrustAnyTrustManager() }, new SecureRandom());
-			URL curl = new URL(GOOGLE_shorturl + "?key=" + GOOGLE_KEY);
-			conn = (HttpsURLConnection) curl.openConnection();
-			conn.setSSLSocketFactory(context.getSocketFactory());
+			SSLContext context = SSLContext.getInstance("SSL"); // HTTP和HTTPS需要獲取SSL協議
+			context.init(null, new TrustManager[] { new TrustAnyTrustManager() }, new SecureRandom()); // 密鑰來源或null,
+																										 // 對等身份驗證信任決策的來源或null,
+																										 // 該生成器的隨機性來源或null
+			URL curl = new URL(GOOGLE_SHORTURL + "?key=" + GOOGLE_KEY); // 向google請求 + GOOGLEKEY
+			conn = (HttpsURLConnection) curl.openConnection(); // 開啟連線, 返回URLConnection
+			conn.setSSLSocketFactory(context.getSocketFactory()); // 從SSL.getSocketFactory(),
+																	 // 設定SSLSocketFactory
 			conn.setConnectTimeout(DEFAULT_TIME_OUT);
 			conn.setReadTimeout(DEFAULT_TIME_OUT);
 			conn.setDoInput(true);
