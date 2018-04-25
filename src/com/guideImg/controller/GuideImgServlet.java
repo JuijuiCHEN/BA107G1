@@ -52,11 +52,8 @@ public class GuideImgServlet extends HttpServlet {
 			try {
 				/*********************** 1.接收請求參數 - 輸入格式的錯誤處理 *************************/
 				String guideId = req.getParameter("guideId");
-
 				System.out.println("guideId =" + guideId);
-
 				GuideImgVO guideImgVO = null;
-
 				PrintWriter out = res.getWriter();
 				String realPath = getServletContext().getRealPath(saveDirectory);
 				File fsaveDirectory = new File(realPath);

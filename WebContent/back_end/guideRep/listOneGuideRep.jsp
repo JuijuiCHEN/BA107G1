@@ -4,6 +4,7 @@
 <%@page import="com.guideRep.model.GuideRepVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="com.mem.model.*"%>
 <%
 GuideRepVO guideRepVO = (GuideRepVO) request.getAttribute("guideRepVO");
@@ -67,9 +68,9 @@ main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4 {
 							<td width="100"><div align="center">®×¥óª¬ºA</div></td>
 						</tr>
 						<tr class="table-content">
-							<td><div align="center"><%=guideRepVO.getGuideRepDate()%></div></td>
+							<td><div align="center"><fmt:formatDate value="${guideRepVO.getGuideRepDate()}" pattern="yyyy-MM-dd HH:mm:ss"/></div></td>
 							<td><div align="center"><%=guideRepVO.getGuideRepId()%></div></td>
-							<td><div align="center"><%=guideRepVO.getGuideId()%></div></td>
+							<td><div align="center"><%=guideRepVO.getGuideId()%>¡i<%=guideVO.getGuideTitle()%>¡j</div></td>
 							<td><div align="center"><%=guideRepVO.getMemId()%> ¡i<%=memVO.getMem_name()%>¡j
 							</div></td>
 							

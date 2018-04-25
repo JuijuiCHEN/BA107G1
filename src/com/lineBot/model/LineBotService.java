@@ -1,13 +1,15 @@
 package com.lineBot.model;
 
 import java.util.List;
+import java.util.Map;
 
+import com.alibaba.fastjson.JSON;
 import com.guide.model.GuideDAO;
 import com.guide.model.GuideDAO_interface;
 import com.guide.model.GuideVO;
 
 public class LineBotService {
-	private final String NGROK = "398d422c.ngrok.io";
+	private final String NGROK = "c5682761.ngrok.io";
 	private final String URL = "https://api.line.me/v2/bot/message/reply";
 	private final String MON_TOU_SHIN = new StringBuilder().appendCodePoint(0x100078).toString();
 	private final String JU_YI = new StringBuilder().appendCodePoint(0x100035).toString();
@@ -46,8 +48,12 @@ public class LineBotService {
 			}
 			// 4.1組裝回傳給客戶訊息
 			for (int i = 0; i < count; i++) {
-				returnMsg = returnMsg + EMOJI[i] + areaGuideList.get(i).getGuideTitle() + DOWN + DOWN + "\\n" + NGROK
-						+ "/BA107G1/guide.do?action=getOne&guideId=" + areaGuideList.get(i).getGuideId() + "\\n";
+
+				String longUrl = NGROK + "/BA107G1/guide.do?action=getOne&guideId=" + areaGuideList.get(i).getGuideId();
+
+				String shortUrl = LineBotService.shortURL(longUrl);
+				returnMsg = returnMsg + EMOJI[i] + areaGuideList.get(i).getGuideTitle() + DOWN + DOWN + "\\n" + shortUrl
+						+ "\\n";
 			}
 		} else {
 			// 3.2不ok
@@ -69,42 +75,17 @@ public class LineBotService {
 
 	}
 
-	// public static String shortURL(String longURL) {
-	// String shortURL = "";
-	// HttpsURLConnection con = null;
-	// try {
-	// Map<String, String> valueMap = new HashMap<>();
-	// valueMap.put("longUrl", longURL);
-	// String requestBody = new JSONSerializer().serialize(valueMap);
-	// con = (HttpsURLConnection) new URL(GOOGLE_SHORTEN_URL).openConnection();
-	// con.setDoOutput(true);
-	// con.setDoInput(true);
-	// con.setRequestMethod("POST");
-	// con.setRequestProperty("Content-Type", "application/json");
-	// con.getOutputStream().write(requestBody.getBytes());
-	// if (con.getResponseCode() == 200) {
-	// StringBuilder sb = new StringBuilder();
-	// try (BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
-	// String line;
-	// while ((line = br.readLine()) != null) {
-	// sb.append(line);
-	// }
-	// Map<String, String> map = new JSONDeserializer<Map<String,
-	// String>>().deserialize(sb.toString());
-	//
-	// if (map != null && StringUtils.isNotEmpty(map.get("id"))) {
-	// shortURL = map.get("id");
-	// return shortURL;
-	// }
-	// } catch (IOException e) {
-	// e.printStackTrace();
-	// }
-	// }
-	// } catch (Exception e) {
-	// e.printStackTrace();
-	// }
-	// return shortURL;
-	//
-	// }
+	public static String shortURL(String longURL) {
+		String jsonStr = "{\"longUrl\": \"" + longURL + "\"}";
+		String returnMsg = HttpClientUtil.postHttpsForJsonparamGoogle(jsonStr);
+		System.out.println(returnMsg);
+		Map map = JSON.parseObject(returnMsg, Map.class);
+		System.out.println("Map" + map);
+		if (!"".equals(map.get("id"))) {
+			return longURL;
+		} else {
+			return longURL;
+		}
+	}
 
 }

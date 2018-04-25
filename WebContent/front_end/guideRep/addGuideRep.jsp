@@ -416,7 +416,7 @@ input[type="radio"]:disabled+.label-text:before {
 						<div>
 							<p>
 								<span>感謝您的意見，我們會審查遭檢舉的文章是否違反正常言論發表，累犯或情節重大者的帳戶甚至可能遭到終止。
-								。</span>
+								</span>
 							</p>
 							<div style="font-size:15px; color:#2076b7; padding-left:80px">
 							<span class="fas fa-child fa-7x"></span>

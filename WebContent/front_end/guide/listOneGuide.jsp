@@ -32,7 +32,6 @@
 	padding-top: 24px !important;
 	padding-bottom: 72px !important;
     padding-left: 15px !important;
-	
 }
 
 @media ( max-width : 743px) {

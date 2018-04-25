@@ -48,11 +48,12 @@ public class GuideCommDAO implements GuideCommDAO_interface {
 			pstmt.setString(2, guideCommVO.getMemId());
 			pstmt.setString(3, guideCommVO.getCommContent());
 			pstmt.setInt(4, 2);
-
 			pstmt.executeUpdate();
-
+			pstmt = con.prepareStatement("Update guide set GUIDE_COMM_SIZE = GUIDE_COMM_SIZE+1 where GUIDE_ID=?");
+			pstmt.setString(1, guideCommVO.getGuideId());
+			pstmt.executeUpdate();
 			// Handle any SQL errors
-		} catch (SQLException se) {
+		} catch (Exception se) {
 			throw new RuntimeException("¸ê®Æ®w¿ù»~" + se.getMessage());
 			// Clean up JDBC resources
 		} finally {
