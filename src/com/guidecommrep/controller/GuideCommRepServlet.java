@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.guidecommrep.model.GuideCommRepService;
 import com.guidecommrep.model.GuideCommRepVO;
 
+@WebServlet("/guidecommrep.do")
 public class GuideCommRepServlet extends HttpServlet {
 
 	@Override
@@ -106,33 +108,32 @@ public class GuideCommRepServlet extends HttpServlet {
 		}
 
 		if ("insert".equals(action)) {
+			System.out.println("111111");
 			List<String> errorMsgs = new LinkedList<String>();
 			req.setAttribute("errorMsgs", errorMsgs);
-
-			String requestURL = req.getParameter("requestURL");
-			System.out.println("送出修改的來源網頁路徑:" + requestURL);
+			// String requestURL = req.getParameter("requestURL");
+			// System.out.println("送出修改的來源網頁路徑:" + requestURL);
 
 			try {
 				// 接收請求參數
-				String comm_id = new String(req.getParameter("comm_id"));
 				String mem_id = new String(req.getParameter("mem_id"));
-				String guide_comm_rep_content = new String(req.getParameter("guide_comm_rep_content"));
+				String guideId = new String(req.getParameter("guideId"));
+				String comm_id = new String(req.getParameter("comm_id"));
+				String guide_comm_rep_content = new String(req.getParameter("radio").getBytes("ISO-8859-1"), "UTF-8");
 
 				if (guide_comm_rep_content == null || guide_comm_rep_content.trim().length() == 0) {
 					errorMsgs.add("請說明檢舉原因");
 				}
 
 				GuideCommRepVO guideCommRepVO = new GuideCommRepVO();
-				System.out.println("guideCommRepVO=" + guideCommRepVO);
-
-				guideCommRepVO.setG_comm_rep_id(comm_id);
+				guideCommRepVO.setComm_id(comm_id);
 				guideCommRepVO.setMem_id(mem_id);
 				guideCommRepVO.setGuide_comm_rep_content(guide_comm_rep_content);
 
 				// 其他錯誤處理
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("guideCommRepVO", guideCommRepVO);
-					RequestDispatcher failureView = req.getRequestDispatcher("requestURL");
+					RequestDispatcher failureView = req.getRequestDispatcher("xxx.jsp");
 					failureView.forward(req, res);
 					return;
 				}
@@ -140,14 +141,16 @@ public class GuideCommRepServlet extends HttpServlet {
 				// 開始新增資料
 				GuideCommRepService gcrSvc = new GuideCommRepService();
 				gcrSvc.addGuideCommRep(comm_id, mem_id, guide_comm_rep_content);
-
+				System.out.println("檢舉成功");
 				// 新增完成,準備轉交
-				RequestDispatcher successView = req.getRequestDispatcher(requestURL);
+				String url = "/guide/guide.do?action=getOne&guideId=" + guideId;
+				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
 
 			} catch (Exception e) {
+				e.printStackTrace();
 				errorMsgs.add("新增資料失敗" + e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher(requestURL);
+				RequestDispatcher failureView = req.getRequestDispatcher("zzz.jsp");
 				failureView.forward(req, res);
 			}
 		}

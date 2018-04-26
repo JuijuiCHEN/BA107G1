@@ -110,7 +110,7 @@
 								</p>
 								<div style="margin-bottom:15px;">
 									<div class="guidebook-place-recommendation__host-profile-image">
-										<img src="https://a0.muscache.com/im/pictures/user/50428979-3e0f-407b-a968-5a5ef695e9fc.jpg?aki_policy=profile_small" alt="Leslie"
+										<img src="<%=request.getContextPath()%>/guideImg.do?action=getOne_For_Display&guideImgId=<%=imgList.get(i).getGuideImgId()%>" alt="Leslie"
 										    class="media-photo media-round" style="height:32px;width:32px">
 									</div>
 									<a href="/things-to-do/rooms/4365969" data-prevent-default="true" class="guidebook-place-recommendation__host-guidebook-link" style="font-size:14px;">

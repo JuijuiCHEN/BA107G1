@@ -1,16 +1,18 @@
+<%@page import="com.guide.model.GuideVO"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%
 	String guideId = request.getParameter("guideId");
 	String memId = request.getParameter("memId");
+	String comm_id = request.getParameter("comm_id");
+	String requestURL = request.getParameter("requestURL");
 %>
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
-
 <style type="text/css">
 .pac-container {
 	background-color: #fff;
@@ -194,9 +196,6 @@
 </style>
 <style>
 body {
-	background-image: url(http://p1.pichost.me/i/11/1344899.jpg);
-	background-size: cover;
-	background-repeat: no-repeat;
 	font-family: Arial, sans-serif;
 	font-size: 14px;
 }
@@ -301,7 +300,6 @@ input[type="radio"]:disabled+.label-text:before {
 	display: none;
 }
 </style>
-<meta charset="utf-8">
 <link
 	href="<%=request.getContextPath()%>/front_end/guide/guideCss/update1.css"
 	media="all" rel="stylesheet" type="text/css">
@@ -331,8 +329,8 @@ input[type="radio"]:disabled+.label-text:before {
 							class="right-backdrop hide-sm bg-white right-backdrop--with-bg"></div>
 						<div class="list-your-space__content" style="padding-top: 0px;">
 							<div class="centered-content clearfix">
-								<form action="<%=request.getContextPath()%>/guideRep.do"
-									id="GuideRepForm">
+								<form action="<%=request.getContextPath()%>/guidecommrep.do"
+									id="GuideCommRepForm">
 									<div
 										class="main-panel-container no-padding-h bg-white main-panel-outer-half clearfix"
 										tabindex="-1">
@@ -345,29 +343,29 @@ input[type="radio"]:disabled+.label-text:before {
 														<div class="container">
 															<div class="col-sm-12">
 																<div style="margin-bottom: 8px;">
-																	<h2 style="margin-bottom: 30px">請選擇該留言哪裡不適當</h2>
+																	<h2 style="margin-bottom: 30px">請選擇該留言內容哪裡不適當</h2>
 																</div>
 																<div class="form-check">
 																	<label> <input type="radio" name="radio"
 																		onclick="inputClose()"
-																		value="內容不適當:這則留言包含暴力、色情、促銷或其他具有冒犯性的內容。" checked>
+																		value="內容不適當。" checked>
 																		<span class="label-text">內容不適當</span><br>
-																		<div class="repcss">這則指南包含暴力、色情、促銷或其他具有冒犯性的內容。</div>
+																		<div class="repcss">這則留言包含暴力、色情、促銷或其他具有冒犯性的內容。</div>
 																	</label>
 																</div>
 																<div class="form-check">
 																	<label> <input type="radio" name="radio"
-																		onclick="inputClose()" value="虛假內容:這則指南包含虛假資訊。">
+																		onclick="inputClose()" value="虛假內容。">
 																		<span class="label-text">虛假內容</span> <br>
-																		<div class="repcss">這則指南包含虛假資訊。</div>
+																		<div class="repcss">這則留言包含虛假資訊。</div>
 																	</label>
 																</div>
 																<div class="form-check">
 																	<label><input type="radio" name="radio"
 																		onclick="inputClose()"
-																		value="不實欺詐內容或仇恨言論:這則指南內容含有惡意中傷和人身攻擊內容"> <span
+																		value="不實欺詐內容或仇恨言論"> <span
 																		class="label-text">不實欺詐內容或仇恨言論</span> <br>
-																		<div class="repcss">這則指南內容含有惡意中傷和人身攻擊內容。</div> </label>
+																		<div class="repcss">這則留言內容含有惡意中傷和人身攻擊內容。</div> </label>
 																</div>
 
 																<div class="form-check">
@@ -376,7 +374,7 @@ input[type="radio"]:disabled+.label-text:before {
 																		class="label-text">其他</span> <br>
 																		<div>
 <!-- 																		<div class="col-xs-4"> -->
-																			<input id="repContent" onchange="repContentCh()"
+																			<input id="guide_comm_rep_content" onchange="commContentCh()"
 																				class="form-control" type="text"
 																				style="margin-left: 44px; margin-bottom: 20px;"
 																				placeholder="請輸入檢舉內容">
@@ -384,8 +382,10 @@ input[type="radio"]:disabled+.label-text:before {
 																		</div>
 																	</label>
 																</div>
+																<input type="hidden" name="comm_id" value="<%=comm_id%>">
+																<input type="hidden" name="mem_id" value="<%=memId%>">
 																<input type="hidden" name="guideId" value="<%=guideId%>">
-																<input type="hidden" name="memId" value="<%=memId%>">
+<%-- 																<input type="hidden" name="requestURL" value="<%=request.getContextPath()%>/guide/guide.do?action=getOne&guideId="+ guideId > --%>
 																<input type="hidden" name="action" value="insert">
 															</div>
 														</div>
@@ -397,7 +397,7 @@ input[type="radio"]:disabled+.label-text:before {
 
 						<div style="margin-top: 20%; margin-right: 25%;">
 							<div class="wrap">
-								<a class="button" id="guideRepCommit" aria-busy="false">送出</a>
+								<a class="button" id="guideCommRepCommit" aria-busy="false">送出</a>
 							</div>
 						</div>
 					</div>
@@ -415,7 +415,7 @@ input[type="radio"]:disabled+.label-text:before {
 					<div class="help-panel__text">
 						<div>
 							<p>
-								<span>感謝您的意見，我們會審查遭檢舉的文章是否違反正常言論發表，累犯或情節重大者的帳戶甚至可能遭到終止。
+								<span>感謝您的意見，我們會審查遭檢舉的留言是否違反正常言論發表，累犯或情節重大者的帳戶甚至可能遭到終止。
 								</span>
 							</p>
 							<div style="font-size:15px; color:#2076b7; padding-left:80px">
@@ -433,32 +433,32 @@ input[type="radio"]:disabled+.label-text:before {
 </html>
 
 <script>
-	document.getElementById("guideRepCommit").onclick = function() {
-		alert("提交成功");
-		document.getElementById("GuideRepForm").submit();
+	document.getElementById("guideCommRepCommit").onclick = function() {
+		alert("感謝您的意見資訊,檢舉留言提交成功!");
+		document.getElementById("GuideCommRepForm").submit();
 	}
 
 </script>
 
 <script>
-	var repContent = true;
-	function repContentCh() {
-		var str = $("#repContent").val();
+	var commContent = true;
+	function commContentCh() {
+		var str = $("#guide_comm_rep_content").val();
 		$("#otherBtn").val(str);
 	}
 	function change() {
-		if (repContent) {
-			$("#repContent").show();
-			repContent = false;
+		if (guide_comm_rep_content) {
+			$("#guide_comm_rep_content").show();
+			guide_comm_rep_content = false;
 		} else {
-			$("#repContent").hide();
-			repContent = true;
+			$("#guide_comm_rep_content").hide();
+			guide_comm_rep_content = true;
 		}
 	}
 	function inputClose() {
-		if (!repContent) {
-			$("#repContent").hide();
-			repContent = true;
+		if (!guide_comm_rep_content) {
+			$("#guide_comm_rep_content").hide();
+			guide_comm_rep_content = true;
 		}
 	}
 </script>

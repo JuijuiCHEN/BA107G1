@@ -990,11 +990,28 @@ background-color: #fff;
 </body>
 </html>
 <script>
+document.getElementById("keep").onclick =function() {validateForm(document.getElementById("titleKeep"))};
 
-
-
-	document.getElementById("keep").onclick = function() {
-	document.getElementById("titleKeep").submit();
-	
+function validatePrompt(control, promptStr) {
+	alert(promptStr);
+	control.focus();
+	return;
+}
+function checkTitle(control) {
+	if (control.value == ""||control.value ==null||control.value.trim()==0) {
+		validatePrompt(control, "指南標題: 請勿空白");
+		return (false);
 	}
+	return (true);
+}
+function validateForm(form) {
+	if (!checkTitle(form.guideTitle)) return;
+	alert ("資料通過驗證！");
+	document.getElementById("titleKeep").submit();	// Submit form
+}
+
+// 	document.getElementById("keep").onclick = function() {
+// 	document.getElementById("titleKeep").submit();
+	
+	
 </script>

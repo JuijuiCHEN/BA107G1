@@ -766,15 +766,12 @@ background-color: #fff;
 																	 <input type="hidden" name="guideLatLng" value="<%=guideLatLng%>">
 																	 <input type="hidden" name="guideArea" value="<%=guideArea%>">
 																	 <input type="hidden" name="action" value="insert">
-																	 
 																	 <div id="preview"></div>
 																</div>
 															</div>
 														 </div>
 													 </div>
 												</form>
-												
-												
 													<div style="margin-top: 20%; margin-bottom: 28px; margin-right: 50%;">
 														<div class="wrap">
 															<div>
@@ -1030,14 +1027,29 @@ function readAndPreview(file) {
   }
 
 }
-
 document.querySelector('#file-input').addEventListener("change", previewImages, false);
-
   </script>
 
 
 <script>
-	document.getElementById("keep").onclick = function() {
-		document.getElementById("imgKeep").submit();
+
+document.getElementById("keep").onclick =function() {validateForm(document.getElementById("imgKeep"))};
+
+function validatePrompt(control, promptStr) {
+	alert(promptStr);
+	control.focus();
+	return;
+}
+function checkImg(control) {
+	if (document.getElementById('file-input').value == ""||control.value ==null||control.value.trim()==0) {
+		validatePrompt(control, "請最少選擇一張圖!");
+		return (false);
 	}
+	return (true);
+}
+function validateForm(form) {
+	if (!checkImg(document.getElementById("file-input"))) return;
+	alert ("資料通過驗證！");
+	document.getElementById("imgKeep").submit();	// Submit form
+}
 </script>

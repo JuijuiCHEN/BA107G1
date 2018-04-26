@@ -148,6 +148,7 @@ a.button2:hover {
 										<form role="form" action="<%=request.getContextPath() %>/front_end/guide/addGuideImg.jsp" class="earning-estimation-container" data-prevent-default="true" id="mapKeep">
  											<div class="form-group"> 
 												<select id="mySelect" name="guideArea" class="form-control" style="width:250px;font-weight: normal">
+													<option>請選擇</option>
 													<option>中壢</option>
 													<option>基隆</option>
 													<option>台北</option>
@@ -327,8 +328,34 @@ a.button2:hover {
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuS1-gsXN4HrHQaqjuaFaMxIqcayPPaoY&libraries=places&callback=initAutocomplete" async defer></script>
 <script>
-	document.getElementById("keep").onclick = function() {
-		document.getElementById("mapKeep").submit();
-		
+document.getElementById("keep").onclick =function() {validateForm(document.getElementById("mapKeep"))};
+
+function validatePrompt(control, promptStr) {
+	alert(promptStr);
+	control.focus();
+	return;
+}
+function checkArea(control) {
+
+	 if(control.selectedIndex=='0'){
+		 alert ("請選擇地區！");
+			return (false);
+	 }else{
+		 return(true);
+	 }
+}
+function checkMap(control) {
+	if(document.getElementById('pac-input').value.trim()==""||document.getElementById('pac-input').value=='undefined'){
+		 console.log('222');
+		validatePrompt(control, "尚未輸入指南地址!");
+		return (false);
 	}
+	return (true);
+}
+function validateForm(form) {
+	if (!checkArea(form.guideArea)) return;
+	if (!checkMap(document.getElementById("pac-input"))) return;
+	alert ("資料通過驗證！");
+	document.getElementById("mapKeep").submit();	// Submit form
+}
 </script>

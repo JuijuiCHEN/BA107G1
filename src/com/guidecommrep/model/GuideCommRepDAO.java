@@ -24,7 +24,7 @@ public class GuideCommRepDAO implements GuideCommRepDAO_interface {
 		}
 	}
 
-	private static final String INSERT_STMT = "insert into g_comm_rep(g_comm_rep_id, comm_id, mem_id, guide_comm_rep_content, guide_comm_rep_status)values('GCR'||LPAD(to_char(R_COMM_REP_pk_seq.NEXTVAL), 6, '0'), ?, ?, ?, '¥¼¼f®Ö')";
+	private static final String INSERT_STMT = "insert into g_comm_rep(g_comm_rep_id, comm_id, mem_id, guide_comm_rep_content, guide_comm_rep_status)values('GCR'||LPAD(to_char(G_COMM_REP_PK_SEQ.NEXTVAL), 6, '0'), ?, ?, ?, '¥¼¼f®Ö')";
 	private static final String GET_ALL_STMT = "SELECT * from g_comm_rep order by g_comm_rep_id";
 	private static final String GET_ONE_STMT = "SELECT * from g_comm_rep where g_comm_rep_id = ?";
 	private static final String DELETE = "DELETE from g_comm_rep where g_comm_rep_id =?";
@@ -44,7 +44,7 @@ public class GuideCommRepDAO implements GuideCommRepDAO_interface {
 			pstmt.setString(1, guideCommRepVO.getComm_id());
 			pstmt.setString(2, guideCommRepVO.getMem_id());
 			pstmt.setString(3, guideCommRepVO.getGuide_comm_rep_content());
-			pstmt.setString(4, guideCommRepVO.getGuide_comm_rep_status());
+			// pstmt.setString(4, guideCommRepVO.getGuide_comm_rep_status());
 
 			pstmt.executeUpdate();
 

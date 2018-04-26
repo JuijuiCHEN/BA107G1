@@ -645,20 +645,14 @@ p a.button2:hover {
 									<!-- Indicators -->
 									<ol class="carousel-indicators">
 										<%
-											for (int i = 0; i < imgList.size(); i++) {
-												if (i == 0) {
+										for (int i = 0; i < imgList.size(); i++) {
+											if (i == 0) {
 										%>
 										<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-										<%
-											} else {
-										%>
+										<%} else {%>
 										<li data-target="#myCarousel" data-slide-to="<%=i%>"></li>
-										<%
-											}
-										%>
-										<%
-											}
-										%>
+										<%}%>
+										<%}%>
 									</ol>
 
 									<!-- Wrapper for slides -->
@@ -675,8 +669,7 @@ p a.button2:hover {
 												<%
 													}
 												%>
-												<img
-													src="<%=request.getContextPath()%>/guideImg.do?action=getOne_For_Display&guideImgId=<%=imgList.get(i).getGuideImgId()%>"
+												<img src="<%=request.getContextPath()%>/guideImg.do?action=getOne_For_Display&guideImgId=<%=imgList.get(i).getGuideImgId()%>"
 													alt="Los Angeles" class="_10rdc6v">
 											</div>
 											<%
@@ -808,19 +801,21 @@ p a.button2:hover {
 																	src="https://a0.muscache.com/im/pictures/e44f92af-37d9-43ae-b4b7-366f590d8d1e.jpg?aki_policy=profile_x_medium"
 																	class="_1i6x6g5"> <a target="_blank"
 																	href="/users/show/9129703"> <span>
-																	
 																	【<%=memCommVO.getMem_name()%>】
 																	</span>
 																</a>
 
 																</a>
-																	<button type="button" class="_1rp5252"
-																		style="margin-bottom: ); margin-left: 400px;"
-																		aria-busy="false">
+																<form ACTION="<%=request.getContextPath()%>/front_end/guideCommRep/addGuideCommRep.jsp">
+																	<button type="submit" class="_1rp5252" style="margin-bottom: 0;margin-left: 400px;" aria-busy="false">
 																		<p>
-																		 <span class="far fa-frown fa-lg"></span>檢舉留言
+																			<span class="far fa-frown fa-lg"></span>檢舉留言
+																			<input type="hidden" name="guideId" value="${guideVO.guideId}">
+																			<input type="hidden" name="memId" value=<%=memId%>>
+																			<input type="hidden" name="comm_id" value=<%=commList.get(i).getCommId()%>>
 																		</p>
 																	</button>
+																</form>
 															</div>
 														</div>
 														<%
@@ -929,6 +924,9 @@ p a.button2:hover {
 <script>
 	document.getElementById("subcomm").onclick = function() {
 		document.getElementById("sub").submit();
+	}
+	document.getElementById("commRepBtn").onclick = function() {
+		document.getElementById("commrepform").submit();
 	}
 </script>
 

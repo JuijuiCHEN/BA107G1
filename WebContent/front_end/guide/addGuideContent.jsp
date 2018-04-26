@@ -865,7 +865,29 @@ background-color: #fff;
 </body>
 </html>
 <script>
-	document.getElementById("keep").onclick = function() {
-		document.getElementById("contentKeep").submit();
+document.getElementById("keep").onclick =function() {validateForm(document.getElementById("contentKeep"))};
+
+function validatePrompt(control, promptStr) {
+	alert(promptStr);
+	control.focus();
+	return;
+}
+function checkConten(control) {
+	if (control.value == ""||control.value ==null||control.value.trim()==0) {
+		validatePrompt(control, "指南內容: 請勿空白");
+		return (false);
 	}
+	return (true);
+}
+function validateForm(form) {
+	if (!checkConten(form.guideContent)) return;
+	alert ("資料通過驗證！");
+	document.getElementById("contentKeep").submit();	// Submit form
+}
+
+
+
+// 	document.getElementById("keep").onclick = function() {
+// 		document.getElementById("contentKeep").submit();
+// 	}
 </script>
