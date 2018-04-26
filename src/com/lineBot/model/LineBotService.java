@@ -9,7 +9,7 @@ import com.guide.model.GuideDAO_interface;
 import com.guide.model.GuideVO;
 
 public class LineBotService {
-	private final String NGROK = "https://91358ff0.ngrok.io";
+	private final String NGROK = "5c67de95.ngrok.io";
 	private final String URL = "https://api.line.me/v2/bot/message/reply";
 	private final String MON_TOU_SHIN = new StringBuilder().appendCodePoint(0x100078).toString();
 	private final String JU_YI = new StringBuilder().appendCodePoint(0x100035).toString();
@@ -56,7 +56,9 @@ public class LineBotService {
 		} else {
 			// 3.2不ok
 			// 4.2組裝回傳給客戶訊息
-			returnMsg = "您可輸入縣市名稱，不需輸入最後的縣或市(例如：台北、桃園...等)\\nAntiGravity小秘書會立馬報給你該地的文章資訊\\n因篇幅限制僅會顯示該地區幾篇文章\\n想搜尋更多資訊請上官網搜尋~~";
+			returnMsg = JU_YI + "您可輸入縣市名稱，不需輸入最後的縣或市(例如：台北、桃園...等)\\n" + "\\n" + TU_TU_KISS + "AntiGravity"
+					+ MON_TOU_SHIN + "\\n" + "小秘書會立馬報給你該地的文章資訊\\n" + "\\n" + "因篇幅限制僅會顯示該地區5篇文章" + "\\n" + SHINY
+					+ "想搜尋更多資訊請上官網搜尋~~";
 		}
 		returnJson = LineBotService.build(replyToken, returnMsg);
 		// 5.post line 官網api
