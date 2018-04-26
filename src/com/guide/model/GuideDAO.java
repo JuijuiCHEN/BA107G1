@@ -30,7 +30,7 @@ public class GuideDAO implements GuideDAO_interface {
 	private static final String DELETE = "DELETE FROM guide where guide_id = ?";
 	private static final String UPDATE_FRONT = "UPDATE guide set guide_title=?, guide_content=? where guide_id = ?";
 	private static final String UPDATE_BACK = "UPDATE guide set guide_status=? where guide_id = ?";
-	private static final String UPDATE_VOTE = "UPDATE guide set GUIDE_VOTE_SIZE=? where guide_id = ?";
+	private static final String UPDATE_VOTE = "UPDATE guide set GUIDE_VOTE_SIZE=GUIDE_VOTE_SIZE+1 where guide_id = ?";
 	private static final String UPDATE_READ = "UPDATE guide set GUIDE_READ_SIZE=? where guide_id = ?";
 	private static final String GET_ONE_STMT = "SELECT GU.GUIDE_ID, GU.MEM_ID, GU.GUIDE_TITLE, GU.GUIDE_CONTENT, GU.GUIDE_AREA, GU.GUIDE_CREATE_TIME, GU.GUIDE_READ_SIZE, GU.GUIDE_COMM_SIZE, GU.GUIDE_VOTE_SIZE, GU.GUIDE_STATUS, GI.G_IMG_ID, GI.GUIDE_IMG_CONTENT,GU.GUIDE_MAP,GU.GUIDE_LAT_LNG FROM GUIDE GU LEFT JOIN GD_IMG GI ON GU.GUIDE_ID = GI.GUIDE_ID WHERE GU.GUIDE_ID = ?";
 	private static final String GET_ALL_FROM_ONE_MEM = "SELECT GUIDE_ID,MEM_ID,GUIDE_TITLE,GUIDE_CONTENT,GUIDE_AREA,GUIDE_MAP,GUIDE_CREATE_TIME,GUIDE_READ_SIZE,GUIDE_COMM_SIZE,GUIDE_VOTE_SIZE,GUIDE_STATUS FROM GUIDE WHERE MEM_ID= ?";
@@ -146,10 +146,7 @@ public class GuideDAO implements GuideDAO_interface {
 		try {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(UPDATE_VOTE);
-
-			pstmt.setInt(1, guideVO.getGuideVoteSize());
-			pstmt.setString(2, guideVO.getGuideId());
-
+			pstmt.setString(1, guideVO.getGuideId());
 			pstmt.executeUpdate();
 
 			// Handle any driver errors

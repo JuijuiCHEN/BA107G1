@@ -355,7 +355,7 @@ function checkMap(control) {
 function validateForm(form) {
 	if (!checkArea(form.guideArea)) return;
 	if (!checkMap(document.getElementById("pac-input"))) return;
-	alert ("資料通過驗證！");
+// 	alert ("資料通過驗證！");
 	document.getElementById("mapKeep").submit();	// Submit form
 }
 </script>

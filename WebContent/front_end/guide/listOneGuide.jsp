@@ -7,13 +7,19 @@
 <%@page import="com.guideComm.model.*"%>
 <%@ page import="java.util.*"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%GuideVO guideVO = (GuideVO) request.getAttribute("guideVO");%>
-<%List<GuideImgVO> imgList = guideVO.getGuideImgList();%>
+<%
+	GuideVO guideVO = (GuideVO) request.getAttribute("guideVO");
+%>
+<%
+	List<GuideImgVO> imgList = guideVO.getGuideImgList();
+%>
 <%
 	MemService memSvc = new MemService();
-	MemVO memVO = memSvc.getOneMem(guideVO.getMemId());
+	MemVO memVO = memSvc.getOneMemID(guideVO.getMemId());
 %>
-<%String memId = (String)session.getAttribute("memId"); %>
+<%
+	String memId = (String) session.getAttribute("memId");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -22,16 +28,22 @@
 <title>Anti-G旅遊指南</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script defer
+	src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+	integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+	crossorigin="anonymous"></script>
 <style type="text/css">
 .item img {
-  width:100%
+	width: 100%
 }
+
 ._ljkqu4 {
 	padding-top: 24px !important;
 	padding-bottom: 72px !important;
-    padding-left: 15px !important;
+	padding-left: 15px !important;
 }
 
 @media ( max-width : 743px) {
@@ -120,14 +132,13 @@
 	background-color: transparent !important;
 	color: buttontext !important;
 	border: 0px !important;
-/* 	display: block !important; */
+	/* 	display: block !important; */
 }
 
-._1rp5252:hover{
+._1rp5252:hover {
 	color: #2076b7 !important;
 	text-decoration: underline !important;
 }
-
 
 ._1rp5252:active {
 	outline: 0px !important;
@@ -259,7 +270,6 @@ to {
 	padding-left: 12px !important;
 	padding-right: 12px !important;
 	float: left !important;
-	
 }
 
 ._33hj8bi {
@@ -441,13 +451,7 @@ to {
 	sizing
 	:
 	border
-	-
-	
-	
-	
-	
-	
-	
+	-	
 	box
 	!important;
 	box
@@ -536,56 +540,61 @@ p a.button2:hover {
 }
 </style>
 </head>
-<body style="font-weight: normal">
- <jsp:include page="/front_end/basic/nav.jsp" flush="true"/>
- <link href="<%=request.getContextPath()%>/front_end/guide/guideCss/style.css" media="all" rel="stylesheet" type="text/css">
-<link href="<%=request.getContextPath()%>/front_end/guide/guideCss/style4.css" media="screen" rel="stylesheet" type="text/css">
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<body>
+	<jsp:include page="/front_end/basic/nav.jsp" flush="true" />
+	<link
+		href="<%=request.getContextPath()%>/front_end/guide/guideCss/style.css"
+		media="all" rel="stylesheet" type="text/css">
+	<link
+		href="<%=request.getContextPath()%>/front_end/guide/guideCss/style4.css"
+		media="screen" rel="stylesheet" type="text/css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<div style="padding-top: 120px">
 		<div class="col-lg-1"></div>
-		<div id="main-hero-content" class="col-lg-5 col-sm-12 page-container-responsive">
+		<div id="main-hero-content"
+			class="col-lg-5 col-sm-12 page-container-responsive">
 			<div class="col-lg-12 col-md-12 col-sm-12">
 				<div class="_11q3g7k">
 					<div style="margin-bottom: 16px">
-					<div class="_rotqmn2">
-						<a href="<%=request.getContextPath()%>/guide.do?action=getOne_Area&guideArea=<%=guideVO.getGuideArea()%>">
-							<span class="fas fa-arrow-left fa-lg"></span>返回<%=guideVO.getGuideArea()%>文章列表
-						</a>
-					</div>
-					<br>
-						<div class="_13nd2f7d">${guideVO.guideTitle}</div>
-	
 						<div class="_rotqmn2">
-							<span>
-							<fmt:formatDate
+							<a
+								href="<%=request.getContextPath()%>/guide.do?action=getOne_Area&guideArea=<%=guideVO.getGuideArea()%>">
+								<span class="fas fa-arrow-left fa-lg"></span>返回<%=guideVO.getGuideArea()%>文章列表
+							</a>
+						</div>
+						<br>
+						<div class="_13nd2f7d">${guideVO.guideTitle}</div>
+
+						<div class="_rotqmn2">
+							<span> <fmt:formatDate
 									value="<%=guideVO.getGuideCreateTime()%>"
 									pattern="yyyy-MM-dd HH:mm:ss" />
-									</span>
+							</span>
 						</div>
 					</div>
-	
+
 					<div class="_1f9rmq80">
 						<div class="row">
 							<div class="hide-lg">
 								<div class="col-sm-12"></div>
 							</div>
-								<div class="_8alzzaw">
-									<div>
-										<div class="_1ouw2w0">
-											<div class="_rotqmn2">${guideVO.guideContent}</div>
-										</div>
-										<img alt=""
-											src="https://a0.muscache.com/im/pictures/710d0c96-2bc0-4037-870a-623d7e362f3f.jpg?aki_policy=profile_small"
-											class="_1i6x6g5"> 
-											<span>由 
-											<span>【<%=memVO.getMem_name()%>】</span>
-											撰寫
-											</span>
+							<div class="_8alzzaw">
+								<div>
+									<div class="_1ouw2w0">
+										<div class="_rotqmn2">${guideVO.guideContent}</div>
 									</div>
+
+									<!-- 								文章撰寫者大頭照		 -->
+									<img alt=""
+										src="https://a0.muscache.com/im/pictures/710d0c96-2bc0-4037-870a-623d7e362f3f.jpg?aki_policy=profile_small"
+										class="_1i6x6g5"> <span>由 <span>【<%=memVO.getMem_name()%>】
+									</span> 撰寫
+									</span>
 								</div>
+							</div>
 						</div>
 					</div>
-	
+
 					<div class="_1f9rmq80">
 						<div class="_33hj8bi">
 							<button type="button" class="_b82bweu" data-toggle="modal"
@@ -594,7 +603,7 @@ p a.button2:hover {
 							</button>
 						</div>
 					</div>
-					
+
 				</div>
 				<div class="_1f9rmq80">
 					<div>
@@ -625,34 +634,38 @@ p a.button2:hover {
 					</div>
 				</div>
 				<div style="margin-bottom: 32px"></div>
-	
+
 				<div class="_1pq2f04">
 					<div id="map"></div>
 				</div>
-				<BR>
-				<BR>
+				<BR> <BR>
 			</div>
 		</div>
-		<div class="col-lg-5 col-sm-12">
-		<div class="col-lg-12 col-sm-12 page-container-responsive">
-				<div class="col-lg-12 _39300i" style="padding:0px">
-					<div class="" >
+		<div class="col-lg-5 col-sm-12" style="font-weight: normal">
+			<div class="col-lg-12 col-sm-12 page-container-responsive">
+				<div class="col-lg-12 _39300i" style="padding: 0px">
+					<div class="">
 						<div class="col-sm-12">
-							<div class=" carousel slide" id="myCarousel"
-								data-ride="carousel">
+							<div class=" carousel slide" id="myCarousel" data-ride="carousel">
 								<div class="_1kkopm5">
 
 									<!-- Indicators -->
 									<ol class="carousel-indicators">
 										<%
-										for (int i = 0; i < imgList.size(); i++) {
-											if (i == 0) {
+											for (int i = 0; i < imgList.size(); i++) {
+												if (i == 0) {
 										%>
 										<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-										<%} else {%>
+										<%
+											} else {
+										%>
 										<li data-target="#myCarousel" data-slide-to="<%=i%>"></li>
-										<%}%>
-										<%}%>
+										<%
+											}
+										%>
+										<%
+											}
+										%>
 									</ol>
 
 									<!-- Wrapper for slides -->
@@ -669,7 +682,8 @@ p a.button2:hover {
 												<%
 													}
 												%>
-												<img src="<%=request.getContextPath()%>/guideImg.do?action=getOne_For_Display&guideImgId=<%=imgList.get(i).getGuideImgId()%>"
+												<img
+													src="<%=request.getContextPath()%>/guideImg.do?action=getOne_For_Display&guideImgId=<%=imgList.get(i).getGuideImgId()%>"
 													alt="Los Angeles" class="_10rdc6v">
 											</div>
 											<%
@@ -678,18 +692,19 @@ p a.button2:hover {
 										</div>
 
 										<!-- Left and right controls -->
-										<a class="left carousel-control" style="background-image: none;" href="#myCarousel" data-slide="prev"> 
-											<span class="glyphicon glyphicon-chevron-left"></span>
-											<span class="sr-only">Previous</span>
-										</a> 
-										<a class="right carousel-control" style="background-image: none;" href="#myCarousel" data-slide="next"> 
-											<span class="glyphicon glyphicon-chevron-right"></span> 
-											<span class="sr-only">Next</span>
+										<a class="left carousel-control"
+											style="background-image: none;" href="#myCarousel"
+											data-slide="prev"> <span class="sr-only">Previous</span>
+										</a> <a class="right carousel-control"
+											style="background-image: none;" href="#myCarousel"
+											data-slide="next"> <span class="sr-only">Next</span>
 										</a>
 									</div>
 								</div>
 							</div>
-							<%if(memId!=null){ %>
+							<%
+								if (memId != null) {
+							%>
 							<div class="col-sm-12 _ljkqu4">
 								<div class="_nedp51">
 									<div class="_9kqfyx">
@@ -697,62 +712,73 @@ p a.button2:hover {
 											data-target="#myModal2" style="padding: 0; margin: 0"
 											aria-busy="false">
 											<p>
-												 <span class="far fa-comment-alt fa-lg"></span>我要留言
+												<span class="far fa-comment-alt fa-lg"></span>我要留言
 											</p>
 										</button>
 									</div>
 
 
 									<div class="_9kqfyx">
-									<form METHOD="post" ACTION="<%=request.getContextPath()%>/guide/guide.do" style="margin-bottom: 0px;">
-										<button type="submit" class="_1rp5252"
-											style="padding: 0; margin: 0" aria-busy="false">
-											<p>
-												 <span class="far fa-thumbs-up fa-lg"></span>案讚
-												  <input type="hidden" name="guideId" value="${guideVO.guideId}">
-											</p>
-										</button>
-									</form>
-									</div>
-
-									<div class="_9kqfyx">
-										<form ACTION="<%=request.getContextPath()%>/front_end/guideRep/addGuideRep.jsp" style="margin-bottom: 0px;">
-											<button type="submit" class="_1rp5252" style="padding: 0; margin: 0" aria-busy="false">
+										<form id="voteForm" style="margin-bottom: 0px;">
+											<button id="voteBtn" type="button" class="_1rp5252" style="padding: 0; margin: 0" aria-busy="false">
 												<p>
-													<span class="far fa-frown fa-lg"></span>檢舉文章
+													<span id="vote" class="far fa-thumbs-up fa-lg"></span>案讚 
 													<input type="hidden" name="guideId" value="${guideVO.guideId}">
+													<input type="hidden" name="action" value="updateVote">
+												</p>
+											</button>
+										</form>
+									</div>
+
+									<div class="_9kqfyx">
+										<form
+											ACTION="<%=request.getContextPath()%>/front_end/guideRep/addGuideRep.jsp"
+											style="margin-bottom: 0px;">
+											<button type="submit" class="_1rp5252"
+												style="padding: 0; margin: 0" aria-busy="false">
+												<p>
+													<span class="far fa-frown fa-lg"></span>檢舉文章 <input
+														type="hidden" name="guideId" value="${guideVO.guideId}">
 													<input type="hidden" name="memId" value=<%=memId%>>
 												</p>
 											</button>
 										</form>
 									</div>
-									
-									
-									<%if(guideVO.getMemId().equals(memId)){ %>
+
+
+									<%
+										if (guideVO.getMemId().equals(memId)) {
+									%>
 									<div class="_9kqfyx">
-										<form METHOD="post" ACTION="<%=request.getContextPath()%>/guide.do" style="margin-bottom: 0px;">
+										<form METHOD="post"
+											ACTION="<%=request.getContextPath()%>/guide.do"
+											style="margin-bottom: 0px;">
 											<button type="submit" class="_1rp5252"
 												style="padding: 0; margin: 0" aria-busy="false">
 												<p>
-													 <span class="fas fa-edit fa-lg"></span>編輯文章
-													 <input type="hidden" name="guideId" value="${guideVO.guideId}">
-													 <input type="hidden" name="memId" value="${guideVO.memId}">
-													 <input type="hidden" name="action" value="fromListOne">
+													<span class="fas fa-edit fa-lg"></span>編輯文章 <input
+														type="hidden" name="guideId" value="${guideVO.guideId}">
+													<input type="hidden" name="memId" value="${guideVO.memId}">
+													<input type="hidden" name="action" value="fromListOne">
 												</p>
 											</button>
 										</form>
 									</div>
-									<%}%>
+									<%
+										}
+									%>
 								</div>
 							</div>
-						<%}%>	
+							<%
+								}
+							%>
 						</div>
 					</div>
 				</div>
+			</div>
 		</div>
 	</div>
-	</div>
-	
+
 
 	<!-- 查看留言跳窗開始 -->
 	<div class="modal fade" id="myModal" role="dialog">
@@ -781,16 +807,14 @@ p a.button2:hover {
 													<div>
 														<%
 															GuideCommService commSvc = new GuideCommService();
-															
-															
+
 															List<GuideCommVO> commList = commSvc.getAllFromGuideId(guideVO.getGuideId());
-															
+
 															for (int i = 0; i < commList.size(); i++) {
-															MemVO memCommVO = memSvc.getOneMem(commList.get(i).getMemId());
+																MemVO memCommVO = memSvc.getOneMemID(commList.get(i).getMemId());
 														%>
 														<div class="_1f9rmq80">
 															<div>
-
 																<div class="_1ouw2w0">
 																	<div class="_rotqmn2"><%=commList.get(i).getCommContent()%></div>
 																</div>
@@ -800,17 +824,16 @@ p a.button2:hover {
 																	alt=""
 																	src="https://a0.muscache.com/im/pictures/e44f92af-37d9-43ae-b4b7-366f590d8d1e.jpg?aki_policy=profile_x_medium"
 																	class="_1i6x6g5"> <a target="_blank"
-																	href="/users/show/9129703"> <span>
-																	【<%=memCommVO.getMem_name()%>】
+																	href="/users/show/9129703"> <span> 【<%=memCommVO.getMem_name()%>】
 																	</span>
 																</a>
-
 																</a>
 																<form ACTION="<%=request.getContextPath()%>/front_end/guideCommRep/addGuideCommRep.jsp">
-																	<button type="submit" class="_1rp5252" style="margin-bottom: 0;margin-left: 400px;" aria-busy="false">
+																	<button  type="submit" class="_1rp5252" style="margin-bottom: 0; margin-left: 400px;"
+																		aria-busy="false">
 																		<p>
-																			<span class="far fa-frown fa-lg"></span>檢舉留言
-																			<input type="hidden" name="guideId" value="${guideVO.guideId}">
+																			<span class="far fa-frown fa-lg"></span>檢舉留言 
+																			<input type="hidden" name="guideId" value="${guideVO.guideId}"> 
 																			<input type="hidden" name="memId" value=<%=memId%>>
 																			<input type="hidden" name="comm_id" value=<%=commList.get(i).getCommId()%>>
 																		</p>
@@ -862,14 +885,17 @@ p a.button2:hover {
 													<span>撰寫留言</span>
 												</div>
 												<div>
-													<form METHOD="post" action="<%=request.getContextPath()%>/guideComm/guideComm.do" id="sub">
+													<form METHOD="post"
+														action="<%=request.getContextPath()%>/guideComm/guideComm.do"
+														id="sub">
 														<div class="commcon">
 															<div>
-																<textarea name="commContent" class="form-control" placeholder="輸入留言內容" autocomplete="off" rows="5"></textarea>
+																<textarea name="commContent" class="form-control"
+																	placeholder="輸入留言內容" autocomplete="off" rows="5"></textarea>
 																<input type="hidden" name="guideId"
 																	value="${guideVO.guideId}"> <input
-																	type="hidden" name="memId" value="<%=memId %>"> <input
-																	type="hidden" name="action" value="insert">
+																	type="hidden" name="memId" value="<%=memId%>">
+																<input type="hidden" name="action" value="insert">
 															</div>
 														</div>
 													</form>
@@ -900,11 +926,10 @@ p a.button2:hover {
 
 </body>
 </html>
+
 <script>
 	function initMap() {
-		var uluru =
-<%=guideVO.getGuideLatLng()%>
-	;
+		var uluru =<%=guideVO.getGuideLatLng()%>;
 		var map = new google.maps.Map(document.getElementById('map'), {
 			zoom : 16,
 			center : uluru
@@ -925,8 +950,26 @@ p a.button2:hover {
 	document.getElementById("subcomm").onclick = function() {
 		document.getElementById("sub").submit();
 	}
-	document.getElementById("commRepBtn").onclick = function() {
-		document.getElementById("commrepform").submit();
-	}
+	//網頁init完成
+	$(document).ready(function(){
+		//請求位置
+		var url ="<%=request.getContextPath()%>/guide/guide.do";
+	    $("#voteBtn").click(function(){
+		//當voteBtn click 執行下方
+	        $.ajax({
+	        	//求請post
+	        	type: "POST",
+	        	//請求網址
+	        	url:url,
+	        	//請求內容
+	        	data: $("#voteForm").serialize(),
+	        	//請求成功後的func
+	        	success: function(result){
+// 	            	alert('按贊成功');
+	            	    document.getElementById("vote").style.color = "#2076b7";
+	        	}
+	        });
+	    });
+	});
 </script>
 

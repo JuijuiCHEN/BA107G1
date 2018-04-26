@@ -94,11 +94,10 @@ public class GuideService {
 		return guideVO;
 	}
 
-	public GuideVO updateGuideVote(Integer guideVoteSize, String guideId) {
+	public GuideVO updateGuideVote(String guideId) {
 
 		GuideVO guideVO = new GuideVO();
 
-		guideVO.setGuideVoteSize(guideVoteSize);
 		guideVO.setGuideId(guideId);
 		guideDao.updateVote(guideVO);
 

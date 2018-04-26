@@ -98,7 +98,7 @@
 								<% 	String commStr = "";
 									String oneComm="";
 									for(int j = 0 ; j<commList.size()/2;j++){
-									MemVO memCommVO = memSvc.getOneMem(commList.get(j).getMemId());
+									MemVO memCommVO = memSvc.getOneMemID(commList.get(j).getMemId());
 									
 									commStr = commList.get(j).getCommContent();
 									oneComm = commStr.substring(0,commStr.length()/2);
@@ -110,10 +110,15 @@
 								</p>
 								<div style="margin-bottom:15px;">
 									<div class="guidebook-place-recommendation__host-profile-image">
-										<img src="<%=request.getContextPath()%>/guideImg.do?action=getOne_For_Display&guideImgId=<%=imgList.get(i).getGuideImgId()%>" alt="Leslie"
-										    class="media-photo media-round" style="height:32px;width:32px">
+									
+									
+<!-- 									放留言者的照片 -->
+										<img src="" alt="Leslie" class="media-photo media-round" style="height:32px;width:32px">
 									</div>
-									<a href="/things-to-do/rooms/4365969" data-prevent-default="true" class="guidebook-place-recommendation__host-guidebook-link" style="font-size:14px;">
+									
+									
+<!-- 									放個人旅遊誌網址 -->
+									<a href="" data-prevent-default="true" class="guidebook-place-recommendation__host-guidebook-link" style="font-size:14px;">
 										<span>來自【<%=memCommVO.getMem_name()%>】的留言</span>
 									</a>
 								</div>

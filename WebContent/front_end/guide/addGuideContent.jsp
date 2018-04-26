@@ -881,13 +881,7 @@ function checkConten(control) {
 }
 function validateForm(form) {
 	if (!checkConten(form.guideContent)) return;
-	alert ("資料通過驗證！");
+// 	alert ("資料通過驗證！");
 	document.getElementById("contentKeep").submit();	// Submit form
 }
-
-
-
-// 	document.getElementById("keep").onclick = function() {
-// 		document.getElementById("contentKeep").submit();
-// 	}
 </script>

@@ -1049,7 +1049,7 @@ function checkImg(control) {
 }
 function validateForm(form) {
 	if (!checkImg(document.getElementById("file-input"))) return;
-	alert ("資料通過驗證！");
+// 	alert ("資料通過驗證！");
 	document.getElementById("imgKeep").submit();	// Submit form
 }
 </script>

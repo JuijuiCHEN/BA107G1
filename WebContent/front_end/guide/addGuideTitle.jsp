@@ -1006,12 +1006,7 @@ function checkTitle(control) {
 }
 function validateForm(form) {
 	if (!checkTitle(form.guideTitle)) return;
-	alert ("資料通過驗證！");
+// 	alert ("資料通過驗證！");
 	document.getElementById("titleKeep").submit();	// Submit form
 }
-
-// 	document.getElementById("keep").onclick = function() {
-// 	document.getElementById("titleKeep").submit();
-	
-	
 </script>

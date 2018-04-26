@@ -13,7 +13,7 @@ public class MemJDBCDAO implements MemDAO_interface {
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
 	String userid = "BA107G1";
-	String passwd = "12345";
+	String passwd = "BA107G1";
 
 	private static final String INSERT_STMT = "INSERT INTO mem (mem_id,mem_acc,mem_pw,mem_name,mem_email,mem_addr,mem_tel,mem_status,mem_sex,mem_introduction,mem_exp_owner) VALUES ('M'||LPAD(to_char(MEM_pk_seq.NEXTVAL), 6, '0'),?,?,?,?,?,?,?,?,?,?)";
 	private static final String GET_ALL_STMT = "SELECT * FROM mem  order by mem_id";
@@ -268,7 +268,7 @@ public class MemJDBCDAO implements MemDAO_interface {
 		MemJDBCDAO dao = new MemJDBCDAO();
 
 		 // 新增
-//		 MemVO memVO1 = new MemVO();
+		 MemVO memVO1 = new MemVO();
 //		 memVO1.setMem_acc("a98646bcb");
 //		 memVO1.setMem_pw("a5c1e46c");
 //		 memVO1.setMem_name("測試名2");
@@ -283,17 +283,17 @@ public class MemJDBCDAO implements MemDAO_interface {
 //		 
 //		
 //		 // 修改
-//		 MemVO memVO2 = new MemVO();
-//		 memVO2.setMem_id("M000001");
-//		 memVO2.setMem_pw("a6b945c");
-//		 memVO2.setMem_name("PeTeR");
-//		 memVO2.setMem_email("peter123456peter@gmail.com");
-//		 memVO2.setMem_addr("台北市非洲區厚德路69巷87號");
-//		 memVO2.setMem_tel("0983123487");
-//		 memVO2.setMem_status("停權會員");
-//		 memVO2.setMem_introduction("安安妳好測試修改成功>皿<");
-//		 memVO2.setMem_exp_owner("關閉");
-//		 dao.update(memVO2);
+		 MemVO memVO2 = new MemVO();
+		 memVO2.setMem_id("M000001");
+		 memVO2.setMem_pw("12345");
+		 memVO2.setMem_name("PeTeR");
+		 memVO2.setMem_email("peter123456peter@gmail.com");
+		 memVO2.setMem_addr("台北市非洲區厚德路69巷87號");
+		 memVO2.setMem_tel("0983123487");
+		 memVO2.setMem_status("停權會員");
+		 memVO2.setMem_introduction("安安妳好測試修改成功>皿<");
+		 memVO2.setMem_exp_owner("關閉");
+		 dao.update(memVO2);
 		 
 //
 //		// 查詢
@@ -329,5 +329,22 @@ public class MemJDBCDAO implements MemDAO_interface {
 //		System.out.println(aMem.getMem_exp_owner() + ",");
 //		System.out.println("-★-☆-★-☆-★-☆-★-☆-★-☆-★-☆-★");
 //		}
+	}
+
+	@Override
+	public boolean checkLogin(String mem_acc, String mem_pw) {
+		return false;
+	}
+
+	@Override
+	public MemVO login(String mem_acc) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateIntrd(String introduction, String mem_id) {
+		// TODO Auto-generated method stub
+		
 	}
 }
