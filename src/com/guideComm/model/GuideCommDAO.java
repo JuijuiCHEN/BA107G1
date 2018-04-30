@@ -29,7 +29,7 @@ public class GuideCommDAO implements GuideCommDAO_interface {
 	private static final String UPDATE = "UPDATE guide_comm set commnet_content=?, comm_status=? where comm_id = ?";
 	private static final String DELETE = "DELETE FROM guide_comm where comm_id = ?";
 	private static final String GET_ONE_STMT = "SELECT comm_id,guide_id,mem_id,commnet_content,guide_commnet_time,comm_status FROM guide_comm where comm_id = ?";
-
+	private static final String UPDATE_BACK = "UPDATE guide_comm set comm_status=? where comm_id = ?";
 	// 查詢一篇文章所有留言
 	private static final String GET_ALL_FROM_GUIDEID = "SELECT COMM_ID,GUIDE_ID,MEM_ID,COMMNET_CONTENT,GUIDE_COMMNET_TIME,COMM_STATUS FROM GUIDE_COMM WHERE GUIDE_ID= ?";
 	// 刪除一篇文章所有留言
@@ -276,6 +276,39 @@ public class GuideCommDAO implements GuideCommDAO_interface {
 			pstmt.setString(1, guideId);
 			pstmt.executeUpdate();
 
+		} catch (SQLException se) {
+			throw new RuntimeException("資料庫錯誤" + se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+	}
+
+	@Override
+	public void updateBack(GuideCommVO guideCommVO) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(UPDATE_BACK);
+			pstmt.setInt(1, guideCommVO.getCommStatus());
+			pstmt.setString(2, guideCommVO.getCommId());
+			pstmt.executeUpdate();
+
+			// Handle any driver errors
 		} catch (SQLException se) {
 			throw new RuntimeException("資料庫錯誤" + se.getMessage());
 			// Clean up JDBC resources

@@ -729,7 +729,7 @@ background-color: #fff;
                                                             <div class="earning-estimation__body">
                                                                 <div class="row row-condensed space-1">
                                                                     <div class="col-sm-12">
-                                                                        <textarea name="guideContent" class="form-control" rows="10" autocomplete="off" style="margin-left:10px;"></textarea>
+                                                                        <textarea id="cont" name="guideContent" class="form-control" rows="10" autocomplete="off" style="margin-left:10px;"></textarea>
                                                                          <input type="hidden" name="memId" value="<%=memId%>">
                                                                          <input type="hidden" name="guideTitle" value="<%=guideTitle%>">
                                                                     </div>
@@ -740,11 +740,10 @@ background-color: #fff;
                                                     <br>
                                                     <div style="margin-top: 20%; margin-bottom: 28px; margin-right: 25%;">
                                                         <div class="wrap">
-
 															<a class="button" id="keep" aria-busy="false">繼續</a>
                                                         </div>
-
                                                     </div>
+                                                    <button id="magiccon" onclick="magiccon()" type="button" style="font-size:10px;">magic</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -864,6 +863,11 @@ background-color: #fff;
     </main>
 </body>
 </html>
+<script language="javascript">
+	function magiccon() {
+		document.getElementById("cont").value = "阿里山，是由周遭18座山系所組成，居住在這邊的鄒族，有一個名叫阿里巴了勇士，很會打獵，後來族人為了紀念他，才把這個區域稱為阿里山。抵達阿里山後，最棒的遊園方式是先從阿里山火車站搭乘阿里山小火車前往沼平車站，再順著步道沿途而下，途經姐妹潭、三兄弟、四姐妹、金豬報喜、永結同心、受鎮宮、象鼻木、三代木、香林國小、樹靈塔、香林神木，最後再搭乘遊園車返回遊客中心，全程約2-3小時，沿途都是下坡，輕鬆且好走，而且可以一次體驗鐵路、步行、遊園車三種方式，是我最推薦的遊玩方式。阿里山小火車，是目前僅存的三條世界高山小火車之一，距今已有100年以上的歷史~阿里山的美，在於他的壯麗以及大自然的鬼斧神工，森林、鐵路、日出、晚霞、雲海，是來阿里山絕對不能錯過的美麗五奇。";
+	}
+</script>
 <script>
 document.getElementById("keep").onclick =function() {validateForm(document.getElementById("contentKeep"))};
 

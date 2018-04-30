@@ -8,6 +8,8 @@ public interface GuideCommDAO_interface {
 
 	public void update(GuideCommVO guideCommVO);
 
+	public void updateBack(GuideCommVO guideCommVO);
+
 	public void delete(String commId);
 
 	public GuideCommVO findByPrimaryKey(String commId);

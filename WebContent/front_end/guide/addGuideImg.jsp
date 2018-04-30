@@ -1011,6 +1011,7 @@ function readAndPreview(file) {
     reader.addEventListener("load", function() {
       var image = new Image();
       image.height = 150;
+      image.width = 250;
       image.title  = file.name;
       image.src    = this.result;
       preview.appendChild(image);

@@ -149,7 +149,6 @@ a.button2:hover {
  											<div class="form-group"> 
 												<select id="mySelect" name="guideArea" class="form-control" style="width:250px;font-weight: normal">
 													<option>請選擇</option>
-													<option>中壢</option>
 													<option>基隆</option>
 													<option>台北</option>
 													<option>新北</option>
@@ -223,6 +222,7 @@ a.button2:hover {
 </body>
 
 </html>
+
 <script type="text/javascript">
 	function getOption() {
 		var x = document.getElementById("mySelect")

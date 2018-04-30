@@ -25,14 +25,18 @@ public class LineBotServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		System.out.println("有人訪問");
+
 		String ip = req.getLocalAddr();
 		System.out.println("ip" + ip);
+
 		StringBuffer jb = new StringBuffer();
 		String line = null;
 		try {
-			BufferedReader reader = req.getReader(); // 接收參數,放到reader裡
-			while ((line = reader.readLine()) != null) // 跑迴圈讀reader裡的參數串接在一起
-				jb.append(line);
+			BufferedReader reader = req.getReader(); // 接收到line丟過來的參數,放到reader裡
+			while ((line = reader.readLine()) != null) { // reader.readLine()讀取一行,,,,,,迴圈跑所有行數,不為空的話串接
+				// System.out.println("line" + line);
+				jb.append(line); // 把參數串接在一起(預防字串太長跑到下一行)
+			}
 		} catch (Exception e) {
 			/* report an error */ }
 

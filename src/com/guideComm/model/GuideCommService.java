@@ -31,4 +31,12 @@ public class GuideCommService {
 		return guideCommDao.findByPrimaryKey(commId);
 	}
 
+	public GuideCommVO updateCommBack(Integer commStatus, String commId) {
+		GuideCommVO guideCommVO = new GuideCommVO();
+		guideCommVO.setCommStatus(commStatus);
+		guideCommVO.setCommId(commId);
+		guideCommDao.updateBack(guideCommVO);
+		return guideCommVO;
+	}
+
 }

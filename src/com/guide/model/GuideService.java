@@ -71,13 +71,10 @@ public class GuideService {
 
 	// 後台管理人員修改文章狀態
 	public GuideVO updateGuideBack(Integer guideStatus, String guideId) {
-
 		GuideVO guideVO = new GuideVO();
-
 		guideVO.setGuideStatus(guideStatus);
 		guideVO.setGuideId(guideId);
 		guideDao.updateBack(guideVO);
-
 		return guideVO;
 	}
 
@@ -131,7 +128,7 @@ public class GuideService {
 		GuideDAO guideDAO = new GuideDAO();
 		List<String> indexTemplate = new ArrayList<String>();
 		List<String> guideAreaList = guideDAO.getAllArea(); // 拿到所有不重複地區
-		System.out.println(guideAreaList);
+		System.out.println("guideAreaList= " + guideAreaList);
 		for (int i = 0; i < guideAreaList.size(); i++) { // 迴圈跑所有(不重複)地區
 			String template = TEMPLATEARR[i % 10]; // 指定為大圖或小圖
 			Boolean next = true; // 如果是最後一個必然要div結尾

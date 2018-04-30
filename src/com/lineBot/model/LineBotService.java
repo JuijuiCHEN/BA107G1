@@ -9,7 +9,7 @@ import com.guide.model.GuideDAO_interface;
 import com.guide.model.GuideVO;
 
 public class LineBotService {
-	private final String NGROK = "5c67de95.ngrok.io";
+	private final String NGROK = "276bbcef.ngrok.io";
 	private final String URL = "https://api.line.me/v2/bot/message/reply";
 	private final String MON_TOU_SHIN = new StringBuilder().appendCodePoint(0x100078).toString();
 	private final String JU_YI = new StringBuilder().appendCodePoint(0x100035).toString();

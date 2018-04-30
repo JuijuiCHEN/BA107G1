@@ -807,11 +807,11 @@ p a.button2:hover {
 													<div>
 														<%
 															GuideCommService commSvc = new GuideCommService();
-
 															List<GuideCommVO> commList = commSvc.getAllFromGuideId(guideVO.getGuideId());
-
 															for (int i = 0; i < commList.size(); i++) {
+																if(commList.get(i).getCommStatus()==2||commList.get(i).getCommStatus()==1){
 																MemVO memCommVO = memSvc.getOneMemID(commList.get(i).getMemId());
+																
 														%>
 														<div class="_1f9rmq80">
 															<div>
@@ -841,6 +841,7 @@ p a.button2:hover {
 																</form>
 															</div>
 														</div>
+														<%} %>
 														<%
 															}
 														%>

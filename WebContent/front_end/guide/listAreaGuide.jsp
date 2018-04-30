@@ -69,8 +69,7 @@
 			<% for(int i = 0 ; i<areaGuideList.size();i++){ 
 				GuideCommService gc =new GuideCommService();
 				List<GuideCommVO> commList =  gc.getAllFromGuideId(areaGuideList.get(i).getGuideId());
-				if(areaGuideList.get(i).getGuideStatus()==2){
-					 
+				if(areaGuideList.get(i).getGuideStatus()==2||areaGuideList.get(i).getGuideStatus()==1){
 			%>
 				<div class="guidebook-place-card"  style="margin-top:20px;" >
 					<div class="guidebook-place-card-collection__item">
@@ -98,10 +97,10 @@
 								<% 	String commStr = "";
 									String oneComm="";
 									for(int j = 0 ; j<commList.size()/2;j++){
-									MemVO memCommVO = memSvc.getOneMemID(commList.get(j).getMemId());
-									
-									commStr = commList.get(j).getCommContent();
-									oneComm = commStr.substring(0,commStr.length()/2);
+										if(commList.get(j).getCommStatus()==2||commList.get(j).getCommStatus()==1){
+										MemVO memCommVO = memSvc.getOneMemID(commList.get(j).getMemId());
+										commStr = commList.get(j).getCommContent();
+										oneComm = commStr.substring(0,commStr.length()/2);
 								%>	
 								<p class="guidebook-place-recommendation__description" style="font-size:12px;"><%=oneComm %>...
 									<a href="<%=request.getContextPath()%>/guide.do?action=getOne&guideId=<%=areaGuideList.get(i).getGuideId()%>" data-prevent-default="true" class="guidebook-place-recommendation__link">&nbsp;
@@ -122,7 +121,7 @@
 										<span>來自【<%=memCommVO.getMem_name()%>】的留言</span>
 									</a>
 								</div>
-								
+								<%} %>
 								<%} %>
 							</div>
 						</div>

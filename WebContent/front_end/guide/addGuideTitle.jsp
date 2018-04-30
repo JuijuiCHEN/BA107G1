@@ -763,7 +763,7 @@ background-color: #fff;
 														<div class="earning-estimation__body">
 															<div class="row row-condensed space-1">
 																<div class="col-sm-10">
-																	<input name="guideTitle" type="text" class="form-control" placeholder="桃園市大溪老街" autocomplete="off" style="margin-left:10px;margin-top:10px">
+																	<input id="tit" name="guideTitle" type="text" class="form-control" placeholder="桃園市大溪老街" autocomplete="off" style="margin-left:10px;margin-top:10px">
 																	<input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"> <!--接收原送出修改的來源網頁路徑後,再送給Controller準備轉交之用-->
 																	<input type="hidden" name="memId" value="<%=memId%>">
 																</div>
@@ -781,6 +781,7 @@ background-color: #fff;
 														</div>
 													</div>
 												</form>
+												<button id="magicTit" onclick="magicTit()" type="button" style="font-size:10px;">magic</button>
 											</div>
 										</div>
 									
@@ -989,6 +990,11 @@ background-color: #fff;
 	</main>
 </body>
 </html>
+<script language="javascript">
+	function magicTit() {
+		document.getElementById("tit").value = "阿里山國家風景區";
+	}
+</script>
 <script>
 document.getElementById("keep").onclick =function() {validateForm(document.getElementById("titleKeep"))};
 

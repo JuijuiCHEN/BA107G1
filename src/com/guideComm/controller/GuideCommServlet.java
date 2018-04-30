@@ -211,8 +211,24 @@ public class GuideCommServlet extends HttpServlet {
 				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/select_page.jsp");
 				failureView.forward(req, res);
 			}
+		} else if ("updateBack".equals(action)) {
+			try {
+				// req取得資料
+				String commId = req.getParameter("commId");
+				Integer commStatus = Integer.parseInt(req.getParameter("commStatus"));
 
+				// 創建DAO的輸入參數
+				GuideCommVO commVO = new GuideCommVO();
+				commVO.setCommStatus(commStatus);
+				commVO.setCommId(commId);
+
+				GuideCommDAO dao = new GuideCommDAO();
+				dao.updateBack(commVO);
+
+				System.out.println("檢舉留言狀態修改成功");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-
 	}
 }

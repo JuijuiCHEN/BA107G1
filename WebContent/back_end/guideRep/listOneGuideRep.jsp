@@ -13,7 +13,7 @@ GuideVO guideVO = guideSvc.getOneGuide(guideRepVO.getGuideId());
 %>
 <%
 	MemService memSvc = new MemService();
-	MemVO memVO = memSvc.getOneMem(guideRepVO.getMemId());
+	MemVO memVO = memSvc.getOneMemID(guideRepVO.getMemId());
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
